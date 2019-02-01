@@ -1,0 +1,60 @@
+.script chess
+
+<p class='ni'><a href='..'>« back to index</a></p>
+
+<h1>Introduction</h1>
+
+<p>
+The rules of atomic chess are the same as those of standard chess
+with the addition that every time a capture takes place,
+</p>
+
+<ul>
+    <li>the captured piece explodes (is removed).</li>
+    <li>the capturing piece explodes.</li>
+    <li>all pieces adjacent (including diagonally) to the square of the capture, except pawns, explode.</li>
+</ul>
+
+<p>
+Here is a simple example:
+</p>
+
+.chess 2kr3r/ppnp3p/6p1/4p1B1/1b1P4/5P2/PPP3PP/R3K2R 1. Bxd8#
+
+<p>
+Note that when white captures the rook on d8,
+the white bishop and black knight and king explode (thus winning the game for white),
+but the black pawn remains intact.
+</p>
+
+<p>
+Also note that black's bishop on b4 had put the white king in check;
+however,
+one subtlety introduced by the atomic rules
+is that you may explode the opponent's king to win
+even when your own king is in check.
+</p>
+
+<p>
+Here is another example that demonstrates some of the unique aspects of atomic:
+</p>
+
+.chess 8/8/2Q5/8/8/8/1kp5/1QK5 (1. Qc4 Ka3 (2. Qcb3 [This allows black to win by exploding white's king (despite black's own king being in check).] cxb1#, 2. Qbb3 [Ordinarily this would be checkmate, but black's king can escape.] Kb2 [The king is safe because taking it would also explode white's king.], 2. Qb2# [This move is mate because black's king has no legal moves.]), 1. Qc3 [This is an immediate stalemate, as it leaves black without any legal moves.])
+
+<p>
+(To use the board analysis tool,
+either click on the buttons at the top
+or click any move to jump to that position.)
+</p>
+
+<p>
+Note that 1...Ka3 is black's only move after 1.Qc4.
+Any other king move would be moving into check
+(the king is not initially in check
+because taking the king would result in white's king exploding as well).
+The pawn cannot take the queen because that would also explode both kings,
+and the king can never capture any other piece
+because doing so would explode itself.
+</p>
+
+<p class='ni'><a href='..'>« back to index</a></p>
