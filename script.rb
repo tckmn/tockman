@@ -26,8 +26,8 @@ def render title, html, name, active, ksh=false
     ret
 end
 
-def out fname, html
-    fname = "#{$target}/#{fname}/index.html"
+def out fname, html, noindex=false
+    fname = "#{$target}/#{fname}#{noindex ? '.html' : '/index.html'}"
     FileUtils.mkdir_p fname.sub(/[^\/]*$/, '')
     File.write fname, html
 end
@@ -43,7 +43,7 @@ go('pre') do |html, full, name|
         manalyze: 'Music analysis',
         mcompose: 'Composition',
         portfolio: 'Portfolio'
-    }[name.to_sym], html, name, name2, name == 'index')
+    }[name.to_sym], html, name, name2, name == 'index'), name == '404'
 end
 
 def blogtag tag
