@@ -4,6 +4,7 @@ require 'time'
 require_relative 'special'
 
 $template = File.read('pre/template.html')
+$target = 'tckmn.github.io'
 
 def go path, &blk
     Dir.entries(path).each do |fname|
@@ -26,7 +27,7 @@ def render title, html, name, active, ksh=false
 end
 
 def out fname, html
-    fname = "post/#{fname}/index.html"
+    fname = "#{$target}/#{fname}/index.html"
     FileUtils.mkdir_p fname.sub(/[^\/]*$/, '')
     File.write fname, html
 end
@@ -83,7 +84,7 @@ by_tag.each do |k,v|
 end
 
 # rss
-File.open('post/blog.xml', 'w') do |f|
+File.open("#{$target}/blog.xml", 'w') do |f|
     f.puts <<~x
     <rss version="2.0">
         <channel>

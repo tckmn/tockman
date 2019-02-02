@@ -1,8 +1,4 @@
 TODO:
- * atomic chess tutorial
-
-NOTES:
- * update pubkey
  * s/KeyboardFire/a?tckmn/g
  * make sure /phondue-web is working
  * add transalg to portfolio?
@@ -14,6 +10,7 @@ NOTES:
  * more links
  * design a dippy variant
  * make chess controls fixed
+ * finish atomic chess tutorial
 
 MUSIC:
  * sing alhama
