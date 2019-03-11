@@ -117,3 +117,8 @@ go('pre/atomic') do |html, full, name|
         endgame1: 'Basic endgames'
     }[name.to_sym] + ' - Atomic chess guide').sub(/^ - /, ''), html, name, 'asdf')
 end
+
+go('pre/cryptic') do |html, full, name|
+    name2 = name.sub 'index', ''
+    out "cryptic/#{name2}", render('Cryptic crosswords', html, '/cryptic/cryptic', 'asdf')
+end
