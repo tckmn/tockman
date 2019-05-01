@@ -16,10 +16,12 @@ end
 
 def render title, html, name, active, ksh=false
     $script = []
+    $pind = false
     ret = $template
         .sub('<title>', "\\0#{title}#{title && ' - '}")
         .sub('<!--*-->', special(html))
         .sub('<!--s-->', $script.map{|x|"<script src='/js/#{x}.js'></script>"}.join)
+        .sub('<body>', $pind ? '<body class=pind>' : '<body>')
         .sub("'css'", "'#{name}.css'")
         .sub(/(href='\/#{active}')(?: class='([^']*)')?/, '\1 class=\'active \2\'')
     ret.sub!(/<div id='subheader'>.*?<\/div>/m, '') if ksh
@@ -33,7 +35,7 @@ def out fname, html, noindex=false
 end
 
 go('pre') do |html, full, name|
-    name2 = name.sub 'index', ''
+    name2 = name.sub('index', '').gsub('_', '/')
     out name2, render({
         about: 'About',
         conlang: 'Conlangs',
@@ -60,7 +62,7 @@ end
 posts = []
 by_tag = Hash.new{|h,k| h[k]=[]}
 go('pre/blog') do |html, full, name|
-    content = `cmark #{full}`.lines.drop(1).join
+    content = `cmark --unsafe #{full}`.lines.drop(1).join
     date, tags = html.lines.first.chomp.split(nil, 2)
     tags = tags.split ?,
     title = content.split(?<)[1][3..-1]
@@ -72,7 +74,7 @@ go('pre/blog') do |html, full, name|
     posts.push post
     tags.each do |tag| by_tag[tag].push post; end
 
-    out "blog/#{name}", render(title, content.sub('</h1>', "\\0#{bloghtml post, false}"), name, 'blog')
+    out "blog/#{name}", render(title, ".pind\n" + content.sub('</h1>', "\\0#{bloghtml post, false}"), name, 'blog')
 end
 
 # index pages

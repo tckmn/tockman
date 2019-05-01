@@ -15,8 +15,9 @@ def chessparse moves
     }.join
 end
 
-def chess s
+def special s
     s.gsub /^\s*\.chess ([^ ]*)(?: (.*))?/ do
+        # CHESS
         fen, moves = $1, $2
         board = fen.gsub(/\d/){?.*$&.to_i}.split(?/).map(&:chars)
         "<div class=chess data-pos='#{fen}'><table><tbody>" + board.map.with_index{|x,i|
@@ -33,9 +34,11 @@ def chess s
         "<div class='moves'>#{chessparse moves}</div>" +
         "</div></div><div style='clear:both'></div>"
     end.gsub /^\s*\.script (.*)/ do
+        # SCRIPT
         $script.push $1
+        ''
+    end.gsub /^\s*\.pind/ do
+        $pind = true
         ''
     end
 end
-
-def special s; chess s; end
