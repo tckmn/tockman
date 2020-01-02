@@ -1,20 +1,21 @@
-#!/usr/bin/ruby
+#!/usr/bin/env ruby
+
 require 'fileutils'
 require 'time'
 require_relative 'special'
 
-$template = File.read('pre/template.html')
+$template = File.read 'pre/template.html'
 $target = 'tckmn.github.io'
 
 def go path, &blk
     Dir.entries(path).each do |fname|
         next if fname == 'template.html' || File.directory?("#{path}/#{fname}")
         full, name = "#{path}/#{fname}", fname.split('.')[0]
-        blk.call File.read(full), full, name
+        blk.call File.read(full), full, name, name.sub('index', '').gsub('_', '/')
     end
 end
 
-def render title, html, name, active, ksh=false
+def render title, html, name, active='asdf', ksh=false
     $script = []
     $pind = false
     ret = $template
@@ -34,8 +35,7 @@ def out fname, html, noindex=false
     File.write fname, html
 end
 
-go('pre') do |html, full, name|
-    name2 = name.sub('index', '').gsub('_', '/')
+go('pre') do |html, full, name, name2|
     out name2, render({
         about: 'About',
         conlang: 'Conlangs',
@@ -109,18 +109,21 @@ File.open("#{$target}/blog.xml", 'w') do |f|
     x
 end
 
-go('pre/atomic') do |html, full, name|
-    name2 = name.sub 'index', ''
+go('pre/atomic') do |html, full, name, name2|
     out "atomicguide/#{name2}", render(({
         index: '',
         intro: 'Introduction',
         opening1: 'Basic openings',
         tactic1: 'Common tactics',
         endgame1: 'Basic endgames'
-    }[name.to_sym] + ' - Atomic chess guide').sub(/^ - /, ''), html, name, 'asdf')
+    }[name.to_sym] + ' - Atomic chess guide').sub(/^ - /, ''), html, name)
 end
 
-go('pre/cryptic') do |html, full, name|
-    name2 = name.sub 'index', ''
-    out "cryptic/#{name2}", render('Cryptic crosswords', html, '/cryptic/cryptic', 'asdf')
+%w[cryptic puzzle].each do |dir|
+    go("pre/#{dir}") do |html, full, name, name2|
+        out "#{dir}/#{name2}", render({
+            cryptic: 'Cryptic crosswords',
+            puzzle: 'Puzzles'
+        }[dir.to_sym], html, "/#{dir}/#{dir}")
+    end
 end
