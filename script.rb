@@ -124,6 +124,6 @@ end
         out "#{dir}/#{name2}", render({
             cryptic: 'Cryptic crosswords',
             puzzle: 'Puzzles'
-        }[dir.to_sym], html, "/#{dir}/#{dir}")
+        }[dir.to_sym], html, "/#{dir}/#{dir}", dir)
     end
 end
