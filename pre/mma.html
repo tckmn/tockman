@@ -1,0 +1,32 @@
+<p>here is a list of (mostly) increasingly stupid ways of calculating the factorial of n in mathematica (some of them only work for n&gt;0 or n&gt;1)</p>
+
+<pre style='font-size:10pt'>n!
+Gamma[n+1]
+n!!(n-1)!!
+D[x^n,{x,n}]
+1##&amp;@@Range@n
+1~Pochhammer~n
+x~Product~{x,n}
+Exp@Tr[Log/@Range@n]
+Permanent@Array[1&amp;,{n,n}]
+Denominator@LaguerreL[n,x]
+GroupOrder@SymmetricGroup@n
+Length@Permutations@Range@n
+Module[{m=1},Nest[m++#&amp;,1,n]]
+1/Series[Exp@x,{x,0,n}][[3,-1]]
+Delete@0/@Times@@Sum[0@x,{x,n}]
+Times@@FixedPointList[#+1&amp;,1,n-1]
+Denominator@RegionMeasure@Ball[2n]
+Denominator@Residue[f@z/z/z^n,{z,0}]
+1//Composition@@Table[y#&amp;/.y-&gt;x,{x,n}]
+{n,1}//.{x_?Positive,y_}:&gt;{x-1,x*y}//Tr
+Numerator@Moment[ExponentialDistribution@x,n]
+ToString@n&lt;&gt;FromCharacterCode@33//ToExpression
+GroupOrder@GraphAutomorphismGroup@CompleteGraph@n
+Abs@Numerator@FunctionExpand@Binomial[n,k]/.k-&gt;1/2
+(RSolve[a@x==x*a[x-1]&amp;&amp;a@0==1,a@x,x]/.x-&gt;n)[[1,1,2]]
+First@ToExpression@StringReplace[ToString@Range@n,","-&gt;"*"]
+(DSolve[f'@x==PolyGamma[0,x]f@x&amp;&amp;f@1==1,f@x,x]/.x-&gt;n+1)[[1,1,2]]
+Times@@Cases[CoefficientRules@Factor[(x^n-1)/(x-1)],{x_}:&gt;x+1,2]
+DSolve[f@x==Sum[D[f@x,{x,k}],{k,n}],f@x,x]//.{x-&gt;0,Plus-&gt;Times,_@x_:&gt;x}//Last
+n/(n-1)Times@@Module[{f},f[a_?NumberQ]:=Sow@a;Reap@FindInstance[0&lt;x&lt;n&amp;&amp;f@x==n-1,x,Integers]][[2,1]]</pre>
