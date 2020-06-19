@@ -7,9 +7,9 @@ require_relative 'special'
 $template = File.read 'pre/template.html'
 $target = 'tckmn.github.io'
 
-def go path, &blk
+def go path, ext='html', &blk
     Dir.entries(path).each do |fname|
-        next if fname == 'template.html' || File.directory?("#{path}/#{fname}")
+        next if fname == 'template.html' || File.directory?("#{path}/#{fname}") || fname.split('.')[1] != ext
         full, name = "#{path}/#{fname}", fname.split('.')[0]
         blk.call File.read(full), full, name, name.sub('index', '').gsub('_', '/')
     end
@@ -33,6 +33,31 @@ def out fname, html, noindex=false
     fname = "#{$target}/#{fname}#{noindex ? '.html' : '/index.html'}"
     FileUtils.mkdir_p fname.sub(/[^\/]*$/, '')
     File.write fname, html
+end
+
+def makerss fname, title, link, desc, items, ifunc
+    File.open("#{$target}/#{fname}", 'w') do |f|
+        f.puts <<~x
+        <rss version="2.0">
+            <channel>
+                <title>#{title}</title>
+                <link>#{link}</link>
+                <description>#{desc}</description>
+                <language>en</language>
+        #{items.map(&ifunc).map do |ititle, ilink, idesc, idate| <<~y
+            <item>
+                <title>#{ititle.encode :xml => :text}</title>
+                <link>#{ilink}</link>
+                <description>#{idesc.encode :xml => :text}</description>
+                <pubDate>#{Time.parse(idate).rfc2822}</pubDate>
+                <guid>#{ilink}</guid>
+            </item>
+        y
+        end * "\n"}
+            </channel>
+        </rss>
+        x
+    end
 end
 
 go('pre') do |html, full, name, name2|
@@ -61,7 +86,7 @@ end
 
 posts = []
 by_tag = Hash.new{|h,k| h[k]=[]}
-go('pre/blog') do |html, full, name|
+go('pre/blog', 'md') do |html, full, name|
     content = `cmark --unsafe #{full}`.lines.drop(1).join
     date, tags = html.lines.first.chomp.split(nil, 2)
     tags = tags.split ?,
@@ -86,28 +111,53 @@ by_tag.each do |k,v|
 end
 
 # rss
-File.open("#{$target}/blog.xml", 'w') do |f|
-    f.puts <<~x
-    <rss version="2.0">
-        <channel>
-            <title>Blog - Andy Tockman</title>
-            <link>https://tck.mn/blog/</link>
-            <description>Andy Tockman's blog</description>
-            <language>en</language>
-    #{posts.map do |p| <<~y
-        <item>
-            <title>#{p[:title].encode :xml => :text}</title>
-            <link>https://tck.mn/blog/#{p[:name]}/</link>
-            <description>#{p[:excerpt].gsub(/<[^>]*>/, '').chomp.encode :xml => :text}</description>
-            <pubDate>#{Time.parse(p[:date]).rfc2822}</pubDate>
-            <guid>https://tck.mn/blog/#{p[:name]}/</guid>
-        </item>
-    y
-    end * "\n"}
-        </channel>
-    </rss>
-    x
+makerss('blog.xml',
+        'Blog - Andy Tockman',
+        'https://tck.mn/blog/',
+        "Andy Tockman's blog",
+        posts,
+        ->p{[p[:title],
+             "https://tck.mn/blog/#{p[:name]}",
+             p[:excerpt].gsub(/<[^>]*>/, '').chomp,
+             p[:date]]})
+
+# puzzles
+$logic = open('pre/puzzle/logic').read.chomp.split("\n\n").map.with_index do |pset,i|
+    date, *puzs, desc = pset.lines
+    puzs.map! do |puz|
+        diff, link = puz.split
+        { diff: diff, link: link, type: link.split(??)[1].split(?/)[0] }
+    end
+    { id: i+1, date: date, puzs: puzs, desc: desc,
+      title: "Puzzles ##{i+1} (#{puzs.map{|puz| puz[:type]}*', '})" }
 end
+
+$logic.each do |p|
+    html = <<~x
+    <h1>#{p[:title]}</h1>
+    <p><a href='..'>« back</a></p>
+    <p><i>(You can click the images to solve these puzzles with an online interface.)</i></p>
+    #{p[:puzs].map.with_index{|puz,i| <<~y
+        <div class='lpuz'>
+            <p>#{puz[:type]}, difficulty #{?★*puz[:diff].to_i}</p>
+            <p><a href='#{puz[:link]}'><img src='/img/logic-#{p[:id]}-#{i}.png'></a></p>
+        </div>
+        y
+    }*''}
+    <p>#{p[:desc]}</p>
+    x
+    out "puzzle/logic/#{p[:id]}", render(p[:title], html, '/puzzle/puzzle', 'puzzle')
+end
+
+makerss('logic.xml',
+        'Logic puzzles - Andy Tockman',
+        'https://tck.mn/puzzle/logic/',
+        "Logic puzzles by @tckmn",
+        $logic,
+        ->p{[p[:title],
+             "https://tck.mn/puzzle/logic/#{p[:id]}",
+             p[:puzs].map{|puz| puz[:link]}*"\n" + "\n\n" + p[:desc].gsub(/<[^>]*>/, ''),
+             p[:date]]})
 
 go('pre/atomic') do |html, full, name, name2|
     out "atomicguide/#{name2}", render(({

@@ -40,5 +40,20 @@ def special s
     end.gsub /^\s*\.pind/ do
         $pind = true
         ''
+    end.gsub /^\s*\.logictbl/ do
+        $logic.map {|p|
+            p[:puzs].map.with_index{|puz,pi|
+                classes = [
+                    pi == 0                       ? 'ltrfst' : nil,
+                    pi == p[:puzs].size-1         ? 'ltrlst' : nil,
+                    p[:id] % 2 != $logic.size % 2 ? 'ltralt' : nil
+                ].compact
+                "<tr#{classes.empty? ? '' : " class='#{classes*' '}'"}>
+                    <td class='ld'>#{pi == 0 ? "<a href='#{p[:id]}'>#{p[:date].split[0]}</a>" : ''}</td>
+                    <td class='ll'><a href='#{puz[:link]}'>#{puz[:type]}</a></td>
+                    <td class='ls'>#{?★*puz[:diff].to_i}</td>
+                </tr>"
+            }
+        }.reverse.join
     end
 end
