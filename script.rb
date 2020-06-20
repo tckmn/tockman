@@ -122,6 +122,9 @@ makerss('blog.xml',
              p[:date]]})
 
 # puzzles
+def listtypes types
+  types.chunk{|x|x}.map{|type,a|"#{type} x#{a.size}".sub ' x1',''}*', '
+end
 $logic = open('pre/puzzle/logic').read.chomp.split("\n\n").map.with_index do |pset,i|
     date, *puzs, desc = pset.lines
     puzs.map! do |puz|
@@ -129,7 +132,7 @@ $logic = open('pre/puzzle/logic').read.chomp.split("\n\n").map.with_index do |ps
         { diff: diff, link: link, type: link.split(??)[1].split(?/)[0] }
     end
     { id: i+1, date: date, puzs: puzs, desc: desc,
-      title: "Puzzles ##{i+1} (#{puzs.map{|puz| puz[:type]}*', '})" }
+      title: "Puzzles ##{i+1} (#{listtypes puzs.map{|puz| puz[:type]}})" }
 end
 
 $logic.each do |p|
