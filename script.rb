@@ -138,7 +138,9 @@ end
 $logic.each do |p|
     html = <<~x
     <h1>#{p[:title]}</h1>
+    <p id='ldat'>posted #{p[:date]}</p>
     <p><a href='..'>« back</a></p>
+    <p>#{p[:desc]}</p>
     <p><i>(You can click the images to solve these puzzles with an online interface.)</i></p>
     #{p[:puzs].map.with_index{|puz,i| <<~y
         <div class='lpuz'>
@@ -147,7 +149,6 @@ $logic.each do |p|
         </div>
         y
     }*''}
-    <p>#{p[:desc]}</p>
     x
     out "puzzle/logic/#{p[:id]}", render(p[:title], html, '/puzzle/puzzle', 'puzzle')
 end
