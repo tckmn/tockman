@@ -1,3 +1,5 @@
+require 'ostruct'
+
 def chessparse moves
     prev = nil
     moves.scan(/\d+\.+|[,() ]|\[[^\]]*\]|[^ ,)]+/).map{|s|
@@ -16,7 +18,8 @@ def chessparse moves
 end
 
 def special s
-    s.gsub /^\s*\.chess ([^ ]*)(?: (.*))?/ do
+    props = {}
+    html = s.gsub /^\s*\.chess ([^ ]*)(?: (.*))?/ do
         # CHESS
         fen, moves = $1, $2
         board = fen.gsub(/\d/){?.*$&.to_i}.split(?/).map(&:chars)
@@ -33,13 +36,6 @@ def special s
         "<div class='ctrl'><span>«</span><span><span>flip</span></span><span>»</span></div>" +
         "<div class='moves'>#{chessparse moves}</div>" +
         "</div></div><div style='clear:both'></div>"
-    end.gsub /^\s*\.script (.*)/ do
-        # SCRIPT
-        $script.push $1
-        ''
-    end.gsub /^\s*\.pind/ do
-        $pind = true
-        ''
     end.gsub /^\s*\.logictbl/ do
         $logic.map {|p|
             p[:puzs].map.with_index{|puz,pi|
@@ -55,5 +51,13 @@ def special s
                 </tr>"
             }
         }.reverse.join
+    end.gsub /^\s*\.(\w+)(?:([ +])(.*))?/ do
+        case $2
+        when ?\s then props[$1] = $3
+        when ?+  then props[$1] = (props[$1] || []) + [$3]
+        else          props[$1] = true
+        end
+        ''
     end
+    [html, OpenStruct.new(props)]
 end

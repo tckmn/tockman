@@ -15,14 +15,16 @@ def go path, ext='html', &blk
     end
 end
 
+def addclass tag, cl; "<#{tag}#{cl ? " class='#{cl}'" : ''}>"; end
+
 def render title, html, name, active='asdf', ksh=false
-    $script = []
-    $pind = false
+    html, props = special html
     ret = $template
         .sub('<title>', "\\0#{title}#{title && ' - '}")
-        .sub('<!--*-->', special(html))
-        .sub('<!--s-->', $script.map{|x|"<script src='/js/#{x}.js'></script>"}.join)
-        .sub('<body>', $pind ? '<body class=pind>' : '<body>')
+        .sub('<!--*-->', html)
+        .sub('<!--s-->', (props.script || []).map{|x|"<script src='/js/#{x}.js'></script>"}.join)
+        .sub('<main>', addclass('main', props.mainclass))
+        .sub('<body>', addclass('body', props.pind && 'pind'))
         .sub("'css'", "'#{name}.css'")
         .sub(/(href='\/#{active}')(?: class='([^']*)')?/, '\1 class=\'active \2\'')
     ret.sub!(/<div id='subheader'>.*?<\/div>/m, '') if ksh
@@ -173,11 +175,11 @@ go('pre/atomic') do |html, full, name, name2|
     }[name.to_sym] + ' - Atomic chess guide').sub(/^ - /, ''), html, name)
 end
 
-%w[cryptic puzzle].each do |dir|
+%w[puzzle].each do |dir|
+    parts = dir.split ?/
     go("pre/#{dir}") do |html, full, name, name2|
         out "#{dir}/#{name2}", render({
-            cryptic: 'Cryptic crosswords',
-            puzzle: 'Puzzles'
-        }[dir.to_sym], html, "/#{dir}/#{dir}", dir)
+            'puzzle':         'Puzzles'
+        }[dir], html, "/#{dir}/#{parts[-1]}", parts[0])
     end
 end
