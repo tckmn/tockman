@@ -18,7 +18,7 @@ def chessparse moves
 end
 
 def special s
-    props = {}
+    props = OpenStruct.new
     html = s.gsub /^\s*\.chess ([^ ]*)(?: (.*))?/ do
         # CHESS
         fen, moves = $1, $2
@@ -51,6 +51,8 @@ def special s
                 </tr>"
             }
         }.reverse.join
+    end.gsub /^\s*\.subpage(?: (.*))?/ do
+        "<h1>#{$1 || '<!--t*-->'}</h1><p class='ni'><a href='..'>« back</a></p>"
     end.gsub /^\s*\.(\w+)(?:([ +])(.*))?/ do
         case $2
         when ?\s then props[$1] = $3
@@ -59,5 +61,5 @@ def special s
         end
         ''
     end
-    [html, OpenStruct.new(props)]
+    [html, props]
 end

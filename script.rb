@@ -23,12 +23,13 @@ def render title, html, name, active, ksh=false
     $template
         .sub(/(href='\/#{active}')(?: class='([^']*)')?/, '\1 class=\'active \2\'')
         .sub(/(active.*)(\.svg)/, '\1_active\2')
-        .sub('<title>', "\\0#{title}#{title && ' - '}")
         .sub('<!--*-->', html)
+        .sub('<!--t-->', "#{title}#{title && ' - '}")
+        .sub('<!--t*-->', (title || '').split(' - ')[0] || '')
         .sub('<!--s-->', (props.script || []).map{|x|"<script src='/js/#{x}.js'></script>"}.join)
+        .sub('<!--c-->', "#{name}.css")
         .sub('<main>', addclass('main', props.mainclass))
         .sub('<body>', addclass('body', props.pind && 'pind'))
-        .sub("'css'", "'#{name}.css'")
         .sub(/<div id='subheader'>.*?<\/div>/m, ksh ? '' : '\0')
 end
 
