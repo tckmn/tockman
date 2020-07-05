@@ -20,13 +20,14 @@ def addclass tag, cl; "<#{tag}#{cl ? " class='#{cl}'" : ''}>"; end
 def render title, html, name, active='asdf', ksh=false
     html, props = special html
     ret = $template
+        .sub(/(href='\/#{active}')(?: class='([^']*)')?/, '\1 class=\'active \2\'')
+        .sub(/(active.*)(\.svg)/, '\1_active\2')
         .sub('<title>', "\\0#{title}#{title && ' - '}")
         .sub('<!--*-->', html)
         .sub('<!--s-->', (props.script || []).map{|x|"<script src='/js/#{x}.js'></script>"}.join)
         .sub('<main>', addclass('main', props.mainclass))
         .sub('<body>', addclass('body', props.pind && 'pind'))
         .sub("'css'", "'#{name}.css'")
-        .sub(/(href='\/#{active}')(?: class='([^']*)')?/, '\1 class=\'active \2\'')
     ret.sub!(/<div id='subheader'>.*?<\/div>/m, '') if ksh
     ret
 end
