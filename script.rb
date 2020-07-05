@@ -17,8 +17,9 @@ end
 
 def addclass tag, cl; "<#{tag}#{cl ? " class='#{cl}'" : ''}>"; end
 
-def render title, html, name, active='asdf', ksh=false
+def render title, html, name, active, ksh=false
     html, props = special html
+    title = title || props.title
     $template
         .sub(/(href='\/#{active}')(?: class='([^']*)')?/, '\1 class=\'active \2\'')
         .sub(/(active.*)(\.svg)/, '\1_active\2')
@@ -63,16 +64,7 @@ def makerss fname, title, link, desc, items, ifunc
 end
 
 go('pre') do |html, full, name, name2|
-    out name2, render({
-        about: 'About',
-        conlang: 'Conlangs',
-        contact: 'Contact',
-        index: nil,
-        lingpuzzle: 'Linguistics puzzles',
-        manalyze: 'Music analysis',
-        mcompose: 'Composition',
-        portfolio: 'Portfolio'
-    }[name.to_sym], html, name, name2, name == 'index'), name == '404'
+    out name2, render(nil, html, name, name2, name == 'index'), name == '404'
 end
 
 def blogtag tag
@@ -166,20 +158,12 @@ makerss('logic.xml',
              p[:date]]})
 
 go('pre/atomic') do |html, full, name, name2|
-    out "atomicguide/#{name2}", render(({
-        index: '',
-        intro: 'Introduction',
-        opening1: 'Basic openings',
-        tactic1: 'Common tactics',
-        endgame1: 'Basic endgames'
-    }[name.to_sym] + ' - Atomic chess guide').sub(/^ - /, ''), html, name)
+    out "atomicguide/#{name2}", render(nil, html, name, 'boardgame')
 end
 
 %w[puzzle].each do |dir|
     parts = dir.split ?/
     go("pre/#{dir}") do |html, full, name, name2|
-        out "#{dir}/#{name2}", render({
-            'puzzle':         'Puzzles'
-        }[dir], html, "/#{dir}/#{parts[-1]}", parts[0])
+        out "#{dir}/#{name2}", render(nil, html, "/#{dir}/#{parts[-1]}", parts[0])
     end
 end
