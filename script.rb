@@ -29,7 +29,6 @@ def render title, html, name, active, ksh=false
         .sub('<!--s-->', (props.script || []).map{|x|"<script src='/js/#{x}.js'></script>"}.join)
         .sub('<!--c-->', "#{name}.css")
         .sub('<main>', addclass('main', props.mainclass))
-        .sub('<body>', addclass('body', props.pind && 'pind'))
         .sub(/<div id='subheader'>.*?<\/div>/m, ksh ? '' : '\0')
 end
 
@@ -94,7 +93,7 @@ go('pre/blog', 'md') do |html, full, name|
     posts.push post
     tags.each do |tag| by_tag[tag].push post; end
 
-    out "blog/#{name}", render(title, ".pind\n" + content.sub('</h1>', "\\0#{bloghtml post, false}"), name, 'blog')
+    out "blog/#{name}", render(title, ".mainclass pind\n" + content.sub('</h1>', "\\0#{bloghtml post, false}"), name, 'blog')
 end
 
 # index pages
