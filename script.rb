@@ -2,7 +2,20 @@
 
 require 'fileutils'
 require 'time'
+require 'optparse'
 require_relative 'special'
+
+puzzlink = false
+OptionParser.new do |opts|
+    opts.banner = "Usage: #{$0} [options]"
+    opts.on '-p', '--[no-]puzzlink', 'scrape images from puzz.link' do |p|
+        puzzlink = true
+    end
+    opts.on '-h', '--help', 'show help' do
+        puts opts
+        exit
+    end
+end.parse!
 
 $template = File.read 'pre/template.html'
 $target = 'tckmn.github.io'
@@ -136,10 +149,22 @@ $logic.each do |p|
     <p><a href='..'>« back</a></p>
     <p>#{p[:desc]}</p>
     <p><i>(You can click the images to solve these puzzles with an online interface.)</i></p>
-    #{p[:puzs].map.with_index{|puz,i| <<~y
+    #{p[:puzs].map.with_index{|puz,i|
+        imgurl = "/img/logic-#{p[:id]}-#{i}.png"
+
+        # generate puzzle images if requested via cmd line
+        puts %x{
+        chromium --headless --dump-dom --virtual-time-budget=10000 "#{puz[:link]}" 2>/dev/null \
+            | tr -d $'\n' \
+            | grep -o '<svg.*</svg>' \
+            | convert - "#{$target+imgurl}"
+        echo "wrote output at #{$target+imgurl}"
+        } if puzzlink && !File.exists?($target+imgurl)
+
+        <<~y
         <div class='lpuz'>
             <p>#{puz[:type]}, difficulty #{?★*puz[:diff].to_i}</p>
-            <p><a href='#{puz[:link]}'><img src='/img/logic-#{p[:id]}-#{i}.png'></a></p>
+            <p><a href='#{puz[:link]}'><img src='#{imgurl}'></a></p>
         </div>
         y
     }*''}
