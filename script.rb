@@ -108,7 +108,7 @@ go('pre/blog', 'md') do |html, full, name|
     posts.push post
     tags.each do |tag| by_tag[tag].push post; end
 
-    render "blog/#{name}", ".mainclass pind\n" + content.sub('</h1>', "\\0#{bloghtml post, false}"), name, 'blog', {title: title}
+    render "blog/#{name}", content.sub('</h1>', "\\0#{bloghtml post, false}"), name, 'blog', {title: title, mainclass: 'pind'}
 end
 
 # index pages
