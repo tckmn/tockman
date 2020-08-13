@@ -1,0 +1,1 @@
+<mask id='videogame_m'><rect x='-2' y='-2' width='4' height='4' fill='white' /><circle cx='-0.1' cy='-0.55' r='0.13' fill='black' /></mask><path stroke-width='0.2' stroke-linejoin='round' mask='url(#videogame_m)' d='M -0.2713570810121777 0 L 0.6270360384124488 0.6456204818095705 A 0.9 0.9 0 1 1 0.6270360384124488 -0.6456204818095705 z' class='secfill secstroke' />

@@ -17,7 +17,7 @@ OptionParser.new do |opts|
     end
 end.parse!
 
-$template = File.read 'pre/template.html'
+$template = special(File.read 'pre/template.html')[0]
 $target = 'tckmn.github.io'
 
 def go path, ext='html', &blk
@@ -35,7 +35,6 @@ def render title, html, name, active, ksh=false
     title = title || props.title
     $template
         .sub(/(href='\/#{active}')(?: class='([^']*)')?/, '\1 class=\'active \2\'')
-        .sub(/(active.*)(\.svg)/, '\1_active\2')
         .sub('<!--*-->', html)
         .sub('<!--t-->', "#{title}#{title && ' - '}")
         .sub('<!--t*-->', (title || '').split(' - ')[0] || '')
