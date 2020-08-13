@@ -35,7 +35,7 @@ def render fname, html, name, active, flags={}
     html, props = special html
     flags = OpenStruct.new(flags.merge props)
 
-    # puts fname unless props.desc
+    # puts fname unless flags.desc
     html = $template
         .sub(/(href='\/#{active}')(?: class='([^']*)')?/, '\1 class=\'active \2\'')
         .sub('<!--*-->', html)
@@ -43,7 +43,7 @@ def render fname, html, name, active, flags={}
         .gsub('<!--t*-->', (flags.title || '').split(' - ')[0] || '')
         .gsub('<!--s-->', (flags.script || []).map{|x|"<script src='/js/#{x}.js'></script>"}.join)
         .gsub('<!--c-->', "#{name}.css")
-        .gsub('<!--d-->', 'test')
+        .gsub('<!--d-->', flags.desc || 'test')
         .gsub('<!--u-->', fname)
         .sub('<main>', addclass('main', flags.mainclass))
         .sub(/<div id='subheader'>.*?<\/div>/m, flags[:ksh] ? '' : '\0')
