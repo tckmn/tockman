@@ -1,5 +1,3 @@
-require 'ostruct'
-
 def chessparse moves
     prev = nil
     moves.scan(/\d+\.+|[,() ]|\[[^\]]*\]|[^ ,)]+/).map{|s|
@@ -18,7 +16,7 @@ def chessparse moves
 end
 
 def special s
-    props = OpenStruct.new
+    props = {}
     html = s.gsub /^\s*\.chess ([^ ]*)(?: (.*))?/ do
         # CHESS
         fen, moves = $1, $2

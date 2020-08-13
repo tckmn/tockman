@@ -3,6 +3,7 @@
 require 'fileutils'
 require 'time'
 require 'optparse'
+require 'ostruct'
 require_relative 'special'
 
 puzzlink = false
@@ -30,22 +31,24 @@ end
 
 def addclass tag, cl; "<#{tag}#{cl ? " class='#{cl}'" : ''}>"; end
 
-def render title, html, name, active, ksh=false
+def render fname, html, name, active, flags={}
     html, props = special html
-    title = title || props.title
-    $template
+    flags = OpenStruct.new(flags.merge props)
+
+    # puts fname unless props.desc
+    html = $template
         .sub(/(href='\/#{active}')(?: class='([^']*)')?/, '\1 class=\'active \2\'')
         .sub('<!--*-->', html)
-        .sub('<!--t-->', "#{title}#{title && ' - '}")
-        .sub('<!--t*-->', (title || '').split(' - ')[0] || '')
-        .sub('<!--s-->', (props.script || []).map{|x|"<script src='/js/#{x}.js'></script>"}.join)
-        .sub('<!--c-->', "#{name}.css")
-        .sub('<main>', addclass('main', props.mainclass))
-        .sub(/<div id='subheader'>.*?<\/div>/m, ksh ? '' : '\0')
-end
+        .gsub('<!--t-->', "#{flags.title}#{flags.title && ' - '}")
+        .gsub('<!--t*-->', (flags.title || '').split(' - ')[0] || '')
+        .gsub('<!--s-->', (flags.script || []).map{|x|"<script src='/js/#{x}.js'></script>"}.join)
+        .gsub('<!--c-->', "#{name}.css")
+        .gsub('<!--d-->', 'test')
+        .gsub('<!--u-->', fname)
+        .sub('<main>', addclass('main', flags.mainclass))
+        .sub(/<div id='subheader'>.*?<\/div>/m, flags[:ksh] ? '' : '\0')
 
-def out fname, html, noindex=false
-    fname = "#{$target}/#{fname}#{noindex ? '.html' : '/index.html'}"
+    fname = "#{$target}/#{fname}#{flags[:noindex] ? '.html' : '/index.html'}"
     FileUtils.mkdir_p fname.sub(/[^\/]*$/, '')
     File.write fname, html
 end
@@ -76,7 +79,7 @@ def makerss fname, title, link, desc, items, ifunc
 end
 
 go('pre') do |html, full, name, name2|
-    out name2, render(nil, html, name, name2, name == 'index'), name == '404'
+    render name2, html, name, name2, {ksh: name == 'index', noindex: name == '404'}
 end
 
 def blogtag tag
@@ -105,15 +108,15 @@ go('pre/blog', 'md') do |html, full, name|
     posts.push post
     tags.each do |tag| by_tag[tag].push post; end
 
-    out "blog/#{name}", render(title, ".mainclass pind\n" + content.sub('</h1>', "\\0#{bloghtml post, false}"), name, 'blog')
+    render "blog/#{name}", ".mainclass pind\n" + content.sub('</h1>', "\\0#{bloghtml post, false}"), name, 'blog', {title: title}
 end
 
 # index pages
 hint = "<p class='ni' style='margin-bottom:-10px'>Click a tag to filter by posts with that tag. <a href='/blog.xml' style='float:right'><img src='/img/rss.png'></a></p>"
-out 'blog', render('Blog', hint+blogshtml(posts), 'blog', 'blog')
+render 'blog', hint+blogshtml(posts), 'blog', 'blog', {title: 'Blog'}
 by_tag.each do |k,v|
     head = "<h1>posts tagged #{blogtag k}<span class='all'><a href='/blog'>view all »</a></span></h1><hr class='c'>"
-    out "blog/#{k.sub ' ', ?-}", render("Posts tagged #{k}", head+blogshtml(v), '../blog', 'blog')
+    render "blog/#{k.sub ' ', ?-}", head+blogshtml(v), '../blog', 'blog', {title: "Posts tagged #{k}"}
 end
 
 # rss
@@ -168,7 +171,7 @@ $logic.each do |p|
         y
     }*''}
     x
-    out "puzzle/logic/#{p[:id]}", render(p[:title], html, '/puzzle/puzzle', 'puzzle')
+    render "puzzle/logic/#{p[:id]}", html, '/puzzle/puzzle', 'puzzle', {title: p[:title]}
 end
 
 makerss('logic.xml',
@@ -182,12 +185,12 @@ makerss('logic.xml',
              p[:date]]})
 
 go('pre/atomic') do |html, full, name, name2|
-    out "atomicguide/#{name2}", render(nil, html, name, 'boardgame')
+    render "atomicguide/#{name2}", html, name, 'boardgame'
 end
 
 %w[puzzle].each do |dir|
     parts = dir.split ?/
     go("pre/#{dir}") do |html, full, name, name2|
-        out "#{dir}/#{name2}", render(nil, html, "/#{dir}/#{parts[-1]}", parts[0])
+        render "#{dir}/#{name2}", html, "/#{dir}/#{parts[-1]}", parts[0]
     end
 end
