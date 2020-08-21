@@ -134,7 +134,7 @@ def listtypes types
 end
 $logic = open('pre/puzzle/logic').read.chomp.split("\n\n").map.with_index do |pset,i|
     header, *puzs, desc = pset.lines
-    date, *subtitle = header.split ' // '
+    date, *subtitle = header.chomp.split ' // '
     puzs.map! do |puz|
         diff, link = puz.split
         { diff: diff, link: link, type: link.split(??)[1].split(?/)[0] }
@@ -173,7 +173,7 @@ $logic.each do |p|
         y
     }*''}
     x
-    render "puzzle/logic/#{p[:id]}", html, '/puzzle/puzzle', 'puzzle', {title: p[:title]}
+    render "puzzle/logic/#{p[:id]}", html, '/puzzle/puzzle', 'puzzle', {title: p[:title], desc: "Solve my #{p[:id].ordinal} set of logic puzzles#{", #{p[:subtitle]}" if p[:subtitle]} #{p[:title].split[2..-1].join ' '}."}
 end
 
 makerss('logic.xml',

@@ -7,3 +7,7 @@ class String
     def dedent; self.sub(/^\n*/, '').gsub /^#{self[/\A\s*/]}/, ''; end
     def dedent!; self.sub!(/^\n*/, '').gsub! /^#{self[/\A\s*/]}/, ''; self; end
 end
+
+class Integer
+    def ordinal; "#{self}#{(self % 100) / 10 != 1 && [nil, 'st', 'nd', 'rd'][self % 10] || 'th'}"; end
+end
