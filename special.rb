@@ -1,5 +1,4 @@
-def joinlines s
-end
+require_relative 'util'
 
 def chessparse moves
     prev = nil
@@ -56,14 +55,14 @@ def special s
         "<h1>#{$1 || '<!--t*-->'}</h1><p class='ni'><a href='..'>« back</a></p>"
     end.gsub /^\s*\.svg (.*)/ do
         "<svg viewBox='#{$1[0] == ?* ? '-2 -2 4 4' : '-1 -1 2 2'}'>#{File.read "pre/svgs/#{$1.sub ?*, ''}.svg"}</svg>"
-    end.gsub /^\s*\.(\w+)([ +]){{\n(.*?)^\s*}}$/m do
-        a, b, c = $1, $2, $3
-        c.chomp!.gsub!(/^#{c[/\A\s*/]}/, '').gsub!("\n", ' ')
+    end.gsub /^\s*\.(\w+)([ +])(!)?{{(.*?)^\s*}}$/m do
+        a, b, c, d = $1, $2, $3, $4
+        d.dedent!.oneline!
         case b
-        when ?\s then props[a] = c
-        when ?+  then props[a] = (props[a] || []) + [c]
+        when ?\s then props[a] = d
+        when ?+  then props[a] = (props[a] || []) + [d]
         end
-        a == 'desc' ? c : ''
+        c ? '' : d
     end.gsub /^\s*\.(\w+)(?:([ +])(.*))?/ do
         case $2
         when ?\s then props[$1] = $3

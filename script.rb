@@ -6,6 +6,7 @@ require 'optparse'
 require 'ostruct'
 require 'time'
 require_relative 'special'
+require_relative 'util'
 
 puzzlink = false
 OptionParser.new do |opts|
@@ -30,8 +31,6 @@ def go path, ext='html', &blk
     end
 end
 
-def addclass tag, cl; "<#{tag}#{cl ? " class='#{cl}'" : ''}>"; end
-
 def render fname, html, name, active, flags={}
     html, props = special html
     flags = OpenStruct.new(flags.merge props)
@@ -44,9 +43,9 @@ def render fname, html, name, active, flags={}
         .gsub('<!--t*-->', (flags.title || '').split(' - ')[0] || '')
         .gsub('<!--s-->', (flags.script || []).map{|x|"<script src='/js/#{x}.js'></script>"}.join)
         .gsub('<!--c-->', "#{name}.css")
-        .gsub('<!--d-->', CGI.escapeHTML((flags.desc || "The #{flags.title} page on Andy Tockman's website.").gsub(/<[^>]+>/, '')))
+        .gsub('<!--d-->', CGI.escapeHTML((flags.desc || "The #{flags.title} page on Andy Tockman's website.").unhtml))
         .gsub('<!--u-->', fname)
-        .sub('<main>', addclass('main', flags.mainclass))
+        .sub('<main>', 'main'.addclass(flags.mainclass))
         .sub(/<div id='subheader'>.*?<\/div>/m, flags[:ksh] ? '' : '\0')
 
     fname = "#{$target}/#{fname}#{flags[:noindex] ? '.html' : '/index.html'}"
@@ -101,23 +100,21 @@ go('pre/blog', 'md') do |html, full, name|
     date, tags = html.lines.first.chomp.split(nil, 2)
     tags = tags.split ?,
     title = content.split(?<)[1][3..-1]
+    excerpt = `tail -n+5 #{full} | sed -n '/<!--\\*-->/{q};p' | cmark`
 
-    post = {
-        name: name, date: date, tags: tags, title: title,
-        excerpt: `tail -n+5 #{full} | sed -n '/<!--\\*-->/{q};p' | cmark`
-    }
+    post = { name: name, date: date, tags: tags, title: title, excerpt: excerpt }
     posts.push post
     tags.each do |tag| by_tag[tag].push post; end
 
-    render "blog/#{name}", content.sub('</h1>', "\\0#{bloghtml post, false}"), name, 'blog', {title: title, mainclass: 'pind'}
+    render "blog/#{name}", content.sub('</h1>', "\\0#{bloghtml post, false}"), name, 'blog', {title: title, desc: excerpt.unhtml.oneline, mainclass: 'pind'}
 end
 
 # index pages
 hint = "<p class='ni' style='margin-bottom:-10px'>Click a tag to filter by posts with that tag. <a href='/blog.xml' style='float:right'><img src='/img/rss.png'></a></p>"
-render 'blog', hint+blogshtml(posts), 'blog', 'blog', {title: 'Blog'}
+render 'blog', hint+blogshtml(posts), 'blog', 'blog', {title: 'Blog', desc: 'A blog containing various ramblings on various topics.'}
 by_tag.each do |k,v|
     head = "<h1>posts tagged #{blogtag k}<span class='all'><a href='/blog'>view all »</a></span></h1><hr class='c'>"
-    render "blog/#{k.sub ' ', ?-}", head+blogshtml(v), '../blog', 'blog', {title: "Posts tagged #{k}"}
+    render "blog/#{k.sub ' ', ?-}", head+blogshtml(v), '../blog', 'blog', {title: "Posts tagged #{k}", desc: "All blog posts with the #{k} tag."}
 end
 
 # rss
