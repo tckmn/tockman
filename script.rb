@@ -1,9 +1,10 @@
 #!/usr/bin/env ruby
 
+require 'cgi'
 require 'fileutils'
-require 'time'
 require 'optparse'
 require 'ostruct'
+require 'time'
 require_relative 'special'
 
 puzzlink = false
@@ -35,7 +36,7 @@ def render fname, html, name, active, flags={}
     html, props = special html
     flags = OpenStruct.new(flags.merge props)
 
-    # puts fname unless flags.desc
+    puts fname unless flags.desc
     html = $template
         .sub(/(href='\/#{active}')(?: class='([^']*)')?/, '\1 class=\'active \2\'')
         .sub('<!--*-->', html)
@@ -43,7 +44,7 @@ def render fname, html, name, active, flags={}
         .gsub('<!--t*-->', (flags.title || '').split(' - ')[0] || '')
         .gsub('<!--s-->', (flags.script || []).map{|x|"<script src='/js/#{x}.js'></script>"}.join)
         .gsub('<!--c-->', "#{name}.css")
-        .gsub('<!--d-->', flags.desc || 'test')
+        .gsub('<!--d-->', CGI.escapeHTML((flags.desc || "The #{flags.title} page on Andy Tockman's website.").gsub(/<[^>]+>/, '')))
         .gsub('<!--u-->', fname)
         .sub('<main>', addclass('main', flags.mainclass))
         .sub(/<div id='subheader'>.*?<\/div>/m, flags[:ksh] ? '' : '\0')
@@ -135,13 +136,16 @@ def listtypes types
   types.chunk{|x|x}.map{|type,a|"#{type} x#{a.size}".sub ' x1',''}*', '
 end
 $logic = open('pre/puzzle/logic').read.chomp.split("\n\n").map.with_index do |pset,i|
-    date, *puzs, desc = pset.lines
+    header, *puzs, desc = pset.lines
+    date, *subtitle = header.split ' // '
     puzs.map! do |puz|
         diff, link = puz.split
         { diff: diff, link: link, type: link.split(??)[1].split(?/)[0] }
     end
-    { id: i+1, date: date, puzs: puzs, desc: desc,
-      title: "Puzzles ##{i+1} (#{listtypes puzs.map{|puz| puz[:type]}})" }
+    desc.sub! /\{\{(.*?)\}\}/, '\1'
+    { id: i+1, date: date, puzs: puzs, desc: desc, shortdesc: $1 || desc,
+      title: "Puzzles ##{i+1} (#{listtypes puzs.map{|puz| puz[:type]}})",
+      subtitle: subtitle[0] }
 end
 
 $logic.each do |p|
@@ -149,6 +153,7 @@ $logic.each do |p|
     <h1>#{p[:title]}</h1>
     <p id='ldat'>posted #{p[:date]}</p>
     <p><a href='..'>« back</a></p>
+    #{p[:subtitle] && "<p><strong>#{p[:subtitle]}</strong></p>"}
     <p>#{p[:desc]}</p>
     <p><i>(You can click the images to solve these puzzles with an online interface.)</i></p>
     #{p[:puzs].map.with_index{|puz,i|

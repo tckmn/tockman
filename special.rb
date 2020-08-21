@@ -1,3 +1,6 @@
+def joinlines s
+end
+
 def chessparse moves
     prev = nil
     moves.scan(/\d+\.+|[,() ]|\[[^\]]*\]|[^ ,)]+/).map{|s|
@@ -36,23 +39,31 @@ def special s
         "</div></div><div style='clear:both'></div>"
     end.gsub /^\s*\.logictbl/ do
         $logic.map {|p|
-            p[:puzs].map.with_index{|puz,pi|
-                classes = [
-                    pi == 0                       ? 'ltrfst' : nil,
-                    pi == p[:puzs].size-1         ? 'ltrlst' : nil,
-                    p[:id] % 2 != $logic.size % 2 ? 'ltralt' : nil
-                ].compact
-                "<tr#{classes.empty? ? '' : " class='#{classes*' '}'"}>
-                    <td class='ld'>#{pi == 0 ? "<a href='#{p[:id]}'>#{p[:date].split[0]}</a>" : ''}</td>
-                    <td class='ll'><a href='#{puz[:link]}'>#{puz[:type]}</a></td>
-                    <td class='ls'>#{?★*puz[:diff].to_i}</td>
-                </tr>"
-            }
+            "<tr#{" class='ltralt'" if p[:id] % 2 != $logic.size % 2}>
+                <td class='ld'>
+                    <p class='blog'><a href='#{p[:id]}'>#{p[:date].split[0]}#{": <strong>#{p[:subtitle]}</strong>" if p[:subtitle]}</a></p>
+                    <p>#{p[:shortdesc]}</p>
+                </td>
+                <td class='ll'>
+                    #{p[:puzs].map{|puz| "<p><a href='#{puz[:link]}'>#{puz[:type].gsub ?-, '&#8209;'}</a></p>" }.join}
+                </td>
+                <td class='ls'>
+                    #{p[:puzs].map{|puz| "<p>#{?★*puz[:diff].to_i}</p>" }.join}
+                </td>
+            </tr>"
         }.reverse.join
     end.gsub /^\s*\.subpage(?: (.*))?/ do
         "<h1>#{$1 || '<!--t*-->'}</h1><p class='ni'><a href='..'>« back</a></p>"
     end.gsub /^\s*\.svg (.*)/ do
         "<svg viewBox='#{$1[0] == ?* ? '-2 -2 4 4' : '-1 -1 2 2'}'>#{File.read "pre/svgs/#{$1.sub ?*, ''}.svg"}</svg>"
+    end.gsub /^\s*\.(\w+)([ +]){{\n(.*?)^\s*}}$/m do
+        a, b, c = $1, $2, $3
+        c.chomp!.gsub!(/^#{c[/\A\s*/]}/, '').gsub!("\n", ' ')
+        case b
+        when ?\s then props[a] = c
+        when ?+  then props[a] = (props[a] || []) + [c]
+        end
+        a == 'desc' ? c : ''
     end.gsub /^\s*\.(\w+)(?:([ +])(.*))?/ do
         case $2
         when ?\s then props[$1] = $3
