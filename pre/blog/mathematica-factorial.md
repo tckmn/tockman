@@ -1,4 +1,4 @@
-2020-08-21 21:26 -0500 // programming, mathematica
+2020-08-21 21:57 -0500 // programming, mathematica
 
 # Factorial in Mathematica
 
