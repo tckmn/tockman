@@ -1,3 +1,5 @@
+require 'open3'
+
 class String
     def addclass cl; "<#{self}#{cl ? " class='#{cl}'" : ''}>"; end
     def unhtml; self.gsub /<[^>]+>/, ''; end
@@ -10,4 +12,10 @@ end
 
 class Integer
     def ordinal; "#{self}#{(self % 100) / 10 != 1 && [nil, 'st', 'nd', 'rd'][self % 10] || 'th'}"; end
+end
+
+def cmark s
+    Open3
+        .capture2('cmark --unsafe', :stdin_data=>s)[0]
+        .gsub('<p>\\noindent ', '<p class="ni">')
 end

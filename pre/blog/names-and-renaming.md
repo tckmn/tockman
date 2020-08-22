@@ -1,13 +1,13 @@
-2018-01-23 misc
+2019-02-01 17:41 -0600 // misc
 
 # Names and renaming
 
-> *There are only two hard things in Computer Science:
+> \noindent *There are only two hard things in Computer Science:
 > cache invalidation and naming things.*
 >
-> —Phil Karlton
+> \noindent —Phil Karlton
 
-<!--*-->
+[EXCERPT]
 
 With computers in general,
 naming things has been a constant source of difficulties for me.

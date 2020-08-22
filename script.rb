@@ -96,11 +96,11 @@ end
 posts = []
 by_tag = Hash.new{|h,k| h[k]=[]}
 go('pre/blog', 'md') do |html, full, name|
-    content = `cmark --unsafe #{full}`.lines.drop(1).join
-    date, tags = html.lines.first.chomp.split(nil, 2)
-    tags = tags.split ?,
-    title = content.split(?<)[1][3..-1]
-    excerpt = `tail -n+5 #{full} | sed -n '/<!--\\*-->/{q};p' | cmark`
+    content = cmark html.lines.drop(2).join.sub('[EXCERPT]', '')
+    date, tags = html.lines.first.chomp.split ' // '
+    tags = tags.split ', '
+    title = html.lines[2][2..-1].chomp
+    excerpt = cmark html.lines.drop(4).join.sub(/\[EXCERPT\].*/m, '')
 
     post = { name: name, date: date, tags: tags, title: title, excerpt: excerpt }
     posts.push post
