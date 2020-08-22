@@ -51,6 +51,21 @@ def special s
                 </td>
             </tr>"
         }.reverse.join
+    end.gsub /^\s*\.tierlist {{(.*?)^\s*}}$/m do
+        "<table class='tierlist'>
+            #{alt = false; $1.split(?;).map(&:strip).each_cons(2).map{|prev, val|
+                if prev.empty?
+                    # start row
+                    "<tr#{' class="alt"' if alt=!alt}><th class='#{val[0].downcase}'>#{val}</th><td>"
+                elsif val.empty?
+                    # end row
+                    "</td></tr>"
+                else
+                    # data cell
+                    "<span>#{val}</span><wbr>"
+                end
+            }.join}
+        </table>"
     end.gsub /^\s*\.subpage(?: (.*))?/ do
         "<h1>#{$1 || '<!--t*-->'}</h1><p class='ni'><a href='..'>« back</a></p>"
     end.gsub /^\s*\.svg (.*)/ do

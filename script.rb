@@ -35,7 +35,8 @@ def render fname, html, name, active, flags={}
     html, props = special html
     flags = OpenStruct.new(flags.merge props)
 
-    puts fname unless flags.desc
+    puts "WARNING: #{fname} lacks title" unless flags.title || fname.empty?
+    puts "WARNING: #{fname} lacks desc" unless flags.desc
     html = $template
         .sub(/(href='\/#{active}')(?: class='([^']*)')?/, '\1 class=\'active \2\'')
         .sub('<!--*-->', html)
