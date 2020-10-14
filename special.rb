@@ -67,7 +67,7 @@ def special s
             }.join}
         </table>"
     end.gsub /^\s*\.subpage(?: (.*))?/ do
-        "<h1>#{$1 || '<!--t*-->'}</h1><p class='ni'><a href='..'>« back</a></p>"
+        "<h1>#{$1 || '<!--t*-->'}</h1><p><a href='..'>« back</a></p>"
     end.gsub /^\s*\.svg (.*)/ do
         "<svg viewBox='#{$1[0] == ?* ? '-2 -2 4 4' : '-1 -1 2 2'}'>#{File.read "pre/svgs/#{$1.sub ?*, ''}.svg"}</svg>"
     end.gsub /^\s*\.(\w+)([ +])(!)?{{(.*?)^\s*}}$/m do

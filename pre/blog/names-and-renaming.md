@@ -2,10 +2,10 @@
 
 # Names and renaming
 
-> \noindent *There are only two hard things in Computer Science:
+> *There are only two hard things in Computer Science:
 > cache invalidation and naming things.*
 >
-> \noindent —Phil Karlton
+> —Phil Karlton
 
 [EXCERPT]
 

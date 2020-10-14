@@ -2,7 +2,7 @@
 
 # Factorial in Mathematica
 
-\noindent Here is a list of (mostly) increasingly stupid ways
+Here is a list of (mostly) increasingly stupid ways
 of calculating the factorial of `n` in Mathematica. [EXCERPT]
 (some of them only work for `n>0` or `n>1`)
 

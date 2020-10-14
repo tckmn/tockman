@@ -17,6 +17,5 @@ end
 def cmark s
     Open3
         .capture2('cmark --unsafe', :stdin_data=>s)[0]
-        .gsub('<p>\\noindent ', '<p class="ni">')
         .gsub(/^[<>\w]+\\raw\s+(.*?)<\/[<>\/\w]+$/m, '\1')
 end

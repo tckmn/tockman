@@ -107,11 +107,11 @@ go('pre/blog', 'md') do |html, full, name|
     posts.push post
     tags.each do |tag| by_tag[tag].push post; end
 
-    render "blog/#{name}", content.sub('</h1>', "\\0#{bloghtml post, false}"), name, 'blog', {title: title, desc: excerpt.unhtml.oneline, mainclass: 'pind'}
+    render "blog/#{name}", content.sub('</h1>', "\\0#{bloghtml post, false}"), name, 'blog', {title: title, desc: excerpt.unhtml.oneline}
 end
 
 # index pages
-hint = "<p class='ni' style='margin-bottom:-10px'>Click a tag to filter by posts with that tag. <a href='/blog.xml' style='float:right'><img src='/img/rss.png'></a></p>"
+hint = "<p style='margin-bottom:-10px'>Click a tag to filter by posts with that tag. <a href='/blog.xml' style='float:right'><img src='/img/rss.png'></a></p>"
 render 'blog', hint+blogshtml(posts), 'blog', 'blog', {title: 'Blog', desc: 'A blog containing various ramblings on various topics.'}
 by_tag.each do |k,v|
     head = "<h1>posts tagged #{blogtag k}<span class='all'><a href='/blog'>view all »</a></span></h1><hr class='c'>"
