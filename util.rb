@@ -14,8 +14,9 @@ class Integer
     def ordinal; "#{self}#{(self % 100) / 10 != 1 && [nil, 'st', 'nd', 'rd'][self % 10] || 'th'}"; end
 end
 
-def cmark s
+def cmark s, base
     Open3
         .capture2('cmark --unsafe', :stdin_data=>s)[0]
         .gsub(/^[<>\w]+\\raw\s+(.*?)<\/[<>\/\w]+$/m, '\1')
+        .gsub('<img src="=', "<img src=\"#{base}/")
 end

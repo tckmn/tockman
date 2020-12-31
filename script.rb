@@ -97,11 +97,11 @@ end
 posts = []
 by_tag = Hash.new{|h,k| h[k]=[]}
 go('pre/blog', 'md') do |html, full, name|
-    content = cmark html.lines.drop(2).join.sub('[EXCERPT]', '')
+    content = cmark html.lines.drop(2).join.sub('[EXCERPT]', ''), "/blog/#{name}"
     date, tags = html.lines.first.chomp.split ' // '
     tags = tags.split ', '
     title = html.lines[2][2..-1].chomp
-    excerpt = cmark html.lines.drop(4).join.sub(/\[EXCERPT\].*/m, '')
+    excerpt = cmark html.lines.drop(4).join.sub(/\[EXCERPT\].*/m, ''), "/blog/#{name}"
 
     post = { name: name, date: date, tags: tags, title: title, excerpt: excerpt }
     posts.push post
