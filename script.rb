@@ -44,7 +44,7 @@ def render fname, html, name, active, flags={}
         .gsub('<!--t*-->', (flags.title || '').split(' - ')[0] || '')
         .gsub('<!--s-->', (flags.script || []).map{|x|"<script src='/js/#{x}.js'></script>"}.join)
         .gsub('<!--c-->', "#{name}.css")
-        .gsub('<!--d-->', CGI.escapeHTML((flags.desc || "The #{flags.title} page on Andy Tockman's website.").unhtml))
+        .gsub('<!--d-->', CGI.escapeHTML((flags.desc || "The #{flags.title} page on Andy Tockman's website.").unhtml.oneline))
         .gsub('<!--u-->', fname)
         .sub('<main>', 'main'.addclass(flags.mainclass))
         .sub(/<div id='subheader'>.*?<\/div>/m, flags[:ksh] ? '' : '\0')
