@@ -1,0 +1,367 @@
+.title Wordle
+.desc Wordle speedruns, variants, analysis, and more.
+
+If you used the internet in 2022,
+you've probably heard of the game <a href='https://www.nytimes.com/games/wordle/index.html'>Wordle</a>.
+You might also have come across a few of its abundant riffs and spinoffs,
+some of which take it to <a href='https://semantle.novalis.org/'>a very different level</a>.
+Here's some nonsense I've done with the game.
+
+<h2 class='subsec' id='speedruns'>speedruns</h2>
+
+<p>
+I created <a href='/speedle'>Speedle</a>,
+a fork of <a href='https://hellowordl.net/'>hello wordl</a>
+which adds a speedrun timer and various game settings.
+</p>
+
+<p>
+The goal is to solve the given number of wordles as quickly as possible.
+The game settings can be combined in many ways
+to create a number of very different game modes.
+Here are some fastest times (in seconds)
+for a few of these versions of the game.
+</p>
+
+<table id='speed'>
+    <tr>
+        <th>category</th>
+        <th>PB*</th>
+        <th>best known</th>
+    </tr>
+    <tr>
+        <td>
+            <span class='code'>v01-N5x10-a00</span>
+            <span class='nick'>"standard"</span>
+        </td>
+        <td>
+            <a href='https://youtu.be/vVtosaEOmhc'>36.47</a>
+        </td>
+        <td>
+            33.41 (ev)<br>
+            35.23 (lovemathboy)<br>
+            36.75 (IHNN)
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <span class='code'>v01-U5x10-a00</span>
+            <span class='nick'>"ultra hard"</span>
+        </td>
+        <td>
+            <a href='https://youtu.be/_xPodqvvORY'>80.75</a>
+        </td>
+        <td>
+            62.79 (IHNN)
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <span class='code'>v01-N5x10-a14</span>
+            <span class='nick'>"silly autoguessing"</span>
+        </td>
+        <td>
+            <a href='https://youtu.be/Yt8i4q05Faw'>13.28</a>
+        </td>
+        <td>
+            10.89 (lovemathboy)<br>
+            13.82 (IHNN)
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <span class='code'>v01-N5x100-a14</span>
+            <span class='nick'>"marathon"</span>
+        </td>
+        <td>
+            326.06
+        </td>
+        <td>
+            163.98 (lovemathboy)
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <span class='code'>v01-U4x10-a00</span>
+            <span class='nick'>"ultra hard" (4)</span>
+        </td>
+        <td>
+            106.41
+        </td>
+        <td>
+        </td>
+    </tr>
+</table>
+
+<p>
+* personal best
+</p>
+
+<h2 class='subsec' id='variants'>variants</h2>
+
+<p>
+There are a lot of wordle variants.
+Here are some of my favorites,
+arranged in a convenient alignment chart.
+I especially like the ones preceded with a ! symbol.
+</p>
+
+<table id='vars'>
+    <tr>
+        <th></th>
+        <th>mechanic<br>purist</th>
+        <th>mechanic<br>neutral</th>
+        <th>mechanic<br>rebel</th>
+    </tr>
+    <tr>
+        <th>word<br>purist</th>
+        <td>
+            <a href='https://www.nytimes.com/games/wordle/index.html'>wordle</a><br>
+            <a href='https://qntm.org/files/absurdle/absurdle.html'>absurdle</a><br>
+            <a href='/speedle'>speedle</a>
+        </td>
+        <td>
+            !<a href='https://fubargames.se/squardle/'>squardle</a><br>
+            <a href='https://zaratustra.itch.io/dordle'>dordle</a>*<br>
+            <a href='https://misha.fish/wordlie/'>wordlie</a>
+        </td>
+        <td>
+            !<a href='http://obscurdle.com/'>obscurdle</a>
+        </td>
+    </tr>
+    <tr>
+        <th>word<br>neutral</th>
+        <td>
+            <a href='https://manishearth.github.io/ipadle/'>ipadle</a><br>
+            <a href='https://hellowordl.net/'>hello wordl</a>
+        </td>
+        <td>
+            <a href='https://vardle.netlify.app/'>vardle</a>
+        </td>
+        <td>
+            !<a href='https://semantle.novalis.org/'>semantle</a>
+        </td>
+    </tr>
+    <tr>
+        <th>word<br>rebel</th>
+        <td>
+            <a href='https://nerdlegame.com/'>nerdle</a><br>
+            <a href='https://converged.yt/primel/'>primel</a><br>
+            <a href='https://jackli.gg/chessle/'>chessle</a><br>
+            <a href='https://edjefferson.com/letterle/'>letterle</a>
+        </td>
+        <td>
+            <a href='https://squirdle.fireblend.com/'>squirdle</a>
+        </td>
+        <td>
+            <a href='https://globle-game.com/'>globle</a><br>
+            <a href='https://worldle.teuteuf.fr/'>worldle</a>
+        </td>
+    </tr>
+</table>
+
+<p>* and
+<a href='https://www.quordle.com/'>quordle</a>,
+<a href='https://octordle.com/'>octordle</a>,
+<a href='https://sedecordle.com/'>sedecordle</a>,
+etc.</p>
+
+<h2 class='subsec' id='analysis'>analysis</h2>
+
+<p>
+I have done a bunch of computer analysis
+for the primary purpose of finding good speedrun openings.
+<a href='https://github.com/tckmn/wordl'>Here is the code that produced all of these results</a>
+(although be warned, it's a huge mess).
+</p>
+
+<h3>ultra hard mode</h3>
+
+<p>
+In "ultra hard mode" wordle,
+you cannot make a guess that you know couldn't be the answer.
+That means obeying all greens,
+never repeating a letter where it was yellow or gray,
+and using the correct number of each letter
+based on how many yellows and grays you've seen.
+Furthermore,
+wordle has a shorter word list for possible answers
+and a larger word list for guessable words --
+in idealized ultra hard mode,
+you shouldn't be able to guess anything that's not on the shorter list,
+because you know it couldn't be the answer.
+</p>
+
+<p>
+Interestingly,
+under this definition,
+a strategy for ultra hard mode wordle
+is exactly equivalent to a permutation of the target word list,
+where you simply start at the top and guess words in order,
+skipping words that are illegal.
+(All strategies can be expressed as a permutation,
+and all permutations are strategies,
+although many permutations correspond to the same strategy.)
+This is true because while going down the word list,
+there is a unique response to your previous guesses
+that will cause you to guess any given word.
+</p>
+
+<p>
+It also turns out that it is feasible to search the entire game tree in this mode
+(implemented in <code>better.c</code> in the git repo above).
+This took around 45 minutes to run on my laptop.
+The main result is that
+<strong>the best strategy for ultra hard mode takes at most 5 guesses</strong>
+(and there are many, many such strategies).
+For example,
+starting with TRIBE
+(or any of 105 other possibilities),
+you can guarantee finding the word in at most 4 more guesses
+with optimal play.
+For comparison,
+starting with YACHT,
+for example,
+you might need up to 9 more guesses to find the word,
+regardless of your strategy.
+</>
+
+<p>
+This solves ultra hard mode for a computer;
+however,
+the best strategy might be very different for a human,
+since humans cannot memorize entire game trees.
+So for each starting word,
+I analyzed a number of "human-friendliness" factors.
+</p>
+
+<p>
+<a href='sheet.png'><img src='sheet.png' style='max-width: 100%'></a>
+</p>
+
+<p>
+The above screenshot comes from
+<a href='https://docs.google.com/spreadsheets/d/1m7TWUatW4B6rEdjuJwQdOSb9X4xq4A2tnQj9Kx_o47s/edit?usp=sharing'>this Google sheet</a>,
+which contains the full data for all words.
+The columns are as follows:
+</p>
+
+<ul>
+    <li><b>freq</b> is the frequency of the word (the original ordering).</li>
+    <li><b>max depth</b> is how many more guesses it takes to guarantee finding the word, with optimal play.</li>
+    <li><b>comp time</b> is how long my computer program took to search the corresponding subtree.</li>
+    <li><b>greens</b> is the sum over all words of how many green letters you get from this guess.</li>
+    <li><b>yellows</b> is the sum over all words of how many yellows letters you get from this guess.</li>
+    <li><b>green+yellow</b> is just the sum of these (how many non-gray letters you get).</li>
+    <li><b>max width</b> is the maximum number of possibilities remaining for the word after this guess. (e.g. if you guess TRAIL and get all grays, there are 114 remaining possibilities for the word, which is the worst case.)</li>
+    <li><b>size-1 groups</b> is the number of responses to this guess that uniquely identify the answer word. (e.g. if you guess TRAIL and get yellow-gray-gray-yellow-green, the only remaining possibility for the word is STILL.)</li>
+</ul>
+
+<p>
+The "comp time" stat may seem silly,
+but it turns out that words with lower comp times
+tend to do the best overall on the other stats.
+This makes sense,
+since the stats were all chosen to estimate human-friendliness,
+and if it takes less time for the computer to search a given subtree,
+it probably takes less time for a human as well.
+</p>
+
+<p>
+After staring at some numbers for a while,
+I decided a reasonable opening guess for a human is SLATE.
+This isn't a good starting guess with optimal play,
+since it requires 5 more guesses to guarantee reaching the answer,
+but it does better than most words on most of the other stats,
+which I would guess are more important for humans.
+</p>
+
+<p>
+I also performed the same analysis on a few of SLATE's subtrees,
+in particular the ones where the response to SLATE contains a lot of grays,
+since the purpose of this analysis was to generate speedrun strategies.
+I can't memorize a word for every possible response,
+but I can certainly memorize a few,
+and it's comparatively harder for humans (or me, at least)
+to quickly generate good words that fit these particular patterns
+on the fly.
+They also tend to be the widest subtrees,
+so memorizing responses to them is the most worthwhile.
+Here's the second-level words I chose for SLATE:
+</p>
+
+<ul>
+    <li>yellow-gray-gray-gray-gray → guess BISON</li>
+    <li>gray-yellow-gray-gray-gray → guess CHILD</li>
+    <li>gray-gray-yellow-gray-gray → guess MANOR</li>
+    <li>gray-gray-gray-yellow-gray → guess TONIC</li>
+    <li>gray-gray-gray-gray-yellow → guess FINER</li>
+    <li>gray-gray-gray-gray-green → guess CURIE</li>
+    <li>gray-gray-gray-gray-gray → guess ROUND</li>
+</ul>
+
+<h3>normal mode</h3>
+
+<p>
+The stuff I did for normal mode wasn't as interesting,
+so I won't describe it in much detail.
+Basically, I took the 5n most frequent letters in the target wordlist
+(in order: eartolsinchudpymgbfvkwxzqj),
+repeatedly chose random sets of words that used all the letters,
+and optimized for a few very rough heuristics.
+</p>
+
+<p>
+I've found that an opening of 3 words works best for vanilla wordle,
+since any more takes too long to type,
+and an opening of 4 words is obviously better
+with automatic word input (like in speedle).
+</p>
+
+<p>
+Here's the results for 3 words,
+along with the scores for various other openings I've seen people use.
+The second number is the total width after the three guesses
+(where width means how many possibilities there are for the word
+after the guesses),
+the third number is the total number of greens,
+the fourth number is the maximum width,
+and the first number is just the second plus the third.
+Bigger numbers are always better
+(which is why some are negative).
+</p>
+
+<pre><code>266 -1989 2255 -6 shady moult crine
+249 -1987 2236 -6 doily crame shunt
+165 -1989 2154 -6 madly count shire
+ 80 -1945 2025 -5 manly crude hoist
+-24 -1943 1919 -6 dimly haunt corse
+
+-448 -2225 1777 -6 alien short ducky
+-564 -2261 1697 -8 later coins pudgy
+-672 -2239 1567 -7 aloes girth cundy
+-718 -2287 1569 -7 scale intro pudgy
+-746 -2171 1425 -8 siren octal dumpy
+-800 -2509 1709 -9 aesir pouty cling
+-815 -2415 1600 -8 train lucky moped</code></pre>
+
+<p>
+In practice,
+I've been using CRUDE MANLY HOIST,
+because I like the max width of 5
+(but it doesn't really make a difference and any of these are fine).
+</p>
+
+<p>
+Here's the top few results for 4 words.
+</p>
+
+<pre><code>604 -1513 2117 -3 pervy mound chaft glibs
+547 -1523 2070 -3 gothy crave finds plumb
+492 -1527 2019 -3 mysid parve flung botch
+441 -1543 1984 -4 podgy bumfs navel crith
+435 -1501 1936 -2 hynde scurf blimp gavot
+417 -1525 1942 -3 trayf pling chubs moved
+401 -1533 1934 -4 bandy roves fight clump
+372 -1545 1917 -4 chevy undos blimp graft
+370 -1511 1881 -3 curvy flans pight demob</code></pre>
