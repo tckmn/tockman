@@ -8,7 +8,7 @@ These go from best to worst,
 with (more copies of) the letter S meaning "best"
 and (more copies of) the letter F meaning "worst".
 
-### programming languages
+## programming languages
 
     \raw .tierlist {{
         ;SS; haskell;
@@ -20,7 +20,7 @@ and (more copies of) the letter F meaning "worst".
         ;F;  js; php; lua;
     }}
 
-### fruits
+## fruits
 
     \raw .tierlist {{
         ;SS; mango;
@@ -32,7 +32,7 @@ and (more copies of) the letter F meaning "worst".
         ;F;  cantaloupe; honeydew;
     }}
 
-### instruments
+## instruments
 
     \raw .tierlist {{
         ;SS; piano; viola; clarinet; horn;
@@ -44,7 +44,7 @@ and (more copies of) the letter F meaning "worst".
         ;F;  violin;
     }}
 
-### languages
+## languages
 
     \raw .tierlist {{
         ;SS; czech;
