@@ -4,6 +4,7 @@ require 'cgi'
 require 'fileutils'
 require 'optparse'
 require 'ostruct'
+require 'set'
 require 'time'
 require_relative 'special'
 require_relative 'util'
@@ -31,6 +32,7 @@ def go path, ext='html', &blk
     end
 end
 
+$rendered = Set.new
 def render fname, html, name, active, flags={}
     html, props = special html
     flags = OpenStruct.new(flags.merge props)
@@ -52,6 +54,7 @@ def render fname, html, name, active, flags={}
     fname = "#{$target}/#{fname}#{flags[:noindex] ? '.html' : '/index.html'}"
     FileUtils.mkdir_p fname.sub(/[^\/]*$/, '')
     File.write fname, html
+    $rendered.add fname.gsub(/\/+/, ?/)
 end
 
 def makerss fname, title, link, desc, items, ifunc
@@ -104,10 +107,14 @@ go('pre/blog', 'md') do |html, full, name|
     excerpt = cmark html.lines.drop(4).join.sub(/\[EXCERPT\].*/m, ''), "/blog/#{name}"
 
     post = { name: name, date: date, tags: tags, title: title, excerpt: excerpt }
-    posts.push post
-    tags.each do |tag| by_tag[tag].push post; end
 
-    render "blog/#{name}", content.sub('</h1>', "\\0#{bloghtml post, false}"), name, 'blog', {title: title, desc: excerpt.unhtml.oneline}
+    unless tags.include? 'draft'
+        posts.push post
+        tags.each do |tag| by_tag[tag].push post; end
+    end
+
+    render "blog/#{name}", content.sub('</h1>', "\\0#{bloghtml post, false}") + "\n.comments",
+        name, 'blog', {title: title, desc: excerpt.unhtml.oneline}
 end
 
 # index pages
@@ -195,5 +202,13 @@ end
     parts = dir.split ?/
     go("pre/#{dir}") do |html, full, name, name2|
         render "#{dir}/#{name2}", html, "/#{dir}/#{parts[-1]}", parts[0]
+    end
+end
+
+if nil
+    Dir.glob('tckmn.github.io/**/*').each do |f|
+        if File.file?(f) && !$rendered.include?(f)
+            p f
+        end
     end
 end
