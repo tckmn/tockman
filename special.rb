@@ -280,7 +280,7 @@ end
 
 def f_comments x, props
     props['script'] = (props['script'] || []) + ['comments']
-    "
+    <<~x
     <h2 id='comments'>comments</h2>
     <p><i>There are no comments yet.</i></p>
     <form id='commentform' method='post' action='https://dyn.tck.mn/comment'>
@@ -297,7 +297,7 @@ def f_comments x, props
             <span id='commentfeedback'></span>
         </p>
     </form>
-    "
+    x
 end
 
 def onespecial props, a, b, c, d
