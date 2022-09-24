@@ -198,6 +198,51 @@ go('pre/atomic') do |html, full, name, name2|
     render "atomicguide/#{name2}", html, name, 'boardgame'
 end
 
+def repl x, from, to
+    to.flat_map{|y| opts x.sub(from, y)}
+end
+def opts x
+    return repl x, '(s)', ['', 's'] if x.include? '(s)'
+    return repl x, '(dir)', ['', 'in', 'out'] if x.include? '(dir)'
+    return repl x, '(fract)', ['', '1/4', '1/2', '3/4'] if x.include? '(fract)'
+    [x]
+end
+def snorm x
+    x.sub(/ (CONCEPT|FORMATION)$/, '').downcase.gsub(/\([^)]*\)|[^a-z0-9&]/, '')
+end
+@slist = File.readlines('squares').flat_map{|x|
+    a,b = x.chomp.split "\t"
+    opts(b).map{|y| [snorm(y), a.upcase.sub(/MAINSTREAM|PLUS/, 'plus')]}
+}.to_h
+def trysub x, from, to
+    x =~ from ? getlvl(x.sub(from, to)) : nil
+end
+def atleast x, y
+    'C4 C3B C3A C2 C1 A2 A1 plus'.split.find{|z| z==x || z==y}
+end
+def getlvl x
+    ret = @slist[snorm x]; return ret if ret
+    ret = trysub x, /^central /, ''; return ret if ret
+    ret = trysub x, /^tandem /, ''; return atleast('C2', ret) if ret
+    ret = trysub x, /^beaus /, ''; return atleast('A1', ret) if ret
+    'x'
+end
+def squares html
+    html.gsub(/\{(.*?)\}/) {
+        call = $1
+        lvl = getlvl CGI.unescapeHTML call
+        if call.include? ?|
+            lvl, call = call.split ?|
+        end
+        p call if lvl == 'x'
+        "<span class='call #{lvl[0].downcase}'><span class='c1'>#{lvl}</span><span class='c2'>#{call}</span></span>"
+    }
+end
+
+go('pre/squares') do |html, full, name, name2|
+    render "squares/#{name2}", squares(html), (name == 'squares' ? name : '../squares'), 'squares'
+end
+
 %w[puzzle].each do |dir|
     parts = dir.split ?/
     go("pre/#{dir}") do |html, full, name, name2|
