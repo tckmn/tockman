@@ -225,6 +225,9 @@ def getlvl x
     ret = trysub x, /^central /, ''; return ret if ret
     ret = trysub x, /^tandem /, ''; return atleast('C2', ret) if ret
     ret = trysub x, /^beaus /, ''; return atleast('A1', ret) if ret
+    ret = trysub x, /^couples twosome /, ''; return atleast('C3A', ret) if ret
+    ret = trysub x, /^finish /, ''; return atleast('C1', ret) if ret
+    ret = trysub x, / to a wave$/, ''; return atleast('C1', ret) if ret
     'x'
 end
 def squares html

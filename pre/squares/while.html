@@ -1,0 +1,136 @@
+.title While - Square dancing
+.subpage
+
+<p>
+.desc {{
+The <em>while</em> concept
+is an extension of the English word "while"
+based on a former bug in the <a href='https://www.tamtwirlers.org/taminations/'>Taminations</a> sequencer.
+}}
+</p>
+
+<p>
+Callers already use the word "while" all the time,
+in contexts like "centers swing thru while the ends trade".
+The <em>while</em> concept defines these cases
+in the intuitive way:
+the people designated by the first designator
+do the first call,
+and the people designated by the second designator
+do the second call.
+But what if some people are designated by <em>both</em> designators?
+</p>
+
+<p>
+The full definition of the <em>while</em> concept is as follows:
+on "X while Y",
+first memorize the path you would walk in
+if you were to do Y.
+Then, do X.
+Then, walk in the path you memorized.
+</p>
+
+<h2>history</h2>
+
+<p>
+To explain the motivation behind this definition,
+I have to tell a short story.
+</p>
+
+<p>
+When I was a wee little dancer,
+learning plus for the first time,
+I spent a lot of time studying calls on Taminations.
+(The Tech Squares plus class meets "only" once a week,
+and I was so excited by the concept of square dancing
+that this was not nearly enough to satiate my desires.
+I ended up teaching myself plus by about week 3.)
+</p>
+
+<p>
+As part of this,
+I would sometimes type random calls into the sequencer,
+just to see what would happen.
+I'm not sure what prompted me to do this,
+but one such call was {acey deucey},
+which I typed in from a squared set.
+I don't remember the reason;
+my working hypothesis is that it was the alphabetically first plus call,
+so I saw it in the list and just input it having no idea what it meant.
+</p>
+
+<p>
+As any plus dancer would know,
+{acey deucey} from a squared set is complete nonsense,
+and should have resulted in the sequencer yelling at me.
+That is not what happened,
+and what actually happened was...
+rather more surprising, shall we say.
+</p>
+
+<video muted autoplay loop playsinline>
+    <source src='aceydeucey.webm' type='video/webm'>
+    <source src='aceydeucey.mp4' type='video/mp4'>
+</video>
+
+<p>
+Yes,
+from a squared set,
+Taminations's conception of {acey deucey} is
+"heads trade, heads run away".
+(This is obviously a bug,
+which has since been fixed.)
+</p>
+
+<p>
+As baffling as this behavior is,
+like many confusing things computers do,
+it has a logical explanation.
+It's actually a confluence of several facts:
+</p>
+
+<ul>
+
+    <li>Taminations defines {acey deucey} as the result of evaluating the literal string <code>Center 4 Trade While Outer 4 Circulate</code>.</li>
+
+    <li>From a squared set, the code happens to identify the heads as being both the "Center 4" and the "Outer 4".</li>
+
+    <li>When the same dancers appear on both sides of "While", the code evaluates both calls in sequence, but as if they started from the same starting position.</li>
+
+</ul>
+
+<p>
+As a result,
+the call "Acey Deucey" makes Taminations believe
+that the heads should do a Trade <em>while</em> the heads do a Circulate.
+The action for Trade is what you'd expect,
+and it's what they do.
+The action for Circulate,
+from a squared set,
+is to walk forward 3 positions
+(passing right shoulders),
+circulating within their box of 4.
+</p>
+
+<p>
+So the heads perform the Trade action,
+which is to flip inwards,
+and then perform the Circulate action,
+which is to walk forward 3 positions.
+</p>
+
+<p>
+After discovering all this by digging through the source code,
+I realized that I could, uh... have some fun with this.
+</p>
+
+<video muted autoplay loop playsinline>
+    <source src='spchex.webm' type='video/webm'>
+    <source src='spchex.mp4' type='video/mp4'>
+</video>
+
+<h2>examples</h2>
+
+<p>
+[todo]
+</p>
