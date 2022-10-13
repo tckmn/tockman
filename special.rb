@@ -79,7 +79,7 @@ end
 
 def f_heya puz
     sq = 40
-    gw = 0.8
+    gw = 1
     bw = 2.2
     pad = 10
 
