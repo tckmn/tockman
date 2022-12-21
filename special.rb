@@ -278,11 +278,24 @@ def f_heya puz
     s
 end
 
+@comments = eval File.read('comments')
+
 def f_comments x, props
     props['script'] = (props['script'] || []) + ['comments']
+    comments = @comments.filter{|c| c[:post] == x }
     <<~x
     <h2 id='comments'>comments</h2>
-    <p><i>There are no comments yet.</i></p>
+    #{comments.empty? ? '<p><i>There are no comments yet.</i></p>' : comments.map{|c|
+        <<~y
+        <div class='comm'>
+            <p class='commh'>
+                <strong class='commn#{c[:name] == 'tckmn' ? ' me' : ''}'>#{c[:name]}</strong>
+                <em class='commd'>#{c[:date].split(?:)[0...-1].join(?:)}</em>
+            </p>
+            <p class='commb'>#{c[:comm]}</p>
+        </div>
+        y
+    }.join}
     <form id='commentform' method='post' action='https://dyn.tck.mn/comment'>
         <p><label>name: <input name='name'></label></p>
         <p><label>contact (private, optional): <input name='cont'></label></p>

@@ -113,7 +113,7 @@ go('pre/blog', 'md') do |html, full, name|
         tags.each do |tag| by_tag[tag].push post; end
     end
 
-    render "blog/#{name}", content.sub('</h1>', "\\0#{bloghtml post, false}") + "\n.comments",
+    render "blog/#{name}", content.sub('</h1>', "\\0#{bloghtml post, false}") + "\n.comments #{name}",
         name, 'blog', {title: title, desc: excerpt.unhtml.oneline}
 end
 
