@@ -1,7 +1,8 @@
 require_relative 'util'
 
 def f_subpage x
-    "<h1>#{x || '<!--t*-->'}</h1><p><a href='..'>« back</a></p>"
+    t, b = (x || '<!--t*-->').split(' || ', 2)
+    "<h1>#{t}</h1><p><a href='#{b || '..'}'>« back</a></p>"
 end
 
 def f_svg x
