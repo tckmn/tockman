@@ -202,18 +202,18 @@ def repl x, from, to
     to.flat_map{|y| opts x.sub(from, y)}
 end
 def opts x
-    return repl x, '(s)', ['', 's'] if x.include? '(s)'
-    return repl x, '(dir)', ['', 'in', 'out'] if x.include? '(dir)'
+    return repl x, '(dir)', ['', 'in', 'out', "(d\0ir)"] if x.include? '(dir)'
     return repl x, '(fract)', ['', '1/4', '1/2', '3/4'] if x.include? '(fract)'
+    return repl x, /\(([^)]+)\)/, ['', $1] if x =~ /\(([^)]+)\)/
     [x]
 end
 def snorm x
-    x.sub(/ (CONCEPT|FORMATION)$/, '').downcase.gsub(/\([^)]*\)|[^a-z0-9&]/, '')
+    x.sub(/ (CONCEPT|FORMATION)$/, '').downcase.gsub(/[^a-z0-9&]/, '')
 end
 @slist = File.readlines('squares').flat_map{|x|
     a,b = x.chomp.split "\t"
     opts(b).map{|y| [snorm(y), a.upcase.sub(/MAINSTREAM|PLUS/, 'plus')]}
-}.to_h
+}.each_with_object({}) {|(k,v), h| h[k] = v unless h[k]}
 def trysub x, from, to
     x =~ from ? getlvl(x.sub(from, to)) : nil
 end

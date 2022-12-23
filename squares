@@ -371,11 +371,11 @@ c2	(anyone) Kick Off
 c2	(anyone) Like A Ripple CONCEPT
 c2	(anyone) Ripple (The Wave) (n)
 c2	(anything) & Circle (fract)
-c2	xxx (anything) Coordinate
-c2	xxx (anything) Motivate
-c2	xxx (anything) Percolate
-c2	xxx (anything) Perk Up
-c2	xxx (anything) The "K"
+c2	(anything) Coordinate
+c2	(anything) Motivate
+c2	(anything) Percolate
+c2	(anything) Perk Up
+c2	(anything) The "K"
 c2	(n) By (m) CONCEPT (Transfer|Checkmate)
 c2	(Sets In Motion) Hold The Column
 c2	3 By 1 Triangle FORMATION
@@ -778,7 +778,7 @@ c4	(anyone) Tow Train
 c4	(anyone) Tow Train Leave The Caboose
 c4	(anyone) Tow Truck
 c4	(anyone) Wheel & Turn
-c4	xxx (anyone) Zing (n, n=2 or 3)
+c4	(anyone) Zing (n, n=2 or 3)
 c4	(anyone) Zoom (n, n=2 or 3)
 c4	(anything An Anchor) But (anything)
 c4	(anything Coord|React) To A Diamond
