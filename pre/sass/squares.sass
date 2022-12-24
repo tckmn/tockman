@@ -1,0 +1,59 @@
+span.call {
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+    border-radius: 3px;
+
+    > span.c1 {
+        padding: 0 5px;
+        font-size: 9pt;
+    }
+
+    > span.c2 {
+        padding: 0 8px;
+        border-left: 1px solid #aaa;
+        border-radius: 0 3px 3px 0;
+    }
+
+    &.p { background-color: #040; > span.c2 { background-color: #080; } }
+    &.a { background-color: #440; > span.c2 { background-color: #880; } }
+    &.c { background-color: #400; > span.c2 { background-color: #800; } }
+}
+
+p.seq {
+    padding-left: 0.5rem;
+    margin-left: 0.5rem;
+    border-left: 1px solid #666;
+    font-size: 12pt;
+}
+
+p.seqlbl {
+    font-size: 11pt;
+    margin-bottom: 3px;
+    font-weight: bold;
+    color: #a1b56c;
+}
+
+p.seq.lbld {
+    margin-top: 0;
+}
+
+section {
+    border-top: 1px dashed #fff;
+    margin-top: 30px;
+    > :first-child { margin-top: 30px; }
+}
+
+/* dumb page specific stuff */
+
+table.sp td { padding-right: 10px; &:last-child { padding-right: 0; } }
+td.nowrap { white-space: nowrap; }
+.scrolltbl { overflow-x: auto; white-space: nowrap; }
+table#clocktable {
+    td:nth-child(3), td:nth-child(4) { text-align: right; }
+    td:nth-child(5) { font-size: 12pt; }
+}
+
+video { max-width: 100%; }
+div.gallery img { max-width: 100%; }
+div.gallery2 img { max-width: 50%; }

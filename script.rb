@@ -127,10 +127,10 @@ end
 
 # index pages
 hint = "<p style='margin-bottom:-10px'>Click a tag to filter by posts with that tag. <a href='/blog.xml' style='float:right'><img src='/img/rss.png'></a></p>"
-render 'blog', hint+blogshtml(posts), 'blog', 'blog', {title: 'Blog', desc: 'A blog containing various ramblings on various topics.'}
+render 'blog', hint+blogshtml(posts), 'blog', 'blog', {title: 'Blog', desc: 'A blog containing various ramblings on various topics.', style: [$css['blogindex']]}
 by_tag.each do |k,v|
     head = "<h1>posts tagged #{blogtag k}<span class='all'><a href='/blog'>view all »</a></span></h1><hr class='c'>"
-    render "blog/#{k.sub ' ', ?-}", head+blogshtml(v), '../blog', 'blog', {title: "Posts tagged #{k}", desc: "All blog posts with the #{k} tag."}
+    render "blog/#{k.sub ' ', ?-}", head+blogshtml(v), '../blog', 'blog', {title: "Posts tagged #{k}", desc: "All blog posts with the #{k} tag.", style: [$css['blogindex']]}
 end
 
 # rss
@@ -189,7 +189,11 @@ $logic.each do |p|
         y
     }*''}
     x
-    render "puzzle/logic/#{p[:id]}", html, '/puzzle/puzzle', 'puzzle', {title: p[:title], desc: "Solve my #{p[:id].ordinal} set of logic puzzles#{", #{p[:subtitle]}" if p[:subtitle]} #{p[:title].split[2..-1].join ' '}."}
+    render "puzzle/logic/#{p[:id]}", html, '/puzzle/puzzle', 'puzzle', {
+        title: p[:title],
+        desc: "Solve my #{p[:id].ordinal} set of logic puzzles#{", #{p[:subtitle]}" if p[:subtitle]} #{p[:title].split[2..-1].join ' '}.",
+        style: [$css['logicpuz']]
+    }
 end
 
 makerss('logic.xml',
@@ -251,7 +255,9 @@ def squares html
 end
 
 go('pre/squares') do |html, full, name, name2|
-    render "squares/#{name2}", squares(html), (name == 'squares' ? name : '../squares'), 'squares'
+    render "squares/#{name2}", squares(html), (name == 'squares' ? name : '../squares'), 'squares', {
+        style: [$css['squares']]
+    }
 end
 
 %w[puzzle].each do |dir|
