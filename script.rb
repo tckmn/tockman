@@ -33,7 +33,7 @@ def go path, ext='html', &blk
 end
 
 $rendered = Set.new
-def render fname, html, name, active, flags=OpenStruct.new
+def render fname, html, active, flags=OpenStruct.new
     flags = OpenStruct.new flags if Hash === flags
     flags.fname = fname
     html = special html, flags
@@ -45,8 +45,7 @@ def render fname, html, name, active, flags=OpenStruct.new
         .sub('<!--*-->', html)
         .gsub('<!--t-->', "#{flags.title}#{flags.title && ' - '}")
         .gsub('<!--t*-->', (flags.title || '').split(' - ')[0] || '')
-        .gsub('<!--s-->', (flags.script || []).map{|x|"<script src='/js/#{x}.js'></script>"}.join + (flags.style || []).map{|x| "<link rel='stylesheet' href='/css/#{x}.css'>"}.join)
-        .gsub('<!--c-->', "#{name}.css")
+        .gsub('<!--s-->', (flags.script || []).map{|x|"<script src='/js/#{x}.js'></script>"}.join + ((flags.style || []) + [$css['global']]).map{|x| "<link rel='stylesheet' href='/css/#{x}.css'>"}.join)
         .gsub('<!--d-->', CGI.escapeHTML((flags.desc || "The #{flags.title} page on Andy Tockman's website.").unhtml.oneline))
         .gsub('<!--u-->', fname)
         .sub('<main>', 'main'.addclass(flags.mainclass))
@@ -91,7 +90,7 @@ go('pre/sass', 'sass') do |txt, full, name, name2|
 end
 
 go('pre') do |html, full, name, name2|
-    render name2, html, name, name2, {ksh: name == 'index', noindex: name == '404'}
+    render name2, html, name2, {ksh: name == 'index', noindex: name == '404'}
 end
 
 def blogtag tag
@@ -122,15 +121,15 @@ go('pre/blog', 'md') do |html, full, name|
     end
 
     render "blog/#{name}", content.sub('</h1>', "\\0#{bloghtml post, false}") + "\n.comments #{name}",
-        name, 'blog', {title: title, desc: excerpt.unhtml.oneline}
+        'blog', {title: title, desc: excerpt.unhtml.oneline}
 end
 
 # index pages
 hint = "<p style='margin-bottom:-10px'>Click a tag to filter by posts with that tag. <a href='/blog.xml' style='float:right'><img src='/img/rss.png'></a></p>"
-render 'blog', hint+blogshtml(posts), 'blog', 'blog', {title: 'Blog', desc: 'A blog containing various ramblings on various topics.', style: [$css['blogindex']]}
+render 'blog', hint+blogshtml(posts), 'blog', {title: 'Blog', desc: 'A blog containing various ramblings on various topics.', style: [$css['blogindex']]}
 by_tag.each do |k,v|
     head = "<h1>posts tagged #{blogtag k}<span class='all'><a href='/blog'>view all »</a></span></h1><hr class='c'>"
-    render "blog/#{k.sub ' ', ?-}", head+blogshtml(v), '../blog', 'blog', {title: "Posts tagged #{k}", desc: "All blog posts with the #{k} tag.", style: [$css['blogindex']]}
+    render "blog/#{k.sub ' ', ?-}", head+blogshtml(v), 'blog', {title: "Posts tagged #{k}", desc: "All blog posts with the #{k} tag.", style: [$css['blogindex']]}
 end
 
 # rss
@@ -189,7 +188,7 @@ $logic.each do |p|
         y
     }*''}
     x
-    render "puzzle/logic/#{p[:id]}", html, '/puzzle/puzzle', 'puzzle', {
+    render "puzzle/logic/#{p[:id]}", html, 'puzzle', {
         title: p[:title],
         desc: "Solve my #{p[:id].ordinal} set of logic puzzles#{", #{p[:subtitle]}" if p[:subtitle]} #{p[:title].split[2..-1].join ' '}.",
         style: [$css['logicpuz']]
@@ -207,7 +206,7 @@ makerss('logic.xml',
              p[:date]]})
 
 go('pre/atomic') do |html, full, name, name2|
-    render "atomicguide/#{name2}", html, name, 'boardgame'
+    render "atomicguide/#{name2}", html, 'boardgame'
 end
 
 def repl x, from, to
@@ -255,7 +254,7 @@ def squares html
 end
 
 go('pre/squares') do |html, full, name, name2|
-    render "squares/#{name2}", squares(html), (name == 'squares' ? name : '../squares'), 'squares', {
+    render "squares/#{name2}", squares(html), 'squares', {
         style: [$css['squares']]
     }
 end
@@ -263,7 +262,7 @@ end
 %w[puzzle].each do |dir|
     parts = dir.split ?/
     go("pre/#{dir}") do |html, full, name, name2|
-        render "#{dir}/#{name2}", html, "/#{dir}/#{parts[-1]}", parts[0]
+        render "#{dir}/#{name2}", html, parts[0]
     end
 end
 
