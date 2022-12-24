@@ -1,3 +1,4 @@
+require 'sassc'
 require_relative 'util'
 
 def f_subpage x
@@ -282,7 +283,7 @@ end
 @comments = eval File.read('comments')
 
 def f_comments x, props
-    props['script'] = (props['script'] || []) + ['comments']
+    props.script = (props.script || []) + ['comments']
     comments = @comments.filter{|c| c[:post] == x }
     <<~x
     <h2 id='comments'>comments</h2>
@@ -314,6 +315,16 @@ def f_comments x, props
     x
 end
 
+def f_style x, props
+    css = SassC::Engine.new(x.gsub(/<\/?style>/, ''), style: :compressed).render
+    style = props.fname.gsub(/^\/+|\/+$/, '').gsub(?/, ?_) + ?- + crc(css)
+    props.style = (props.style || []) + [style]
+    fname = "#{$target}/css/#{style}.css"
+    $rendered.add fname
+    File.write fname, css
+    ''
+end
+
 def onespecial props, a, b, c, d
     d.dedent!.chomp! if d
     m = :"f_#{a}"
@@ -333,12 +344,10 @@ def onespecial props, a, b, c, d
     end
 end
 
-def special s
-    props = {}
-    html = s.gsub /^\s*\.(\w+)([ +])(!)?{{(.*?)^\s*}}$/m do
+def special s, props
+    s.gsub /^\s*\.(\w+)([ +])(!)?{{(.*?)\s*}}$/m do
         onespecial props, $1, $2, $3, $4
     end.gsub /^\s*\.(\w+)(?:([ +])(.*))?/ do
         onespecial props, $1, $2, true, $3
     end
-    [html, props]
 end

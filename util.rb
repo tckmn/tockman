@@ -24,3 +24,23 @@ def cmark s, base
         .gsub('<img src="=', "<img src=\"#{base}/")
         .gsub(/(<h.)(>[^<]+) #(\w+)(?=<\/h)/, '\1 id="\3"\2')
 end
+
+@tbl = [0]*256
+-> {
+    x = 0x80000000
+    (0..7).each do |i|
+        x = ((x << 1) ^ (x & 0x80000000 == 0 ? 0 : 0x04C11DB7)) & 0xffffffff
+        (0...2**i).each do |j|
+            @tbl[2**i+j] = x ^ @tbl[j]
+        end
+    end
+}[]
+
+def crc s
+    ret = 0
+    itob = ->n { n == 0 ? [] : [n & 0xff] + itob[n >> 8] }
+    (s.bytes + itob[s.size]).each do |ch|
+        ret = (ret << 8) ^ @tbl[((ret >> 24) ^ ch.ord) & 0xff]
+    end
+    (~ret & 0xffffffff).to_s(16).rjust(8, ?0)
+end

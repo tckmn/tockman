@@ -21,8 +21,11 @@ OptionParser.new do |opts|
     end
 end.parse!
 
-$template = special(File.read 'pre/template.html')[0]
+$template = special File.read('pre/template.html'), {}
 $target = 'tckmn.github.io'
+
+FileUtils.remove_dir "#{$target}/css"
+FileUtils.mkdir "#{$target}/css"
 
 def go path, ext='html', &blk
     Dir.entries(path).each do |fname|
@@ -33,9 +36,10 @@ def go path, ext='html', &blk
 end
 
 $rendered = Set.new
-def render fname, html, name, active, flags={}
-    html, props = special html
-    flags = OpenStruct.new(flags.merge props)
+def render fname, html, name, active, flags=OpenStruct.new
+    flags = OpenStruct.new flags if Hash === flags
+    flags.fname = fname
+    html = special html, flags
 
     puts "WARNING: #{fname} lacks title" unless flags.title || fname.empty?
     puts "WARNING: #{fname} lacks desc" unless flags.desc
@@ -44,7 +48,7 @@ def render fname, html, name, active, flags={}
         .sub('<!--*-->', html)
         .gsub('<!--t-->', "#{flags.title}#{flags.title && ' - '}")
         .gsub('<!--t*-->', (flags.title || '').split(' - ')[0] || '')
-        .gsub('<!--s-->', (flags.script || []).map{|x|"<script src='/js/#{x}.js'></script>"}.join)
+        .gsub('<!--s-->', (flags.script || []).map{|x|"<script src='/js/#{x}.js'></script>"}.join + (flags.style || []).map{|x| "<link rel='stylesheet' href='/css/#{x}.css'>"}.join)
         .gsub('<!--c-->', "#{name}.css")
         .gsub('<!--d-->', CGI.escapeHTML((flags.desc || "The #{flags.title} page on Andy Tockman's website.").unhtml.oneline))
         .gsub('<!--u-->', fname)
@@ -231,7 +235,7 @@ def getlvl x
     'x'
 end
 def squares html
-    html.gsub(/\{(.*?)\}/) {
+    html.gsub(/@([^@]+)@/) {
         call = $1
         lvl = getlvl CGI.unescapeHTML call
         if call.include? ?|

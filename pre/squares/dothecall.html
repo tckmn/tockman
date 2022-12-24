@@ -1,8 +1,30 @@
 .title Do The Call - Square dancing
 .subpage
 .desc Dance The Sequence?
-.style dothecall
 .script+dothecall
+.style {{<style>
+    div#dtc {
+        display: flex; align-items: center; font-size: 24pt;
+        @media (max-width: 600px) { font-size: 18pt; }
+    }
+    div#fst, div#snd { flex: 1; color: #dc9656; }
+    div#fst { text-align: right; }
+    div#the { padding: 0 1rem; }
+    p#dtcbtn { text-align: center; margin-bottom: 2rem; }
+    span.dtclvl {
+        display: inline-block; width: 3rem; text-align: center; background-color: #282828; color: #888; cursor: pointer;
+        &.on { background-color: #040; color: #eee; }
+        &:hover { background-color: #383838; }
+        &.on:hover { background-color: #080; }
+    }
+    div#asin {
+        text-align: center; margin-top: 2rem;
+        > div { display: flex; gap: 1rem; }
+        > div > div { flex: 1; }
+        p { margin: 0; }
+        div#asinfst span.fst, div#asinsnd span.snd { color: #dc9656; }
+    }
+</style>}}
 
 <div id='dtc'>
     <div id='fst'></div>
