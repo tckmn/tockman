@@ -34,7 +34,8 @@ end
 
 $rendered = Set.new
 def render fname, html, flags=OpenStruct.new
-    fname.sub!('index', '').gsub!(?_, ?/)
+    fname.sub! 'index', ''
+    fname.gsub! ?_, ?/
 
     flags = OpenStruct.new flags if Hash === flags
     flags.fname = fname
