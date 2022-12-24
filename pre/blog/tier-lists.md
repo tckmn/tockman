@@ -8,6 +8,23 @@ These go from best to worst,
 with (more copies of) the letter S meaning "best"
 and (more copies of) the letter F meaning "worst".
 
+    \raw .style {{<style>
+        h3 { margin-top: 3rem; }
+        table.tierlist {
+            border-collapse: collapse; margin: 2rem 0;
+            th, td { padding: 1rem; }
+            th { color: #181818; }
+            th.s { background-color: #ff7e7e; }
+            th.a { background-color: #ffbf7f; }
+            th.b { background-color: #ffff7f; }
+            th.c { background-color: #7eff7e; }
+            th.d { background-color: #7ec0fd; }
+            th.f { background-color: #7e7ffe; }
+            td { background-color: #282828; width: 100%; span { margin: 10px; } }
+            tr.alt td { background-color: #383838; }
+        }
+    </style>}}
+
 ## programming languages
 
     \raw .tierlist {{
