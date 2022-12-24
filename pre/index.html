@@ -1,4 +1,29 @@
 .script+home
+.style {{<style>
+    section {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        a {
+            display: block;
+            width: 150px;
+            background-color: #282828;
+            padding: 20px;
+            margin: 20px;
+            text-align: center;
+            border-radius: 10px;
+            transition: background-color 0.1s;
+            outline: none;
+            overflow: hidden;
+            &:hover { background-color: #383838; }
+        }
+        svg { width: 200px; margin: -50px; }
+        a, a:visited { text-decoration: none; color: #d8d8d8; }
+        p { margin: 0; }
+    }
+
+    p#me { text-align: center; }
+</style>}}
 
 <p id='me'>
 .desc {{
