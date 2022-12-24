@@ -49,7 +49,7 @@ def render fname, html, flags=OpenStruct.new
         .sub('<!--*-->', html)
         .gsub('<!--t-->', "#{flags.title}#{flags.title && ' - '}")
         .gsub('<!--t*-->', (flags.title || '').split(' - ')[0] || '')
-        .gsub('<!--s-->', (flags.script || []).map{|x|"<script src='/js/#{x}.js'></script>"}.join + ((flags.style || []) + ['global']).map{|x| "<link rel='stylesheet' href='/css/#{$css[x]}.css'>"}.join)
+        .gsub('<!--s-->', (flags.script || []).map{|x|"<script src='/js/#{x}.js'></script>"}.join + (['global'] + (flags.style || [])).map{|x| "<link rel='stylesheet' href='/css/#{$css[x]}.css'>"}.join)
         .gsub('<!--d-->', CGI.escapeHTML((flags.desc || "The #{flags.title} page on Andy Tockman's website.").unhtml.oneline))
         .gsub('<!--u-->', fname)
         .sub('<main>', 'main'.addclass(flags.mainclass))
