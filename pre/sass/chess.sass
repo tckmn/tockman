@@ -1,0 +1,54 @@
+div.chess {
+    margin: 1em 0;
+    table { border-collapse: collapse; float: left; }
+    td {
+        padding: 0; margin: 0;
+        &.l { background-color: #aaa; }
+        &.d { background-color: #888; }
+        img {
+            display: block; width: 45px; height: 45px;
+            /* 390 = 45*8 + 10*3;  350 = 40*8 + 10*3 */
+            @media (max-width: 390px) { width: 40px; height: 40px; }
+            @media (max-width: 350px) { width: 35px; height: 35px; }
+        }
+    }
+    div.mcont {
+        padding: 10px; min-width: 200px; overflow: hidden; background-color: #202020;
+        div.ctrl { margin-bottom: 0.5em; }
+        div.ctrl > span {
+            display: inline-block;
+            font-size: 15px;
+            height: 25px;
+            line-height: 25px;
+            min-width: 25px;
+            text-align: center;
+            margin: 0 5px;
+            background-color: #303030;
+            border-radius: 25px;
+            cursor: pointer;
+            > span { padding: 0 10px; }
+        }
+    }
+    div.moves {
+        span.n { color: #888; font-size: 16px; }
+        span.c { color: #bbb; font-size: 16px; font-style: italic; }
+        span.m { font-weight: bold; font-family: monospace; cursor: pointer; &.active { background-color: #888; color: #000; } }
+        div.b { padding-left: 1em; text-indent: -0.5em; border-left: 1px solid #333; }
+    }
+}
+
+div.chesspopup {
+    position: absolute; border: 1px solid #000;
+    div.opt {
+        font-size: 15px; font-family: monospace; padding: 2px 5px; cursor: pointer;
+        &.even { background-color: #333; }
+        &.odd { background-color: #444; }
+    }
+}
+
+/* 600 = 45*8 + 200 + 10*2 + 10*2;  340 = 45*8 - 10*2 */
+/* the 300px height is a guess; it gets adjusted via JS */
+@media (min-width: 600px) {
+    div.chess div.mcont { height: 340px; }
+    div.chess div.moves { height: 300px; overflow-y: auto; }
+}

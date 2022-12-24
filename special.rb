@@ -10,7 +10,9 @@ def f_svg x
     "<svg viewBox='#{x[0] == ?* ? '-2 -2 4 4' : '-1 -1 2 2'}'>#{File.read "pre/svgs/#{x.sub ?*, ''}.svg"}</svg>"
 end
 
-def f_chess x
+def f_chess x, props
+    props.style = ((props.style || []) + ['chess']).uniq # TODO
+
     fen, moves = x.split ' ', 2
 
     prev = nil
