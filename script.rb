@@ -28,20 +28,23 @@ def go path, ext='html', &blk
     Dir.entries(path).each do |fname|
         next if fname == 'template.html' || File.directory?("#{path}/#{fname}") || fname.split('.')[1] != ext
         full, name = "#{path}/#{fname}", fname.split('.')[0]
-        blk.call File.read(full), full, name, name.sub('index', '').gsub('_', '/')
+        blk.call File.read(full), name
     end
 end
 
 $rendered = Set.new
-def render fname, html, active, flags=OpenStruct.new
+def render fname, html, flags=OpenStruct.new
+    fname.sub!('index', '').gsub!(?_, ?/)
+
     flags = OpenStruct.new flags if Hash === flags
     flags.fname = fname
     html = special html, flags
 
     puts "WARNING: #{fname} lacks title" unless flags.title || fname.empty?
     puts "WARNING: #{fname} lacks desc" unless flags.desc
+
     html = $template
-        .sub(/(href='\/#{active}')(?: class='([^']*)')?/, '\1 class=\'active \2\'')
+        .sub(/(href='\/#{flags.section || fname.split(?/)[0]}')(?: class='([^']*)')?/, '\1 class=\'active \2\'')
         .sub('<!--*-->', html)
         .gsub('<!--t-->', "#{flags.title}#{flags.title && ' - '}")
         .gsub('<!--t*-->', (flags.title || '').split(' - ')[0] || '')
@@ -49,9 +52,9 @@ def render fname, html, active, flags=OpenStruct.new
         .gsub('<!--d-->', CGI.escapeHTML((flags.desc || "The #{flags.title} page on Andy Tockman's website.").unhtml.oneline))
         .gsub('<!--u-->', fname)
         .sub('<main>', 'main'.addclass(flags.mainclass))
-        .sub(/<div id='subheader'>.*?<\/div>/m, flags[:ksh] ? '' : '\0')
+        .sub(/<div id='subheader'>.*?<\/div>/m, flags.ksh ? '' : '\0')
 
-    fname = "#{$target}/#{fname}#{flags[:noindex] ? '.html' : '/index.html'}"
+    fname = "#{$target}/#{fname}#{flags.noindex ? '.html' : '/index.html'}"
     FileUtils.mkdir_p fname.sub(/[^\/]*$/, '')
     File.write fname, html
     $rendered.add fname.gsub(/\/+/, ?/)
@@ -85,12 +88,12 @@ end
 $css = {}
 FileUtils.remove_dir "#{$target}/css"
 FileUtils.mkdir "#{$target}/css"
-go('pre/sass', 'sass') do |txt, full, name, name2|
+go('pre/sass', 'sass') do |txt, name|
     $css[name] = sass txt, name
 end
 
-go('pre') do |html, full, name, name2|
-    render name2, html, name2, {ksh: name == 'index', noindex: name == '404'}
+go('pre') do |html, name|
+    render name, html, {ksh: name == 'index', noindex: name == '404'}
 end
 
 def blogtag tag
@@ -106,7 +109,7 @@ end
 
 posts = []
 by_tag = Hash.new{|h,k| h[k]=[]}
-go('pre/blog', 'md') do |html, full, name|
+go('pre/blog', 'md') do |html, name|
     content = cmark html.lines.drop(2).join.sub('[EXCERPT]', ''), "/blog/#{name}"
     date, tags = html.lines.first.chomp.split ' // '
     tags = tags.split ', '
@@ -120,16 +123,15 @@ go('pre/blog', 'md') do |html, full, name|
         tags.each do |tag| by_tag[tag].push post; end
     end
 
-    render "blog/#{name}", content.sub('</h1>', "\\0#{bloghtml post, false}") + "\n.comments #{name}",
-        'blog', {title: title, desc: excerpt.unhtml.oneline}
+    render "blog/#{name}", content.sub('</h1>', "\\0#{bloghtml post, false}") + "\n.comments #{name}", {title: title, desc: excerpt.unhtml.oneline}
 end
 
 # index pages
 hint = "<p style='margin-bottom:-10px'>Click a tag to filter by posts with that tag. <a href='/blog.xml' style='float:right'><img src='/img/rss.png'></a></p>"
-render 'blog', hint+blogshtml(posts), 'blog', {title: 'Blog', desc: 'A blog containing various ramblings on various topics.', style: [$css['blogindex']]}
+render 'blog', hint+blogshtml(posts), {title: 'Blog', desc: 'A blog containing various ramblings on various topics.', style: [$css['blogindex']]}
 by_tag.each do |k,v|
     head = "<h1>posts tagged #{blogtag k}<span class='all'><a href='/blog'>view all »</a></span></h1><hr class='c'>"
-    render "blog/#{k.sub ' ', ?-}", head+blogshtml(v), 'blog', {title: "Posts tagged #{k}", desc: "All blog posts with the #{k} tag.", style: [$css['blogindex']]}
+    render "blog/#{k.sub ' ', ?-}", head+blogshtml(v), {title: "Posts tagged #{k}", desc: "All blog posts with the #{k} tag.", style: [$css['blogindex']]}
 end
 
 # rss
@@ -188,7 +190,7 @@ $logic.each do |p|
         y
     }*''}
     x
-    render "puzzle/logic/#{p[:id]}", html, 'puzzle', {
+    render "puzzle/logic/#{p[:id]}", html, {
         title: p[:title],
         desc: "Solve my #{p[:id].ordinal} set of logic puzzles#{", #{p[:subtitle]}" if p[:subtitle]} #{p[:title].split[2..-1].join ' '}.",
         style: [$css['logicpuz']]
@@ -204,10 +206,6 @@ makerss('logic.xml',
              "https://tck.mn/puzzle/logic/#{p[:id]}",
              p[:puzs].map{|puz| puz[:link]}*"\n" + "\n\n" + p[:desc].gsub(/<[^>]*>/, ''),
              p[:date]]})
-
-go('pre/atomic') do |html, full, name, name2|
-    render "atomicguide/#{name2}", html, 'boardgame'
-end
 
 def repl x, from, to
     to.flat_map{|y| opts x.sub(from, y)}
@@ -253,17 +251,16 @@ def squares html
     }
 end
 
-go('pre/squares') do |html, full, name, name2|
-    render "squares/#{name2}", squares(html), 'squares', {
-        style: [$css['squares']]
-    }
+go('pre/squares') do |html, name|
+    render "squares/#{name}", squares(html), {style: [$css['squares']]}
 end
 
-%w[puzzle].each do |dir|
-    parts = dir.split ?/
-    go("pre/#{dir}") do |html, full, name, name2|
-        render "#{dir}/#{name2}", html, parts[0]
-    end
+go('pre/atomic') do |html, name|
+    render "atomicguide/#{name}", html, {section: 'boardgame'}
+end
+
+go('pre/puzzle') do |html, name|
+    render "puzzle/#{name}", html
 end
 
 if nil
