@@ -28,11 +28,11 @@ end
 
 def sass s, name
     css = SassC::Engine.new(s, style: :compressed).render
-    style = name + ?- + crc(css)
-    fname = "#{$target}/css/#{style}.css"
+    $css[name] = name + ?- + crc(css)
+    fname = "#{$target}/css/#{$css[name]}.css"
     $rendered.add fname
     File.write fname, css
-    style
+    name
 end
 
 @tbl = [0]*256

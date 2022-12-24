@@ -315,7 +315,7 @@ def f_comments x, props
 end
 
 def f_style x, props
-    style = x.start_with?('<style>') ? sass(x.gsub(/<\/?style>/, ''), props.fname.gsub(/^\/+|\/+$/, '').gsub(?/, ?_)) : $css[x]
+    style = x.start_with?('<style>') ? sass(x.gsub(/<\/?style>/, ''), props.fname.gsub(/^\/+|\/+$/, '').gsub(?/, ?_)) : x
     props.style = (props.style || []) + [style]
     ''
 end

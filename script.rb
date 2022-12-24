@@ -49,7 +49,7 @@ def render fname, html, flags=OpenStruct.new
         .sub('<!--*-->', html)
         .gsub('<!--t-->', "#{flags.title}#{flags.title && ' - '}")
         .gsub('<!--t*-->', (flags.title || '').split(' - ')[0] || '')
-        .gsub('<!--s-->', (flags.script || []).map{|x|"<script src='/js/#{x}.js'></script>"}.join + ((flags.style || []) + [$css['global']]).map{|x| "<link rel='stylesheet' href='/css/#{x}.css'>"}.join)
+        .gsub('<!--s-->', (flags.script || []).map{|x|"<script src='/js/#{x}.js'></script>"}.join + ((flags.style || []) + ['global']).map{|x| "<link rel='stylesheet' href='/css/#{$css[x]}.css'>"}.join)
         .gsub('<!--d-->', CGI.escapeHTML((flags.desc || "The #{flags.title} page on Andy Tockman's website.").unhtml.oneline))
         .gsub('<!--u-->', fname)
         .sub('<main>', 'main'.addclass(flags.mainclass))
@@ -90,7 +90,7 @@ $css = {}
 FileUtils.remove_dir "#{$target}/css"
 FileUtils.mkdir "#{$target}/css"
 go('pre/sass', 'sass') do |txt, name|
-    $css[name] = sass txt, name
+    sass txt, name
 end
 
 go('pre') do |html, name|
@@ -129,10 +129,10 @@ end
 
 # index pages
 hint = "<p style='margin-bottom:-10px'>Click a tag to filter by posts with that tag. <a href='/blog.xml' style='float:right'><img src='/img/rss.png'></a></p>"
-render 'blog', hint+blogshtml(posts), {title: 'Blog', desc: 'A blog containing various ramblings on various topics.', style: [$css['blogindex']]}
+render 'blog', hint+blogshtml(posts), {title: 'Blog', desc: 'A blog containing various ramblings on various topics.', style: ['blogindex']}
 by_tag.each do |k,v|
     head = "<h1>posts tagged #{blogtag k}<span class='all'><a href='/blog'>view all »</a></span></h1><hr class='c'>"
-    render "blog/#{k.sub ' ', ?-}", head+blogshtml(v), {title: "Posts tagged #{k}", desc: "All blog posts with the #{k} tag.", style: [$css['blogindex']]}
+    render "blog/#{k.sub ' ', ?-}", head+blogshtml(v), {title: "Posts tagged #{k}", desc: "All blog posts with the #{k} tag.", style: ['blogindex']}
 end
 
 # rss
@@ -194,7 +194,7 @@ $logic.each do |p|
     render "puzzle/logic/#{p[:id]}", html, {
         title: p[:title],
         desc: "Solve my #{p[:id].ordinal} set of logic puzzles#{", #{p[:subtitle]}" if p[:subtitle]} #{p[:title].split[2..-1].join ' '}.",
-        style: [$css['logicpuz']]
+        style: ['logicpuz']
     }
 end
 
@@ -253,7 +253,7 @@ def squares html
 end
 
 go('pre/squares') do |html, name|
-    render "squares/#{name}", squares(html), {style: [$css['squares']]}
+    render "squares/#{name}", squares(html), {style: ['squares']}
 end
 
 go('pre/atomic') do |html, name|
