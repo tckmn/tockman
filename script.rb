@@ -62,6 +62,7 @@ def render fname, html, flags=OpenStruct.new
 end
 
 def makerss fname, title, link, desc, items, ifunc
+    $rendered.add "#{$target}/#{fname}"
     File.open("#{$target}/#{fname}", 'w') do |f|
         f.puts <<~x
         <rss version="2.0">
