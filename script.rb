@@ -24,9 +24,6 @@ end.parse!
 $template = special File.read('pre/template.html'), {}
 $target = 'tckmn.github.io'
 
-FileUtils.remove_dir "#{$target}/css"
-FileUtils.mkdir "#{$target}/css"
-
 def go path, ext='html', &blk
     Dir.entries(path).each do |fname|
         next if fname == 'template.html' || File.directory?("#{path}/#{fname}") || fname.split('.')[1] != ext
@@ -84,6 +81,13 @@ def makerss fname, title, link, desc, items, ifunc
         </rss>
         x
     end
+end
+
+$css = {}
+FileUtils.remove_dir "#{$target}/css"
+FileUtils.mkdir "#{$target}/css"
+go('pre/sass', 'sass') do |txt, full, name, name2|
+    $css[name] = sass txt, name
 end
 
 go('pre') do |html, full, name, name2|

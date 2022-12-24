@@ -1,3 +1,4 @@
+require 'sassc'
 require 'open3'
 
 class String
@@ -23,6 +24,15 @@ def cmark s, base
         .gsub(/^[<>\w]+\\rawp\s+(.*?)<\/[<>\/\w]+$/m){"<p>\n#{$1.rawify}\n</p>"}
         .gsub('<img src="=', "<img src=\"#{base}/")
         .gsub(/(<h.)(>[^<]+) #(\w+)(?=<\/h)/, '\1 id="\3"\2')
+end
+
+def sass s, name
+    css = SassC::Engine.new(s, style: :compressed).render
+    style = name + ?- + crc(css)
+    fname = "#{$target}/css/#{style}.css"
+    $rendered.add fname
+    File.write fname, css
+    style
 end
 
 @tbl = [0]*256

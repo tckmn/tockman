@@ -1,4 +1,3 @@
-require 'sassc'
 require_relative 'util'
 
 def f_subpage x
@@ -316,12 +315,8 @@ def f_comments x, props
 end
 
 def f_style x, props
-    css = SassC::Engine.new(x.gsub(/<\/?style>/, ''), style: :compressed).render
-    style = props.fname.gsub(/^\/+|\/+$/, '').gsub(?/, ?_) + ?- + crc(css)
+    style = x.start_with?('<style>') ? sass(x.gsub(/<\/?style>/, ''), props.fname.gsub(/^\/+|\/+$/, '').gsub(?/, ?_)) : $css[x]
     props.style = (props.style || []) + [style]
-    fname = "#{$target}/css/#{style}.css"
-    $rendered.add fname
-    File.write fname, css
     ''
 end
 
