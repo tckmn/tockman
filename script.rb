@@ -9,6 +9,33 @@ require 'time'
 require_relative 'special'
 require_relative 'util'
 
+class Props
+    def initialize fname
+        @fname = fname
+        @section = fname.split(?/)[0]
+        @style = Set.new
+        @script = Set.new
+        @mainclass = nil
+        @title = nil
+        @desc = nil
+        @ksh = false
+        @noindex = false
+    end
+
+    attr_accessor *Props.new('').instance_variables.map{|x| x[1..-1]}
+    def [] k; self.send k; end
+    def []= k, v; self.send "#{k}=", v; end
+    def merge! props; props.each{|k,v| self[k] = v }; end
+
+    def style= v
+        case v
+        when Set   then @style = v
+        when Array then @style = v.to_set
+        else            @style = Set[v]
+        end
+    end
+end
+
 puzzlink = false
 OptionParser.new do |opts|
     opts.banner = "Usage: #{$0} [options]"
@@ -33,23 +60,24 @@ def go path, ext='html', &blk
 end
 
 $rendered = Set.new
-def render fname, html, flags=OpenStruct.new
+def render fname, html, **props
     fname.sub! 'index', ''
     fname.gsub! ?_, ?/
+    fname.gsub! /^\/+|\/+$/, ''
 
-    flags = OpenStruct.new flags if Hash === flags
-    flags.fname = fname
+    flags = Props.new fname
+    flags.merge! props
     html = special html, flags
 
     puts "WARNING: #{fname} lacks title" unless flags.title || fname.empty?
     puts "WARNING: #{fname} lacks desc" unless flags.desc
 
     html = $template
-        .sub(/(href='\/#{flags.section || fname.split(?/)[0]}')(?: class='([^']*)')?/, '\1 class=\'active \2\'')
+        .sub(/(href='\/#{flags.section}')(?: class='([^']*)')?/, '\1 class=\'active \2\'')
         .sub('<!--*-->', html)
         .gsub('<!--t-->', "#{flags.title}#{flags.title && ' - '}")
         .gsub('<!--t*-->', (flags.title || '').split(' - ')[0] || '')
-        .gsub('<!--s-->', (flags.script || []).map{|x|"<script src='/js/#{x}.js'></script>"}.join + (['global'] + (flags.style || [])).map{|x| "<link rel='stylesheet' href='/css/#{$css[x]}.css'>"}.join)
+        .gsub('<!--s-->', flags.script.sort.map{|x|"<script src='/js/#{x}.js'></script>"}.join + (['global'] + flags.style.sort).map{|x| "<link rel='stylesheet' href='/css/#{$css[x]}.css'>"}.join)
         .gsub('<!--d-->', CGI.escapeHTML((flags.desc || "The #{flags.title} page on Andy Tockman's website.").unhtml.oneline))
         .gsub('<!--u-->', fname)
         .sub('<main>', 'main'.addclass(flags.mainclass))
@@ -95,7 +123,7 @@ go('pre/sass', 'sass') do |txt, name|
 end
 
 go('pre') do |html, name|
-    render name, html, {ksh: name == 'index', noindex: name == '404'}
+    render name, html, ksh: name == 'index', noindex: name == '404'
 end
 
 def blogtag tag
@@ -125,15 +153,15 @@ go('pre/blog', 'md') do |html, name|
         tags.each do |tag| by_tag[tag].push post; end
     end
 
-    render "blog/#{name}", content.sub('</h1>', "\\0#{bloghtml post, false}") + "\n.comments #{name}", {title: title, desc: excerpt.unhtml.oneline}
+    render "blog/#{name}", content.sub('</h1>', "\\0#{bloghtml post, false}") + "\n.comments #{name}", title: title, desc: excerpt.unhtml.oneline
 end
 
 # index pages
 hint = "<p style='margin-bottom:-10px'>Click a tag to filter by posts with that tag. <a href='/blog.xml' style='float:right'><img src='/img/rss.png'></a></p>"
-render 'blog', hint+blogshtml(posts), {title: 'Blog', desc: 'A blog containing various ramblings on various topics.', style: ['blogindex']}
+render 'blog', hint+blogshtml(posts), title: 'Blog', desc: 'A blog containing various ramblings on various topics.', style: 'blogindex'
 by_tag.each do |k,v|
     head = "<h1>posts tagged #{blogtag k}<span class='all'><a href='/blog'>view all »</a></span></h1><hr class='c'>"
-    render "blog/#{k.sub ' ', ?-}", head+blogshtml(v), {title: "Posts tagged #{k}", desc: "All blog posts with the #{k} tag.", style: ['blogindex']}
+    render "blog/#{k.sub ' ', ?-}", head+blogshtml(v), title: "Posts tagged #{k}", desc: "All blog posts with the #{k} tag.", style: 'blogindex'
 end
 
 # rss
@@ -192,11 +220,10 @@ $logic.each do |p|
         y
     }*''}
     x
-    render "puzzle/logic/#{p[:id]}", html, {
+    render "puzzle/logic/#{p[:id]}", html,
         title: p[:title],
         desc: "Solve my #{p[:id].ordinal} set of logic puzzles#{", #{p[:subtitle]}" if p[:subtitle]} #{p[:title].split[2..-1].join ' '}.",
-        style: ['logicpuz']
-    }
+        style: 'logicpuz'
 end
 
 makerss('logic.xml',
@@ -254,11 +281,11 @@ def squares html
 end
 
 go('pre/squares') do |html, name|
-    render "squares/#{name}", squares(html), {style: ['squares']}
+    render "squares/#{name}", squares(html), style: 'squares'
 end
 
 go('pre/atomic') do |html, name|
-    render "atomicguide/#{name}", html, {section: 'boardgame'}
+    render "atomicguide/#{name}", html, section: 'boardgame'
 end
 
 go('pre/puzzle') do |html, name|

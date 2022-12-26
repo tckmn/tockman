@@ -11,7 +11,7 @@ def f_svg x
 end
 
 def f_chess x, props
-    props.style = ((props.style || []) + ['chess']).uniq # TODO
+    props.style.add 'chess'
 
     fen, moves = x.split ' ', 2
 
@@ -284,7 +284,7 @@ end
 @comments = eval File.read('comments')
 
 def f_comments x, props
-    props.script = (props.script || []) + ['comments']
+    props.script.add 'comments'
     comments = @comments.filter{|c| c[:post] == x }
     <<~x
     <h2 id='comments'>comments</h2>
@@ -317,8 +317,8 @@ def f_comments x, props
 end
 
 def f_style x, props
-    style = x.start_with?('<style>') ? sass(x.gsub(/<\/?style>/, ''), props.fname.gsub(/^\/+|\/+$/, '').gsub(?/, ?_)) : x
-    props.style = (props.style || []) + [style]
+    style = x.start_with?('<style>') ? sass(x.gsub(/<\/?style>/, ''), props.fname.gsub(?/, ?_)) : x
+    props.style.add style
     ''
 end
 
