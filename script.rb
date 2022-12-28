@@ -123,7 +123,7 @@ go('pre/sass', 'sass') do |txt, name|
 end
 
 go('pre') do |html, name|
-    render name, html, ksh: name == 'index', noindex: name == '404'
+    render name, html
 end
 
 def blogtag tag
