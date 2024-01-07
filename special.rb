@@ -295,7 +295,7 @@ def f_comments x, props
                 <strong class='commn#{c[:name] == 'tckmn' ? ' me' : ''}'>#{c[:name]}</strong>
                 <em class='commd'>#{c[:date].split(?:)[0...-1].join(?:)}</em>
             </p>
-            <p class='commb'>#{c[:comm]}</p>
+            <div class='commb'>#{c[:comm]}</div>
         </div>
         y
     }.join}

@@ -55,7 +55,7 @@ and (more copies of) the letter F meaning "worst".
         ;SS; piano; viola; clarinet; horn;
         ;S;  cello; bassoon; timpani; saxophone; harp;
         ;A;  flute; trombone;
-        ;B;  bass; trumpet;
+        ;B;  bass; trumpet; guitar;
         ;C;  tuba;
         ;D;  harpsichord;
         ;F;  violin;
