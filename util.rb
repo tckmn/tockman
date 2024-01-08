@@ -7,8 +7,8 @@ class String
     def unhtml!; self.gsub! /<[^>]+>/, ''; self; end
     def oneline; self.strip.gsub "\n", ' '; end
     def oneline!; self.strip!.gsub! "\n", ' '; self; end
-    def dedent; self.sub(/^\n*/, '').gsub /^#{self[/\A\s*/]}/, ''; end
-    def dedent!; self.sub!(/^\n*/, '').gsub! /^#{self[/\A\s*/]}/, ''; self; end
+    def dedent; self.sub(/^\n*/, '').gsub /^#{self.lines.filter{|x|x.size>1}.map{|x|x[/^\s*/]}.min}/, ''; end
+    def dedent!; self.sub!(/^\n*/, '').gsub! /^#{self.lines.filter{|x|x.size>1}.map{|x|x[/^\s*/]}.min}/, ''; self; end
     def rawify; self.gsub('&lt;', ?<).gsub('&gt;', ?>).gsub('&amp;', ?&); end
     def rawify!; self.gsub!('&lt;', ?<).gsub!('&gt;', ?>).gsub!('&amp;', ?&); self; end
 end
