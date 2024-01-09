@@ -303,7 +303,7 @@ def f_comments x, props
         <p><label>name: <input name='name'></label></p>
         <p><label>contact (private, optional): <input name='cont'></label></p>
         <p id='commentinfo'>
-            <a href='https://www.markdownguide.org/cheat-sheet/' target='_blank'>markdown</a> is supported.
+            <a href='/bloginfo' target='_blank'>formatting</a> is supported.
             comments require manual approval.
         </p>
         <p><textarea name='comm' rows='5'></textarea></p>
