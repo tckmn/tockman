@@ -383,6 +383,101 @@ def f_bundt x, props
     ret.join + "<div id='bundtgallery'><span>close <span>×</span></span><div><div>◀</div><img><div>▶</div></div></div>"
 end
 
+def f_sqfm spec, props
+    props.script.add 'sqfm'
+    gid = 'sqfm' + crc(spec)
+
+    sq = 30
+    sc = 0.7
+    sz = 0.8
+    pad = sq*1.5
+
+    outline = 0.05
+    outcol = '#dcb'
+    nose = 0.3
+
+    formation, *anims = spec.split "\n***\n"
+    lines = formation.sub(/\A[ \n]*\n/, '').lines.map &:chomp
+    sh = sq*(lines.size-1)
+    sw = sq*(lines.map{|x|x.size/2}.max-1)
+
+    s = ''
+
+    unless anims.empty?
+        s += "<p><button class='sqfm' data-gid='#{gid}' data-anim='#{anims.map{|x|x.gsub(?\n, ?/)}.join ?|}'>play animation</button></p>"
+    end
+
+    s += "<p><svg xmlns='http://www.w3.org/2000/svg' font-family='main' "
+    s += "id='#{gid}' "
+    s += "style='vertical-align:middle' "
+    s += "width='#{sw+2*pad}' height='#{sh+2*pad}' "
+    s += "viewBox='#{-pad} #{-pad} #{sw+2*pad} #{sh+2*pad}'>"
+
+    shapes = [
+        ->c, x, y, mul, add {
+            "<circle fill='#{c}' cx='#{x}' cy='#{y}' r='#{0.8*mul+add}'/>"
+        },
+        ->c, x, y, mul, add {
+            a=0.7*mul+add
+            "<rect fill='#{c}' x='#{x-a}' y='#{y-a}' width='#{2*a}' height='#{2*a}'/>"
+        }
+    ]
+
+    colors = [
+        '#f00',
+        '#0cf',
+        '#0f0',
+        '#f80',
+        '#80f',
+        '#f0f',
+        '#aa0',
+        '#888',
+        '#a60',
+    ]
+
+    dirs = {
+        ?^ => [0, -1],
+        ?> => [1, 0],
+        ?v => [0, 1],
+        ?< => [-1, 0],
+    }
+
+    dirs = {
+        ?^ => 0,
+        ?> => 90,
+        ?v => 180,
+        ?< => 270
+    }
+
+    lines.each.with_index do |line, row|
+        line.chars.each_slice(2).with_index do |chs, col|
+            a,b = chs
+            next if a == ' '
+            # dx, dy = dirs[b].map{|q|q*0.8}
+            dx, dy = [0, -0.8]
+            shape = shapes[a.to_i % 2]
+            couple = (a.to_i - 1) / 2
+
+            s += "<g transform='translate(#{col*sq} #{row*sq}) scale(#{sq}) rotate(#{dirs[b]})'>"
+            s += "<g id='#{gid}#{a}t'>"
+            s += "<g transform='scale(#{sc})'>"
+            s += "<g id='#{gid}#{a}r'>"
+            s += shape[outcol,         dx, dy, nose, outline]
+            s += shape[outcol,         0,  0,  1,    outline]
+            s += shape[colors[couple], dx, dy, nose, 0]
+            s += shape[colors[couple], 0,  0,  1,    0]
+            s += "</g>"
+            s += "<text fill='black' font-size='#{sz}' x='0' y='0' text-anchor='middle' dominant-baseline='central' transform='rotate(-#{dirs[b]})'>#{couple+1}</text>"
+            s += "</g>"
+            s += "</g>"
+            s += "</g>"
+        end
+    end
+
+    s += '</svg></p>'
+    s
+end
+
 def f_blog x
     bloghtml $blog[x], true
 end
