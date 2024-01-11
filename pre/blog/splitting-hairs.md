@@ -983,4 +983,5 @@ main pre { overflow-x: auto; background-color: #282828; margin-left: 1rem; paddi
 main .y { background-color: #040; }
 main .m { background-color: #440; }
 main .n { background-color: #400; }
+img { max-width: 100%; }
 </style>
