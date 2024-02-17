@@ -317,7 +317,7 @@ def f_comments x, props
 end
 
 def f_style x, props
-    style = x.start_with?('<style>') ? sass(x.gsub(/<\/?style>/, ''), props.fname.gsub(?/, ?_)) : x
+    style = x.include?('{') ? sass(x, props.fname.gsub(?/, ?_)) : x
     props.style.add style
     ''
 end

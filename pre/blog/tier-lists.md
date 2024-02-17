@@ -8,7 +8,7 @@ These go from best to worst,
 with (more copies of) the letter S meaning "best"
 and (more copies of) the letter F meaning "worst".
 
-    \raw .style {{<style>
+    \raw .style {{
         h3 { margin-top: 3rem; }
         table.tierlist {
             border-collapse: collapse; margin: 2rem 0;
@@ -23,7 +23,7 @@ and (more copies of) the letter F meaning "worst".
             td { background-color: #282828; width: 100%; span { margin: 10px; } }
             tr.alt td { background-color: #383838; }
         }
-    </style>}}
+    }}
 
 ## programming languages
 

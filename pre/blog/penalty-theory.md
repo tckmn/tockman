@@ -11,9 +11,9 @@ seemingly totally unrelated to what the rules literally say.
 [EXCERPT]
 
     \raw .script+spoiler
-    .style {{<style>
+    .style {{
         span.var { font-style: italic; background-color: #333; padding: 0 2px; white-space: nowrap; }
-    </style>}}
+    }}
 
 One example is commonly called **penalty theory**,
 which has been written about before in e.g.
