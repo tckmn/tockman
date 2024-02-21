@@ -979,9 +979,8 @@ div#split tr:nth-child(2n) { background-color: #282828; }
 div#split th:first-child { background-color: #181818; }
 div#split tr:nth-child(2n) th:first-child { background-color: #282828; }
 div#split td { padding: 0 0.8rem; font-size: 11pt; }
-main pre { overflow-x: auto; background-color: #282828; margin-left: 1rem; padding: 0.5rem; }
+main pre { margin-left: 1rem; }
 main .y { background-color: #040; }
 main .m { background-color: #440; }
 main .n { background-color: #400; }
-img { max-width: 100%; }
 </style>

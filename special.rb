@@ -400,33 +400,32 @@ def squares html
 end
 
 @clist = File.readlines('spire').map{|x|
-    a,b = x.chomp.split "\t"
-    [b, a]
+    a,b,c,d = x.split("\t").map &:strip
+    [a,[b,c+?/+d]]
 }.to_h
 def getcls x
-    @clist[x] || 'x'
+    @clist[x] || ['x', '']
 end
 def spire html
     html.gsub(/\[\[([^\]+]+)(\+[^\]]*)?\]\]/) {
         card = $1
         upg = $2
-        cls = getcls card
+        cls, desc = getcls card
         cls, card = card.split ?| if card.include? ?|
         p card if cls == 'x'
-        cls = 'ccs' if cls == 's'
-        cls = 'cks' if cls == 'c'
         if cls.size == 3
             rar, col, gen = cls.chars
             classes = "stsr#{rar} stsc#{col} stsg#{gen}"
         else
             classes = "sts#{cls}"
         end
-        "<span class='sts#{' stsu' if upg} #{classes}'>#{card}#{upg}</span>"
+        quote = desc.include?(?') ? ?" : ?'
+        "<span class='sts#{' stsu' if upg} #{classes}' data-desc=#{quote}#{desc}#{quote}>#{card}#{upg}</span>"
     }
 end
 
 def special_post s, props
     [(s = squares s), props.style.add('squares')] if props.squares
-    [(s = spire s), props.style.add('spire')] if props.spire
+    [(s = spire s), props.style.add('spire'), props.script.add('spire')] if props.spire
     s
 end

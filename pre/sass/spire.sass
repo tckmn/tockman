@@ -6,9 +6,11 @@ span.sts {
     border-radius: 4px;
     white-space: nowrap;
 
+    &.stsrb { border-color: #888; }
     &.stsrc { border-color: #888; }
     &.stsru { border-color: #0aa; }
     &.stsrr { border-color: #aa0; }
+    &.stsrs { border-color: #888; }
 
     &.stscr { background-color: #601717; }
     &.stscb { background-color: #121055; }
@@ -22,6 +24,15 @@ span.sts {
     &.stsgp { border-radius: 99px; }
 
     &.stsu { color: #0f0; }
+}
+
+div.stspopup {
+    position: absolute;
+    width: 300px;
+    height: 200px;
+    background-color: #114;
+    pointer-events: none;
+    &.stshidden { display: none; }
 }
 
 img.card {

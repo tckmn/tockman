@@ -1,367 +1,370 @@
-cra	StrikeR
-crs	DefendR
-cra	Bash
-cra	Anger
-cra	Body Slam
-cra	Clash
-cra	Cleave
-cra	Clothesline
-cra	Headbutt
-cra	Heavy Blade
-cra	Iron Wave
-cra	Perfected Strike
-cra	Pommel Strike
-cra	Sword Boomerang
-cra	Thunderclap
-cra	Twin Strike
-cra	Wild Strike
-ura	Blood for Blood
-ura	Carnage
-ura	Dropkick
-ura	Hemokinesis
-ura	Pummel
-ura	Rampage
-ura	Reckless Charge
-ura	Searing Blow
-ura	Sever Soul
-ura	Uppercut
-ura	Whirlwind
-rra	Bludgeon
-rra	Feed
-rra	Fiend Fire
-rra	Immolate
-rra	Reaper
-crs	Armaments
-crs	Flex
-crs	Havoc
-crs	Shrug It Off
-crs	True Grit
-crs	Warcry
-urs	Battle Trance
-urs	Bloodletting
-urs	Burning Pact
-urs	Disarm
-urs	Dual Wield
-urs	Entrench
-urs	Flame Barrier
-urs	Ghostly Armor
-urs	Infernal Blade
-urs	Intimidate
-urs	Power Through
-urs	Rage
-urs	Second Wind
-urs	Seeing Red
-urs	Sentinel
-urs	Shockwave
-urs	Spot Weakness
-rrs	Double Tap
-rrs	Exhume
-rrs	Impervious
-rrs	Limit Break
-rrs	Offering
-urp	Combust
-urp	Dark Embrace
-urp	Evolve
-urp	Feel No Pain
-urp	Fire Breathing
-urp	Inflame
-urp	Metallicize
-urp	Rupture
-rrp	Barricade
-rrp	Berserk
-rrp	Brutality
-rrp	Corruption
-rrp	Demon Form
-rrp	Juggernaut
-cga	StrikeG
-cgs	DefendG
-cga	Neutralize
-cgs	Survivor
-cga	Bane
-cga	Dagger Spray
-cga	Dagger Throw
-cga	Flying Knee
-cga	Poisoned Stab
-cga	Quick Slash
-cga	Slice
-cga	Sneaky Strike
-cga	Sucker Punch
-uga	All-Out Attack
-uga	Backstab
-uga	Choke
-uga	Dash
-uga	Endless Agony
-uga	Eviscerate
-uga	Finisher
-uga	Flechettes
-uga	Heel Hook
-uga	Masterful Stab
-uga	Predator
-uga	Riddle with Holes
-uga	Skewer
-rga	Die Die Die
-rga	Glass Knife
-rga	Grand Finale
-rga	Unload
-cgs	Acrobatics
-cgs	Backflip
-cgs	Blade Dance
-cgs	Cloak and Dagger
-cgs	Deadly Poison
-cgs	Deflect
-cgs	Dodge and Roll
-cgs	Outmaneuver
-cgs	Piercing Wail
-cgs	Prepared
-ugs	Blur
-ugs	Bouncing Flask
-ugs	Calculated Gamble
-ugs	Catalyst
-ugs	Concentrate
-ugs	Crippling Cloud
-ugs	Distraction
-ugs	Escape Plan
-ugs	Expertise
-ugs	Leg Sweep
-ugs	Reflex
-ugs	Setup
-ugs	Tactician
-ugs	Terror
-rgs	Adrenaline
-rgs	Alchemize
-rgs	Bullet Time
-rgs	Burst
-rgs	Corpse Explosion
-rgs	Doppelganger
-rgs	Malaise
-rgs	Nightmare
-rgs	Phantasmal Killer
-rgs	Storm of Steel
-ugp	Accuracy
-ugp	Caltrops
-ugp	Footwork
-ugp	Infinite Blades
-ugp	Noxious Fumes
-ugp	Well-Laid Plans
-rgp	A Thousand Cuts
-rgp	After Image
-rgp	Envenom
-rgp	Tools of the Trade
-rgp	Wraith Form
-cba	StrikeB
-cbs	DefendB
-cbs	Dualcast
-cbs	Zap
-cba	Ball Lightning
-cba	Barrage
-cba	Beam Cell
-cba	Claw
-cba	Cold Snap
-cba	Compile Driver
-cba	Go for the Eyes
-cba	Rebound
-cba	Streamline
-cba	Sweeping Beam
-uba	Blizzard
-uba	Bullseye
-uba	Doom and Gloom
-uba	FTL
-uba	Melter
-uba	Rip and Tear
-uba	Scrape
-uba	Sunder
-rba	All for One
-rba	Core Surge
-rba	Hyperbeam
-rba	Meteor Strike
-rba	Thunder Strike
-cbs	Charge Battery
-cbs	Coolheaded
-cbs	Hologram
-cbs	Leap
-cbs	Recursion
-cbs	Stack
-cbs	Steam Barrier
-cbs	TURBO
-ubs	Aggregate
-ubs	Auto-Shields
-ubs	Boot Sequence
-ubs	Chaos
-ubs	Chill
-ubs	Consume
-ubs	Darkness
-ubs	Double Energy
-ubs	Equilibrium
-ubs	Force Field
-ubs	Fusion
-ubs	Genetic Algorithm
-ubs	Glacier
-ubs	Overclock
-ubs	Recycle
-ubs	Reinforced Body
-ubs	Reprogram
-ubs	Skim
-ubs	Tempest
-ubs	White Noise
-rbs	Amplify
-rbs	Fission
-rbs	Multi-Cast
-rbs	Rainbow
-rbs	Reboot
-rbs	Seek
-ubp	Capacitor
-ubp	Defragment
-ubp	Heatsinks
-ubp	Hello World
-ubp	Loop
-ubp	Self Repair
-ubp	Static Discharge
-ubp	Storm
-rbp	Biased Cognition
-rbp	Buffer
-rbp	Creative AI
-rbp	Echo Form
-rbp	Electrodynamics
-rbp	Machine Learning
-cpa	StrikeP
-cps	DefendP
-cpa	Eruption
-cps	Vigilance
-cpa	Bowling Bash
-cpa	Consecrate
-cpa	Crush Joints
-cpa	Cut Through Fate
-cpa	Empty Fist
-cpa	Flurry of Blows
-cpa	Flying Sleeves
-cpa	Follow-Up
-cpa	Just Lucky
-cpa	Sash Whip
-upa	Carve Reality
-upa	Conclude
-upa	Fear No Evil
-upa	Reach Heaven
-upa	Sands of Time
-upa	Signature Move
-upa	Talk to the Hand
-upa	Tantrum
-upa	Wallop
-upa	Weave
-upa	Wheel Kick
-upa	Windmill Strike
-rpa	Brilliance
-rpa	Lesson Learned
-rpa	Ragnarok
-cps	Crescendo
-cps	Empty Body
-cps	Evaluate
-cps	Halt
-cps	Pressure Points
-cps	Prostrate
-cps	Protect
-cps	Third Eye
-cps	Tranquility
-ups	Collect
-ups	Deceive Reality
-ups	Empty Mind
-ups	Foreign Influence
-ups	Indignation
-ups	Inner Peace
-ups	Meditate
-ups	Perseverance
-ups	Pray
-ups	Sanctity
-ups	Simmering Fury
-ups	Swivel
-ups	Wave of the Hand
-ups	Worship
-ups	Wreath of Flame
-rps	Alpha
-rps	Blasphemy
-rps	Conjure Blade
-rps	Deus Ex Machina
-rps	Judgment
-rps	Omniscience
-rps	Scrawl
-rps	Spirit Shield
-rps	Vault
-rps	Wish
-upp	Battle Hymn
-upp	Fasting
-upp	Foresight
-upp	Like Water
-upp	Mental Fortress
-upp	Nirvana
-upp	Rushdown
-upp	Study
-rpp	Deva Form
-rpp	Devotion
-rpp	Establishment
-rpp	Master Reality
-uca	Dramatic Entrance
-uca	Flash of Steel
-uca	Mind Blast
-uca	Swift Strike
-rca	Hand of Greed
-cca	Bite
-cca	Expunger
-cca	Ritual Dagger
-cca	Shiv
-cca	Smite
-cca	Through Violence
-ucs	Bandage Up
-ucs	Blind
-ucs	Dark Shackles
-ucs	Deep Breath
-ucs	Discovery
-ucs	Enlightenment
-ucs	Finesse
-ucs	Forethought
-ucs	Good Instincts
-ucs	Impatience
-ucs	Jack of All Trades
-ucs	Madness
-ucs	Panacea
-ucs	Panic Button
-ucs	Purity
-ucs	Trip
-rcs	Apotheosis
-rcs	Chrysalis
-rcs	Master of Strategy
-rcs	Metamorphosis
-rcs	Secret Technique
-rcs	Secret Weapon
-rcs	The Bomb
-rcs	Thinking Ahead
-rcs	Transmutation
-rcs	Violence
-ccs	Apparition
-ccs	Beta
-ccs	Insight
-ccs	J.A.X.
-ccs	Miracle
-ccs	Safety
-rcp	Magnetism
-rcp	Mayhem
-rcp	Panache
-rcp	Sadistic Nature
-ccp	Omega
-s	Burn
-s	Dazed
-s	Slimed
-s	Void
-s	Wound
-c	Ascender's Bane
-c	Clumsy
-c	Curse of the Bell
-c	Decay
-c	Doubt
-c	Injury
-c	Necronomicurse
-c	Normality
-c	Pain
-c	Parasite
-c	Pride
-c	Regret
-c	Shame
-c	Writhe
+Bash               	 bra 	 2     	 Deal 8 (10) damage. Apply 2 (3) Vulnerable.
+Defend             	 brs 	 1     	 Gain 5 (8) Block.
+Strike             	 bra 	 1     	 Deal 6 (9) damage.
+Anger              	 cra 	 0     	 Deal 6 (8) damage. Add a copy of this card into your discard pile.
+Armaments          	 crs 	 1     	 Gain 5 Block. Upgrade a card (all cards) in your hand for the rest of combat.
+Body Slam          	 cra 	 1 (0) 	 Deal damage equal to your Block.
+Clash              	 cra 	 0     	 Can only be played if every card in your hand is an Attack. Deal 14 (18) damage.
+Cleave             	 cra 	 1     	 Deal 8 (11) damage to ALL enemies.
+Clothesline        	 cra 	 2     	 Deal 12 (14) damage. Apply 2 (3) Weak.
+Flex               	 crs 	 0     	 Gain 2 (4) Strength. At the end of this turn, lose 2 (4) Strength.
+Havoc              	 crs 	 1 (0) 	 Play the top card of your draw pile and Exhaust it.
+Headbutt           	 cra 	 1     	 Deal 9 (12) damage. Put a card from your discard pile on top of your draw pile.
+Heavy Blade        	 cra 	 2     	 Deal 14 damage. Strength affects this card 3 (5) times.
+Iron Wave          	 cra 	 1     	 Gain 5 (7) Block. Deal 5 (7) damage.
+Perfected Strike   	 cra 	 2     	 Deal 6 damage. Deals 2 (3) additional damage for ALL your cards containing "Strike".
+Pommel Strike      	 cra 	 1     	 Deal 9 (10) damage. Draw 1 (2) cards.
+Shrug It Off       	 crs 	 1     	 Gain 8 (11) Block. Draw 1 card.
+Sword Boomerang    	 cra 	 1     	 Deal 3 damage to a random enemy 3 (4) times.
+Thunderclap        	 cra 	 1     	 Deal 4 (7) damage and apply 1 Vulnerable to ALL enemies.
+True Grit          	 crs 	 1     	 Gain 7 (9) Block. Exhaust 1 card at random (of your choice).
+Twin Strike        	 cra 	 1     	 Deal 5 (7) damage twice.
+Warcry             	 crs 	 0     	 Draw 1 (2) cards. Put a card from your hand onto the top of your draw pile. Exhaust.
+Wild Strike        	 cra 	 1     	 Deal 12 (17) damage. Shuffle a Wound into your draw pile.
+Battle Trance      	 urs 	 0     	 Draw 3 (4) cards. You cannot draw additional cards this turn.
+Blood for Blood    	 ura 	 4 (3) 	 Costs 1 less [R] for each time you lose HP this combat. Deal 18 (22) damage.
+Bloodletting       	 urs 	 0     	 Lose 3 HP. Gain [R] [R] ([R]).
+Burning Pact       	 urs 	 1     	 Exhaust 1 card. Draw 2 (3) cards.
+Carnage            	 ura 	 2     	 Ethereal. Deal 20 (28) damage.
+Combust            	 urp 	 1     	 At the end of your turn, lose 1 HP and deal 5 (7) damage to ALL enemies.
+Dark Embrace       	 urp 	 2 (1) 	 Whenever a card is Exhausted, draw 1 card.
+Disarm             	 urs 	 1     	 Enemy loses 2 (3) Strength. Exhaust.
+Dropkick           	 ura 	 1     	 Deal 5 (8) damage. If the enemy has Vulnerable, gain [R] and draw 1 card.
+Dual Wield         	 urs 	 1     	 Choose an Attack or Power card. Add 1 (2) copies of that card into your hand.
+Entrench           	 urs 	 2 (1) 	 Double your Block.
+Evolve             	 urp 	 1     	 Whenever you draw a Status card, draw 1 (2) cards.
+Feel No Pain       	 urp 	 1     	 Whenever a card is Exhausted, gain 3 (4) Block.
+Fire Breathing     	 urp 	 1     	 Whenever you draw a Status or Curse card, deal 6 (10) damage to ALL enemies.
+Flame Barrier      	 urs 	 2     	 Gain 12 (16) Block. Whenever you are attacked this turn, deal 4 (6) damage back.
+Ghostly Armor      	 urs 	 1     	 Ethereal. Gain 10 (13) Block.
+Hemokinesis        	 ura 	 1     	 Lose 2 HP. Deal 15 (20) damage.
+Infernal Blade     	 urs 	 1 (0) 	 Add a random Attack into your hand. It costs 0 this turn. Exhaust.
+Inflame            	 urp 	 1     	 Gain 2 (3) Strength.
+Intimidate         	 urs 	 0     	 Apply 1 (2) Weak to ALL enemies. Exhaust.
+Metallicize        	 urp 	 1     	 At the end of your turn, gain 3 (4) Block.
+Power Through      	 urs 	 1     	 Add 2 Wounds into your hand. Gain 15 (20) Block.
+Pummel             	 ura 	 1     	 Deal 2 damage 4 (5) times. Exhaust.
+Rage               	 urs 	 0     	 Whenever you play an Attack this turn, gain 3 (5) Block.
+Rampage            	 ura 	 1     	 Deal 8 damage. Increase this card's damage by 5 (8) this combat.
+Reckless Charge    	 ura 	 0     	 Deal 7 (10) damage. Shuffle a Dazed into your draw pile.
+Rupture            	 urp 	 1     	 Whenever you lose HP from a card, gain 1 (2) Strength.
+Searing Blow       	 ura 	 2     	 Deal 12 (16) damage. Can be Upgraded any number of times.
+Second Wind        	 urs 	 1     	 Exhaust all non-Attack cards in your hand. Gain 5 (7) Block for each card Exhausted.
+Seeing Red         	 urs 	 1 (0) 	 Gain [R] [R]. Exhaust.
+Sentinel           	 urs 	 1     	 Gain 5 (8) Block. If this card is Exhausted, gain [R] [R] ([R]).
+Sever Soul         	 ura 	 2     	 Exhaust all non-Attack cards in your hand. Deal 16 (22) damage.
+Shockwave          	 urs 	 2     	 Apply 3 (5) Weak and Vulnerable to ALL enemies. Exhaust.
+Spot Weakness      	 urs 	 1     	 If the enemy intends to attack, gain 3 (4) Strength.
+Uppercut           	 ura 	 2     	 Deal 13 damage. Apply 1 (2) Weak. Apply 1 (2) Vulnerable.
+Whirlwind          	 ura 	 X     	 Deal 5 (8) damage to ALL enemies X times.
+Barricade          	 rrp 	 3 (2) 	 Block is not removed at the start of your turn.
+Berserk            	 rrp 	 0     	 Gain 2 (1) Vulnerable. At the start of your turn, gain [R].
+Bludgeon           	 rra 	 3     	 Deal 32 (42) damage.
+Brutality          	 rrp 	 0     	 (Innate.) At the start of your turn, lose 1 HP and draw 1 card.
+Corruption         	 rrp 	 3 (2) 	 Skills cost 0. Whenever you play a Skill, Exhaust it.
+Demon Form         	 rrp 	 3     	 At the start of your turn, gain 2 (3) Strength.
+Double Tap         	 rrs 	 1     	 This turn, your next 1 (2) Attacks are played twice.
+Exhume             	 rrs 	 1 (0) 	 Put a card from your exhaust pile into your hand. Exhaust.
+Feed               	 rra 	 1     	 Deal 10 (12) damage. If Fatal, raise your Max HP by 3 (4). Exhaust.
+Fiend Fire         	 rra 	 2     	 Exhaust your hand. Deal 7 (10) damage for each card Exhausted. Exhaust.
+Immolate           	 rra 	 2     	 Deal 21 (28) damage to ALL enemies. Add a Burn into your discard pile.
+Impervious         	 rrs 	 2     	 Gain 30 (40) Block. Exhaust.
+Juggernaut         	 rrp 	 2     	 Whenever you gain Block, deal 5 (7) damage to a random enemy.
+Limit Break        	 rrs 	 1     	 Double your Strength. Exhaust. (Do not exhaust.)
+Offering           	 rrs 	 0     	 Lose 6 HP. Gain [R] [R]. Draw 3 (5) cards. Exhaust.
+Reaper             	 rra 	 2     	 Deal 4 (5) damage to ALL enemies. Heal HP equal to unblocked damage. Exhaust.
+Defend             	 bgs 	 1     	 Gain 5 (8) Block.
+Neutralize         	 bga 	 0     	 Deal 3 (4) damage. Apply 1 (2) Weak.
+Strike             	 bga 	 1     	 Deal 6 (9) damage.
+Survivor           	 bgs 	 1     	 Gain 8 (11) Block. Discard 1 card.
+Acrobatics         	 cgs 	 1     	 Draw 3 (4) cards. Discard 1 card.
+Backflip           	 cgs 	 1     	 Gain 5 (8) Block. Draw 2 cards.
+Bane               	 cga 	 1     	 Deal 7 (10) damage. If the enemy has Poison, deal 7 (10) damage again.
+Blade Dance        	 cgs 	 1     	 Add 3 (4) Shivs into your hand.
+Cloak and Dagger   	 cgs 	 1     	 Gain 6 Block. Add 1 (2) Shivs into your hand.
+Dagger Spray       	 cga 	 1     	 Deal 4 (6) damage to ALL enemies twice.
+Dagger Throw       	 cga 	 1     	 Deal 9 (12) damage. Draw 1 card. Discard 1 card.
+Deadly Poison      	 cgs 	 1     	 Apply 5 (7) Poison.
+Deflect            	 cgs 	 0     	 Gain 4 (7) Block.
+Dodge and Roll     	 cgs 	 1     	 Gain 4 (6) Block. Next turn, gain 4 (6) Block.
+Flying Knee        	 cga 	 1     	 Deal 8 (11) damage. Next turn, gain [G].
+Outmaneuver        	 cgs 	 1     	 Next turn, gain [G] [G] ([G]).
+Piercing Wail      	 cgs 	 1     	 ALL enemies lose 6 (8) Strength this turn. Exhaust.
+Poisoned Stab      	 cga 	 1     	 Deal 6 (8) damage. Apply 3 (4) Poison.
+Prepared           	 cgs 	 0     	 Draw 1 (2) cards. Discard 1 (2) cards.
+Quick Slash        	 cga 	 1     	 Deal 8 (12) damage. Draw 1 card.
+Slice              	 cga 	 0     	 Deal 6 (9) damage.
+Sneaky Strike      	 cga 	 2     	 Deal 12 (16) damage. If you have discarded a card this turn, gain [G] [G].
+Sucker Punch       	 cga 	 1     	 Deal 7 (9) damage. Apply 1 (2) Weak.
+Accuracy           	 ugp 	 1     	 Shivs deal 4 (6) additional damage.
+All-Out Attack     	 uga 	 1     	 Deal 10 (14) damage to ALL enemies. Discard 1 card at random.
+Backstab           	 uga 	 0     	 Innate. Deal 11 (15) damage. Exhaust.
+Blur               	 ugs 	 1     	 Gain 5 (8) Block. Block is not removed at the start of your next turn.
+Bouncing Flask     	 ugs 	 2     	 Apply 3 Poison to a random enemy 3 (4) times.
+Calculated Gamble  	 ugs 	 0     	 Discard your hand, then draw that many cards. Exhaust. (Does not exhaust.)
+Caltrops           	 ugp 	 1     	 Whenever you are attacked, deal 3 (5) damage back.
+Catalyst           	 ugs 	 1     	 Double (triple) the enemy's Poison. Exhaust.
+Choke              	 uga 	 2     	 Deal 12 damage. Whenever you play a card this turn, the enemy loses 3 (5) HP.
+Concentrate        	 ugs 	 0     	 Discard 3 (2) cards. Gain [G] [G].
+Crippling Cloud    	 ugs 	 2     	 Apply 4 (7) Poison and 2 Weak to ALL enemies. Exhaust.
+Dash               	 uga 	 2     	 Gain 10 (13) Block. Deal 10 (13) damage.
+Distraction        	 ugs 	 1 (0) 	 Add a random Skill into your hand. It costs 0 this turn. Exhaust.
+Endless Agony      	 uga 	 0     	 Deal 4 (6) damage. Whenever you draw this card, add a copy of it into your hand. Exhaust.
+Escape Plan        	 ugs 	 0     	 Draw 1 card. If you draw a Skill, gain 3 (5) Block.
+Eviscerate         	 uga 	 3     	 Costs 1 less [G] for each card discarded this turn. Deal 7 (9) damage 3 times.
+Expertise          	 ugs 	 1     	 Draw cards until you have 6 (7) in your hand.
+Finisher           	 uga 	 1     	 Deal 6 (8) damage for each Attack played this turn.
+Flechettes         	 uga 	 1     	 Deal 4 (6) damage for each Skill in your hand.
+Footwork           	 ugp 	 1     	 Gain 2 (3) Dexterity.
+Heel Hook          	 uga 	 1     	 Deal 5 (8) damage. If the enemy has Weak, gain [G] and draw 1 card.
+Infinite Blades    	 ugp 	 1     	 (Innate.) At the start of your turn, add a Shiv into your hand.
+Leg Sweep          	 ugs 	 2     	 Apply 2 (3) Weak. Gain 11 (14) Block.
+Masterful Stab     	 uga 	 0     	 Costs 1 additional [G] for each time you lose HP this combat. Deal 12 (16) damage.
+Noxious Fumes      	 ugp 	 1     	 At the start of your turn, apply 2 (3) Poison to ALL enemies.
+Predator           	 uga 	 2     	 Deal 15 (20) damage. Next turn, draw 2 additional cards.
+Reflex             	 ugs 	 -     	 Unplayable. If this card is discarded from your hand, draw 2 (3) cards.
+Riddle with Holes  	 uga 	 2     	 Deal 3 (4) damage 5 times.
+Setup              	 ugs 	 1 (0) 	 Put a card from your hand on top of your draw pile. It costs 0 until played.
+Skewer             	 uga 	 X     	 Deal 7 (10) damage X times.
+Tactician          	 ugs 	 -     	 Unplayable. If this card is discarded from your hand, gain [G] ([G]).
+Terror             	 ugs 	 1 (0) 	 Apply 99 Vulnerable. Exhaust.
+Well-Laid Plans    	 ugp 	 1     	 At the end of your turn, Retain up to 1 (2) cards.
+A Thousand Cuts    	 rgp 	 2     	 Whenever you play a card, deal 1 (2) damage to ALL enemies.
+Adrenaline         	 rgs 	 0     	 Gain [G] ([G]). Draw 2 cards. Exhaust.
+After Image        	 rgp 	 1     	 (Innate.) Whenever you play a card, gain 1 Block.
+Alchemize          	 rgs 	 1 (0) 	 Obtain a random potion. Exhaust.
+Bullet Time        	 rgs 	 3 (2) 	 You cannot draw additional cards this turn. Reduce the cost of all cards in your hand to 0 this turn.
+Burst              	 rgs 	 1     	 This turn, your next 1 (2) Skills are played twice.
+Corpse Explosion   	 rgs 	 2     	 Apply 6 (9) Poison. When the enemy dies, deal damage equal to its Max HP to ALL enemies.
+Die Die Die        	 rga 	 1     	 Deal 13 (17) damage to ALL enemies. Exhaust.
+Doppelganger       	 rgs 	 X     	 Next turn, draw X(+1) cards and gain X(+1) [G]. Exhaust.
+Envenom            	 rgp 	 2 (1) 	 Whenever an Attack deals unblocked damage, apply 1 Poison.
+Glass Knife        	 rga 	 1     	 Deal 8 (12) damage twice. Decrease the damage of this card by 2 this combat.
+Grand Finale       	 rga 	 0     	 Can only be played if there are no cards in your draw pile. Deal 50 (60) damage to ALL enemies.
+Malaise            	 rgs 	 X     	 Enemy loses X(+1) Strength. Apply X(+1) Weak. Exhaust.
+Nightmare          	 rgs 	 3 (2) 	 Choose a card. Next turn, add 3 copies of that card into your hand. Exhaust.
+Phantasmal Killer  	 rgs 	 1 (0) 	 Next turn, your Attacks deal double damage.
+Storm of Steel     	 rgs 	 1     	 Discard your hand. Add 1 Shiv(+) into your hand for each card discarded.
+Tools of the Trade 	 rgp 	 1 (0) 	 At the start of your turn, draw 1 card and discard 1 card.
+Unload             	 rga 	 1     	 Deal 14 (18) damage. Discard all non-Attack cards in your hand.
+Wraith Form        	 rgp 	 3     	 Gain 2 (3) Intangible. At the end of your turn, lose 1 Dexterity.
+Defend             	 bbs 	 1     	 Gain 5 (8) Block.
+Dualcast           	 bbs 	 1 (0) 	 Evoke your next Orb twice.
+Strike             	 bba 	 1     	 Deal 6 (9) damage.
+Zap                	 bbs 	 1 (0) 	 Channel 1 Lightning.
+Ball Lightning     	 cba 	 1     	 Deal 7 (10) damage. Channel 1 Lightning.
+Barrage            	 cba 	 1     	 Deal 4 (6) damage for each Channeled Orb.
+Beam Cell          	 cba 	 0     	 Deal 3 (4) damage. Apply 1 (2) Vulnerable.
+Charge Battery     	 cbs 	 1     	 Gain 7 (10) Block. Next turn, gain [B].
+Claw               	 cba 	 0     	 Deal 3 (5) damage. Increase the damage of ALL Claw cards by 2 this combat.
+Cold Snap          	 cba 	 1     	 Deal 6 (9) damage. Channel 1 Frost.
+Compile Driver     	 cba 	 1     	 Deal 7 (10) damage. Draw 1 card for each unique Orb you have.
+Coolheaded         	 cbs 	 1     	 Channel 1 Frost. Draw 1 (2) cards.
+Go for the Eyes    	 cba 	 0     	 Deal 3 (4) damage. If the enemy intends to attack, apply 1 (2) Weak.
+Hologram           	 cbs 	 1     	 Gain 3 (5) Block. Put a card from your discard pile into your hand. Exhaust. (Does not exhaust.)
+Leap               	 cbs 	 1     	 Gain 9 (12) Block.
+Rebound            	 cba 	 1     	 Deal 9 (12) damage. Put the next card you play this turn on top of your draw pile.
+Recursion          	 cbs 	 1 (0) 	 Evoke your next Orb. Channel the Orb that was just Evoked.
+Stack              	 cbs 	 1     	 Gain Block equal to the number of cards in your discard pile (+3).
+Steam Barrier      	 cbs 	 0     	 Gain 6 (8) Block. Decrease this card's Block by 1 this combat.
+Streamline         	 cba 	 2     	 Deal 15 (20) damage. Reduce this card's cost by 1 this combat.
+Sweeping Beam      	 cba 	 1     	 Deal 6 (9) damage to ALL enemies. Draw 1 card.
+TURBO              	 cbs 	 0     	 Gain [B] [B] ([B]). Add a Void into your discard pile.
+Aggregate          	 ubs 	 1     	 Gain [B] for every 4 (3) cards in your draw pile.
+Auto-Shields       	 ubs 	 1     	 If you have no Block, gain 11 (15) Block.
+Blizzard           	 uba 	 1     	 Deal damage equal to 2 (3) times the number of Frost Channeled this combat to ALL enemies.
+Boot Sequence      	 ubs 	 0     	 Innate. Gain 10 (13) Block. Exhaust.
+Bullseye           	 uba 	 1     	 Deal 8 (11) damage. Apply 2 (3) Lock-On.
+Capacitor          	 ubp 	 1     	 Gain 2 (3) Orb slots.
+Chaos              	 ubs 	 1     	 Channel 1 (2) random Orbs.
+Chill              	 ubs 	 0     	 (Innate.) Channel 1 Frost for each enemy in combat. Exhaust.
+Consume            	 ubs 	 2     	 Gain 2 (3) Focus. Lose 1 Orb slot.
+Darkness           	 ubs 	 1     	 Channel 1 Dark. (Trigger the passive ability of all Dark orbs.)
+Defragment         	 ubp 	 1     	 Gain 1 (2) Focus.
+Doom and Gloom     	 uba 	 2     	 Deal 10 (14) damage to ALL enemies. Channel 1 Dark.
+Double Energy      	 ubs 	 1 (0) 	 Double your Energy. Exhaust.
+Equilibrium        	 ubs 	 2     	 Gain 13 (16) Block. Retain your hand this turn.
+FTL                	 uba 	 0     	 Deal 5 (6) damage. If you have played less than 3 (4) cards this turn, draw 1 card.
+Force Field        	 ubs 	 4     	 Costs 1 less [B] for each Power card played this combat. Gain 12 (16) Block.
+Fusion             	 ubs 	 2 (1) 	 Channel 1 Plasma.
+Genetic Algorithm  	 ubs 	 1     	 Gain 1 Block. Permanently increase this card's Block by 2 (3). Exhaust.
+Glacier            	 ubs 	 2     	 Gain 7 (10) Block. Channel 2 Frost.
+Heatsinks          	 ubp 	 1     	 Whenever you play a Power card, draw 1 (2) cards.
+Hello World        	 ubp 	 1     	 (Innate.) At the start of your turn, add a random Common card into your hand.
+Loop               	 ubp 	 1     	 At the start of your turn, trigger the passive ability of your next Orb 1 (2) times.
+Melter             	 uba 	 1     	 Remove all Block from the enemy. Deal 10 (14) damage.
+Overclock          	 ubs 	 0     	 Draw 2 (3) cards. Add a Burn into your discard pile.
+Recycle            	 ubs 	 1 (0) 	 Exhaust a card. Gain [B] equal to its cost.
+Reinforced Body    	 ubs 	 X     	 Gain 7 (9) Block X times.
+Reprogram          	 ubs 	 1     	 Lose 1 (2) Focus. Gain 1 (2) Strength. Gain 1 (2) Dexterity.
+Rip and Tear       	 uba 	 1     	 Deal 7 (9) damage to a random enemy twice.
+Scrape             	 uba 	 1     	 Deal 7 (10) damage. Draw 4 (5) cards. Discard all cards drawn this way that do not cost 0.
+Self Repair        	 ubp 	 1     	 At the end of combat, heal 7 (10) HP.
+Skim               	 ubs 	 1     	 Draw 3 (4) cards.
+Static Discharge   	 ubp 	 1     	 Whenever you receive unblocked attack damage, Channel 1 (2) Lightning.
+Storm              	 ubp 	 1     	 (Innate.) Whenever you play a Power card, Channel 1 Lightning.
+Sunder             	 uba 	 3     	 Deal 24 (32) damage. If this kills an enemy, gain [B] [B] [B].
+Tempest            	 ubs 	 X     	 Channel X(+1) Lightning. Exhaust.
+White Noise        	 ubs 	 1 (0) 	 Add a random Power card into your hand. It costs 0 this turn. Exhaust.
+All for One        	 rba 	 2     	 Deal 10 (14) damage. Put all cost 0 cards from your discard pile into your hand.
+Amplify            	 rbs 	 1     	 This turn, your next 1 (2) Power cards are played twice.
+Biased Cognition   	 rbp 	 1     	 Gain 4 (5) Focus. At the start of your turn, lose 1 Focus.
+Buffer             	 rbp 	 2     	 Prevent the next 1 (2) times you would lose HP.
+Core Surge         	 rba 	 1     	 Deal 11 (15) damage. Gain 1 Artifact. Exhaust.
+Creative AI        	 rbp 	 3 (2) 	 At the start of your turn, add a random Power card into your hand.
+Echo Form          	 rbp 	 3     	 Ethereal. (Not ethereal.) The first card you play each turn is played twice.
+Electrodynamics    	 rbp 	 2     	 Lightning now hits ALL enemies. Channel 2 (3) Lightning.
+Fission            	 rbs 	 0     	 Remove (evoke) all your Orbs. Gain [B] and draw 1 card for each Orb removed (evoked). Exhaust.
+Hyperbeam          	 rba 	 2     	 Deal 26 (34) damage to ALL enemies. Lose 3 Focus.
+Machine Learning   	 rbp 	 1     	 (Innate.) At the start of your turn, draw 1 additional card.
+Meteor Strike      	 rba 	 5     	 Deal 24 (30) damage. Channel 3 Plasma.
+Multi-Cast         	 rbs 	 X     	 Evoke your next Orb X(+1) times.
+Rainbow            	 rbs 	 2     	 Channel 1 Lightning. Channel 1 Frost. Channel 1 Dark. Exhaust. (Does not exhaust.)
+Reboot             	 rbs 	 0     	 Shuffle ALL your cards into your draw pile. Draw 4 (6) cards. Exhaust.
+Seek               	 rbs 	 0     	 Put 1 (2) cards from your draw pile into your hand. Exhaust.
+Thunder Strike     	 rba 	 3     	 Deal 7 (9) damage to a random enemy for each Lightning Channeled this combat.
+Defend             	 bps 	 1     	 Gain 5 (8) Block.
+Eruption           	 bpa 	 2 (1) 	 Deal 9 damage. Enter Wrath.
+Strike             	 bpa 	 1     	 Deal 6 (9) damage.
+Vigilance          	 bps 	 2     	 Gain 8 (12) Block. Enter Calm.
+Bowling Bash       	 cpa 	 1     	 Deal 7 (10) damage for each enemy in combat.
+Consecrate         	 cpa 	 0     	 Deal 5 (8) damage to ALL enemies.
+Crescendo          	 cps 	 1 (0) 	 Retain. Enter Wrath. Exhaust.
+Crush Joints       	 cpa 	 1     	 Deal 8 (10) damage. If the last card played this combat was a Skill, apply 1 (2) Vulnerable.
+Cut Through Fate   	 cpa 	 1     	 Deal 7 (9) damage. Scry 2 (3). Draw 1 card.
+Empty Body         	 cps 	 1     	 Gain 7 (10) Block. Exit your Stance.
+Empty Fist         	 cpa 	 1     	 Deal 9 (14) damage. Exit your Stance.
+Evaluate           	 cps 	 1     	 Gain 6 (10) Block. Shuffle an Insight into your draw pile.
+Flurry of Blows    	 cpa 	 0     	 Deal 4 (6) damage. Whenever you change Stances, return this from the discard pile to your hand.
+Flying Sleeves     	 cpa 	 1     	 Retain. Deal 4 (6) damage twice.
+Follow-Up          	 cpa 	 1     	 Deal 7 (11) damage. If the last card played this combat was an Attack, gain [W].
+Halt               	 cps 	 0     	 Gain 3 (4) Block. If you are in Wrath, gain 9 (14) additional Block.
+Just Lucky         	 cpa 	 0     	 Scry 1 (2). Gain 2 (3) Block. Deal 3 (4) damage.
+Pressure Points    	 cps 	 1     	 Apply 8 (11) Mark. ALL enemies lose HP equal to their Mark.
+Prostrate          	 cps 	 0     	 Gain 2 (3) Mantra. Gain 4 Block.
+Protect            	 cps 	 2     	 Retain. Gain 12 (16) Block.
+Sash Whip          	 cpa 	 1     	 Deal 8 (10) damage. If the last card played this combat was an Attack, apply 1 (2) Weak.
+Third Eye          	 cps 	 1     	 Gain 7 (9) Block. Scry 3 (5).
+Tranquility        	 cps 	 1 (0) 	 Retain. Enter Calm. Exhaust.
+Battle Hymn        	 upp 	 1     	 (Innate.) At the start of each turn, add a Smite into your hand.
+Carve Reality      	 upa 	 1     	 Deal 6 (10) damage. Add a Smite into your hand.
+Collect            	 ups 	 X     	 Put a Miracle+ into your hand at the start of your next X(+1) turns. Exhaust.
+Conclude           	 upa 	 1     	 Deal 12 (16) damage to ALL enemies. End your turn.
+Deceive Reality    	 ups 	 1     	 Gain 4 (7) Block. Add a Safety into your hand.
+Empty Mind         	 ups 	 1     	 Draw 2 (3) cards. Exit your Stance.
+Fasting            	 upp 	 2     	 Gain 3 (4) Strength. Gain 3 (4) Dexterity. Gain 1 less [W] at the start of each turn.
+Fear No Evil       	 upa 	 1     	 Deal 8 (11) damage. If the enemy intends to Attack, enter Calm.
+Foreign Influence  	 ups 	 0     	 Choose 1 of 3 Attacks of any color to add into your hand. (It costs 0 this turn.) Exhaust.
+Foresight          	 upp 	 1     	 At the start of your turn, Scry 3 (4).
+Indignation        	 ups 	 1     	 If you are in Wrath, apply 3 (5) Vulnerable to ALL enemies, otherwise enter Wrath.
+Inner Peace        	 ups 	 1     	 If you are in Calm, draw 3 (4) cards, otherwise enter Calm.
+Like Water         	 upp 	 1     	 At the end of your turn, if you are in Calm, gain 5 (7) Block.
+Meditate           	 ups 	 1     	 Put 1 (2) cards from your discard pile into your hand and Retain them. Enter Calm. End your turn.
+Mental Fortress    	 upp 	 1     	 Whenever you change Stances, gain 4 (6) Block.
+Nirvana            	 upp 	 1     	 Whenever you Scry, gain 3 (4) Block.
+Perseverance       	 ups 	 1     	 Retain. Gain 5 (7) Block. When Retained, increase its Block by 2 (3) this combat.
+Pray               	 ups 	 1     	 Gain 3 (4) Mantra. Shuffle an Insight into your draw pile.
+Reach Heaven       	 upa 	 2     	 Deal 10 (15) damage. Shuffle a Through Violence into your draw pile.
+Rushdown           	 upp 	 1 (0) 	 Whenever you enter Wrath, draw 2 cards.
+Sanctity           	 ups 	 1     	 Gain 6 (9) Block. If the last card played this combat was a Skill, draw 2 cards.
+Sands of Time      	 upa 	 4     	 Retain. Deal 20 (26) damage. When Retained, lower its cost by 1 this combat.
+Signature Move     	 upa 	 2     	 Can only be played if this is the only Attack in your hand. Deal 30 (40) damage.
+Simmering Fury     	 ups 	 1     	 At the start of your next turn, enter Wrath and draw 2 (3) cards.
+Study              	 upp 	 2 (1) 	 At the end of your turn, shuffle an Insight into your draw pile.
+Swivel             	 ups 	 2     	 Gain 8 (11) Block. The next Attack you play costs 0.
+Talk to the Hand   	 upa 	 1     	 Deal 5 (7) damage. Whenever you attack this enemy, gain 2 (3) Block. Exhaust.
+Tantrum            	 upa 	 1     	 Deal 3 damage 3 (4) times. Enter Wrath. Shuffle this card into your draw pile.
+Wallop             	 upa 	 2     	 Deal 9 (12) damage. Gain Block equal to unblocked damage dealt.
+Wave of the Hand   	 ups 	 1     	 Whenever you gain Block this turn, apply 1 (2) Weak to ALL enemies.
+Weave              	 upa 	 0     	 Deal 4 (6) damage. Whenever you Scry, return this from the discard pile to your Hand.
+Wheel Kick         	 upa 	 2     	 Deal 15 (20) damage. Draw 2 cards.
+Windmill Strike    	 upa 	 2     	 Retain. Deal 7 (10) damage. When Retained, increase its damage by 4 (5) this combat.
+Worship            	 ups 	 2     	 (Retain.) Gain 5 Mantra.
+Wreath of Flame    	 ups 	 1     	 Your next Attack deals 5 (8) additional damage.
+Alpha              	 rps 	 1     	 (Innate.) Shuffle a Beta into your draw pile. Exhaust.
+Blasphemy          	 rps 	 1     	 (Retain.) Enter Divinity. Die next turn. Exhaust.
+Brilliance         	 rpa 	 1     	 Deal 12 (16) damage. Deals additional damage equal to Mantra gained this combat.
+Conjure Blade      	 rps 	 X     	 Shuffle an Expunger (with X+1) into your draw pile. Exhaust.
+Deus Ex Machina    	 rps 	 -     	 Unplayable. When you draw this card, add 2 (3) Miracles to your hand and Exhaust.
+Deva Form          	 rpp 	 3     	 Ethereal. (Not ethereal.) At the start of your turn, gain [W] and increase this gain by 1.
+Devotion           	 rpp 	 1     	 At the start of your turn, gain 2 (3) Mantra.
+Establishment      	 rpp 	 1     	 (Innate.) Whenever a card is Retained, reduce its cost by 1 this combat.
+Judgment           	 rps 	 1     	 If the enemy has 30 (40) or less HP, set their HP to 0.
+Lesson Learned     	 rpa 	 2     	 Deal 10 (13) damage. If Fatal, Upgrade a random card in your deck. Exhaust.
+Master Reality     	 rpp 	 1 (0) 	 Whenever a card is created during combat, Upgrade it.
+Omniscience        	 rps 	 4 (3) 	 Choose a card in your draw pile. Play the chosen card twice and exhaust it. Exhaust.
+Ragnarok           	 rpa 	 3     	 Deal 5 (6) damage to a random enemy 5 (6) times.
+Scrawl             	 rps 	 1 (0) 	 Draw cards until your hand is full. Exhaust.
+Spirit Shield      	 rps 	 2     	 Gain 3 (4) Block for each card in your hand.
+Vault              	 rps 	 3 (2) 	 Take an extra turn after this one. End your turn. Exhaust.
+Wish               	 rps 	 3     	 Choose one: Gain 6 (8) Plated Armor, 3 (4) Strength, or 25 (30) Gold. Exhaust.
+Bandage Up         	 ucs 	 0     	 Heal 4 (6) HP. Exhaust.
+Blind              	 ucs 	 0     	 Apply 2 Weak (to ALL enemies).
+Dark Shackles      	 ucs 	 0     	 Enemy loses 9 (15) Strength this turn. Exhaust.
+Deep Breath        	 ucs 	 0     	 Shuffle your discard pile into your draw pile. Draw 1 (2) cards.
+Discovery          	 ucs 	 1     	 Choose 1 of 3 random cards to add into your hand. It costs 0 this turn. Exhaust. (Does not exhaust.)
+Dramatic Entrance  	 uca 	 0     	 Innate. Deal 8 (12) damage to ALL enemies. Exhaust.
+Enlightenment      	 ucs 	 0     	 Reduce the cost of all cards in your hand to 1 this turn (this combat).
+Finesse            	 ucs 	 0     	 Gain 2 (4) Block. Draw 1 card.
+Flash of Steel     	 uca 	 0     	 Deal 3 (6) damage. Draw 1 card.
+Forethought        	 ucs 	 0     	 Put a card (any number of cards) from your hand to the bottom of your draw pile. They cost 0 until played.
+Good Instincts     	 ucs 	 0     	 Gain 6 (9) Block.
+Impatience         	 ucs 	 0     	 If you have no Attacks in your hand, draw 2 (3) cards.
+Jack of All Trades 	 ucs 	 0     	 Add 1 (2) random Colorless cards into your hand. Exhaust.
+Madness            	 ucs 	 1 (0) 	 Reduce the cost of a random card in your hand to 0 this combat. Exhaust.
+Mind Blast         	 uca 	 2 (1) 	 Innate. Deal damage equal to the number of cards in your draw pile.
+Panacea            	 ucs 	 0     	 Gain 1 (2) Artifact. Exhaust.
+Panic Button       	 ucs 	 0     	 Gain 30 (40) Block. You cannot gain Block from cards for 2 turns. Exhaust.
+Purity             	 ucs 	 0     	 Exhaust up to 3 (5) cards in your hand. Exhaust.
+Swift Strike       	 uca 	 0     	 Deal 7 (10) damage.
+Trip               	 ucs 	 0     	 Apply 2 Vulnerable (to ALL enemies).
+Apotheosis         	 rcs 	 2 (1) 	 Upgrade ALL your cards for the rest of combat. Exhaust.
+Chrysalis          	 rcs 	 2     	 Shuffle 3 (5) random Skills into your draw pile. They cost 0 this combat. Exhaust.
+Hand of Greed      	 rca 	 2     	 Deal 20 (25) damage. If Fatal, gain 20 (25) Gold.
+Magnetism          	 rcp 	 2 (1) 	 At the start of your turn, add a random Colorless card into your hand.
+Master of Strategy 	 rcs 	 0     	 Draw 3 (4) cards. Exhaust.
+Mayhem             	 rcp 	 2 (1) 	 At the start of your turn, play the top card of your draw pile.
+Metamorphosis      	 rcs 	 2     	 Shuffle 3 (5) random Attacks into your draw pile. They cost 0 this combat. Exhaust.
+Panache            	 rcp 	 0     	 Every time you play 5 cards in a single turn, deal 10 (14) damage to ALL enemies.
+Sadistic Nature    	 rcp 	 0     	 Whenever you apply a debuff to an enemy, they take 5 (7) damage.
+Secret Technique   	 rcs 	 0     	 Put a Skill from your draw pile into your hand. Exhaust. (Does not exhaust.)
+Secret Weapon      	 rcs 	 0     	 Put an Attack from your draw pile into your hand. Exhaust. (Does not exhaust.)
+The Bomb           	 rcs 	 2     	 At the end of 3 turns, deal 40 (50) damage to ALL enemies.
+Thinking Ahead     	 rcs 	 0     	 Draw 2 cards. Put a card from your hand on top of your draw pile. Exhaust. (Does not exhaust.)
+Transmutation      	 rcs 	 X     	 Add X random (Upgraded) Colorless cards into your hand. They cost 0 this turn. Exhaust.
+Violence           	 rcs 	 0     	 Put 3 (4) random Attacks from your draw pile into your hand. Exhaust.
+Apparition         	 scs 	 1     	 Ethereal. (Not ethereal.) Gain 1 Intangible. Exhaust.
+Become Almighty    	 scp 	 -     	 Gain 3 (4) Strength.
+Beta               	 scs 	 2 (1) 	 Shuffle an Omega into your draw pile. Exhaust.
+Bite               	 sca 	 1     	 Deal 7 (8) damage. Heal 2 (3) HP.
+Expunger           	 sca 	 1     	 Deal 9 (15) damage X times.
+Fame and Fortune   	 scs 	 -     	 Gain 25 (30) Gold.
+Insight            	 scs 	 0     	 Retain. Draw 2 (3) cards. Exhaust.
+J.A.X.             	 scs 	 0     	 Lose 3 HP. Gain 2 (3) Strength.
+Live Forever       	 scp 	 -     	 Gain 6 (8) Plated Armor.
+Miracle            	 scs 	 0     	 Retain. Gain [W] ([W]). Exhaust.
+Omega              	 scp 	 3     	 At the end of your turn, deal 50 (60) damage to ALL enemies.
+Ritual Dagger      	 sca 	 1     	 Deal 15 damage. If Fatal, permanently increase this card's damage by 3 (5). Exhaust.
+Safety             	 scs 	 1     	 Retain. Gain 12 (16) Block. Exhaust.
+Shiv               	 sca 	 0     	 Deal 4 (6) damage. Exhaust.
+Smite              	 sca 	 1     	 Retain. Deal 12 (16) damage. Exhaust.
+Through Violence   	 sca 	 0     	 Retain. Deal 20 (30) damage. Exhaust.
+Clumsy             	 cks 	 -     	 Unplayable. Ethereal.
+Decay              	 cks 	 -     	 Unplayable. At the end of your turn, take 2 damage.
+Doubt              	 cks 	 -     	 Unplayable. At the end of your turn, gain 1 Weak.
+Injury             	 cks 	 -     	 Unplayable.
+Normality          	 cks 	 -     	 Unplayable. While in hand, you cannot play more than 3 cards this turn.
+Pain               	 cks 	 -     	 Unplayable. While in hand, lose 1 HP whenever you play another card.
+Parasite           	 cks 	 -     	 Unplayable. If transformed or removed from your deck, lose 3 Max HP.
+Regret             	 cks 	 -     	 Unplayable. At the end of your turn, lose HP equal to the number of cards in your hand.
+Shame              	 cks 	 -     	 Unplayable. At the end of your turn, gain 1 Frail.
+Writhe             	 cks 	 -     	 Unplayable. Innate.
+Ascender's Bane    	 sks 	 -     	 Unplayable. Ethereal. Cannot be removed from your deck.
+Curse of the Bell  	 sks 	 -     	 Unplayable. Cannot be removed from your deck.
+Necronomicurse     	 sks 	 -     	 Unplayable. There is no escape from this Curse.
+Pride              	 sks 	 1     	 Innate. At the end of your turn, put a copy of this card on top of your draw pile. Exhaust.
+Burn               	 ccs 	 -     	 Unplayable. At the end of your turn, take 2 (4) damage.
+Dazed              	 ccs 	 -     	 Unplayable. Ethereal.
+Slimed             	 ccs 	 1     	 Exhaust.
+Void               	 ccs 	 -     	 Unplayable. Ethereal. Whenever this card is drawn, lose 1 Energy.
+Wound              	 ccs 	 -     	 Unplayable.
