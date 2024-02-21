@@ -10,6 +10,11 @@ def f_svg x
     "<svg viewBox='#{x[0] == ?* ? '-2 -2 4 4' : '-1 -1 2 2'}'>#{File.read "pre/svgs/#{x.sub ?*, ''}.svg"}</svg>"
 end
 
+def f_sts x, props
+    props.sts = true
+    ''
+end
+
 def f_chess x, props
     props.style.add 'chess'
 
@@ -342,9 +347,86 @@ def onespecial props, a, b, c, d
 end
 
 def special s, props
-    s.gsub /^\s*\.(\w+)([ +])(!)?{{(.*?)\s*}}$/m do
+    s.gsub! /^\s*\.(\w+)([ +])(!)?{{(.*?)\s*}}$/m do
         onespecial props, $1, $2, $3, $4
-    end.gsub /^\s*\.(\w+)(?:([ +])(.*))?/ do
+    end
+    s.gsub! /^\s*\.(\w+)(?:([ +])(.*))?/ do
         onespecial props, $1, $2, true, $3
     end
+    s
+end
+
+
+def repl x, from, to
+    to.flat_map{|y| opts x.sub(from, y)}
+end
+def opts x
+    return repl x, '(dir)', ['', 'in', 'out', "(d\0ir)"] if x.include? '(dir)'
+    return repl x, '(fract)', ['', '1/4', '1/2', '3/4'] if x.include? '(fract)'
+    return repl x, /\(([^)]+)\)/, ['', $1] if x =~ /\(([^)]+)\)/
+    [x]
+end
+def snorm x
+    x.sub(/ (CONCEPT|FORMATION)$/, '').downcase.gsub(/[^a-z0-9&]/, '')
+end
+@slist = File.readlines('squares').flat_map{|x|
+    a,b = x.chomp.split "\t"
+    opts(b).map{|y| [snorm(y), a.upcase.sub(/MAINSTREAM|PLUS/, 'plus')]}
+}.each_with_object({}) {|(k,v), h| h[k] = v unless h[k]}
+def trysub x, from, to
+    x =~ from ? getlvl(x.sub(from, to)) : nil
+end
+def atleast x, y
+    'C4 C3B C3A C2 C1 A2 A1 plus'.split.find{|z| z==x || z==y}
+end
+def getlvl x
+    ret = @slist[snorm x]; return ret if ret
+    ret = trysub x, /^central /, ''; return ret if ret
+    ret = trysub x, /^tandem /, ''; return atleast('C2', ret) if ret
+    ret = trysub x, /^beaus /, ''; return atleast('A1', ret) if ret
+    ret = trysub x, /^couples twosome /, ''; return atleast('C3A', ret) if ret
+    ret = trysub x, /^finish /, ''; return atleast('C1', ret) if ret
+    ret = trysub x, / to a wave$/, ''; return atleast('C1', ret) if ret
+    'x'
+end
+def squares html
+    html.gsub(/@([^@]+)@/) {
+        call = $1
+        lvl = getlvl CGI.unescapeHTML call
+        lvl, call = call.split ?| if call.include? ?|
+        p call if lvl == 'x'
+        "<span class='call #{lvl[0].downcase}'><span class='c1'>#{lvl}</span><span class='c2'>#{call}</span></span>"
+    }
+end
+
+@clist = File.readlines('spire').map{|x|
+    a,b = x.chomp.split "\t"
+    [b, a]
+}.to_h
+def getcls x
+    @clist[x] || 'x'
+end
+def spire html
+    html.gsub(/\[\[([^\]+]+)(\+[^\]]*)?\]\]/) {
+        card = $1
+        upg = $2
+        cls = getcls card
+        cls, card = card.split ?| if card.include? ?|
+        p card if cls == 'x'
+        cls = 'ccs' if cls == 's'
+        cls = 'cks' if cls == 'c'
+        if cls.size == 3
+            rar, col, gen = cls.chars
+            classes = "stsr#{rar} stsc#{col} stsg#{gen}"
+        else
+            classes = "sts#{cls}"
+        end
+        "<span class='sts#{' stsu' if upg} #{classes}'>#{card}#{upg}</span>"
+    }
+end
+
+def special_post s, props
+    [(s = squares s), props.style.add('squares')] if props.squares
+    [(s = spire s), props.style.add('spire')] if props.spire
+    s
 end

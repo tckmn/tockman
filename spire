@@ -1,0 +1,367 @@
+cra	StrikeR
+crs	DefendR
+cra	Bash
+cra	Anger
+cra	Body Slam
+cra	Clash
+cra	Cleave
+cra	Clothesline
+cra	Headbutt
+cra	Heavy Blade
+cra	Iron Wave
+cra	Perfected Strike
+cra	Pommel Strike
+cra	Sword Boomerang
+cra	Thunderclap
+cra	Twin Strike
+cra	Wild Strike
+ura	Blood for Blood
+ura	Carnage
+ura	Dropkick
+ura	Hemokinesis
+ura	Pummel
+ura	Rampage
+ura	Reckless Charge
+ura	Searing Blow
+ura	Sever Soul
+ura	Uppercut
+ura	Whirlwind
+rra	Bludgeon
+rra	Feed
+rra	Fiend Fire
+rra	Immolate
+rra	Reaper
+crs	Armaments
+crs	Flex
+crs	Havoc
+crs	Shrug It Off
+crs	True Grit
+crs	Warcry
+urs	Battle Trance
+urs	Bloodletting
+urs	Burning Pact
+urs	Disarm
+urs	Dual Wield
+urs	Entrench
+urs	Flame Barrier
+urs	Ghostly Armor
+urs	Infernal Blade
+urs	Intimidate
+urs	Power Through
+urs	Rage
+urs	Second Wind
+urs	Seeing Red
+urs	Sentinel
+urs	Shockwave
+urs	Spot Weakness
+rrs	Double Tap
+rrs	Exhume
+rrs	Impervious
+rrs	Limit Break
+rrs	Offering
+urp	Combust
+urp	Dark Embrace
+urp	Evolve
+urp	Feel No Pain
+urp	Fire Breathing
+urp	Inflame
+urp	Metallicize
+urp	Rupture
+rrp	Barricade
+rrp	Berserk
+rrp	Brutality
+rrp	Corruption
+rrp	Demon Form
+rrp	Juggernaut
+cga	StrikeG
+cgs	DefendG
+cga	Neutralize
+cgs	Survivor
+cga	Bane
+cga	Dagger Spray
+cga	Dagger Throw
+cga	Flying Knee
+cga	Poisoned Stab
+cga	Quick Slash
+cga	Slice
+cga	Sneaky Strike
+cga	Sucker Punch
+uga	All-Out Attack
+uga	Backstab
+uga	Choke
+uga	Dash
+uga	Endless Agony
+uga	Eviscerate
+uga	Finisher
+uga	Flechettes
+uga	Heel Hook
+uga	Masterful Stab
+uga	Predator
+uga	Riddle with Holes
+uga	Skewer
+rga	Die Die Die
+rga	Glass Knife
+rga	Grand Finale
+rga	Unload
+cgs	Acrobatics
+cgs	Backflip
+cgs	Blade Dance
+cgs	Cloak and Dagger
+cgs	Deadly Poison
+cgs	Deflect
+cgs	Dodge and Roll
+cgs	Outmaneuver
+cgs	Piercing Wail
+cgs	Prepared
+ugs	Blur
+ugs	Bouncing Flask
+ugs	Calculated Gamble
+ugs	Catalyst
+ugs	Concentrate
+ugs	Crippling Cloud
+ugs	Distraction
+ugs	Escape Plan
+ugs	Expertise
+ugs	Leg Sweep
+ugs	Reflex
+ugs	Setup
+ugs	Tactician
+ugs	Terror
+rgs	Adrenaline
+rgs	Alchemize
+rgs	Bullet Time
+rgs	Burst
+rgs	Corpse Explosion
+rgs	Doppelganger
+rgs	Malaise
+rgs	Nightmare
+rgs	Phantasmal Killer
+rgs	Storm of Steel
+ugp	Accuracy
+ugp	Caltrops
+ugp	Footwork
+ugp	Infinite Blades
+ugp	Noxious Fumes
+ugp	Well-Laid Plans
+rgp	A Thousand Cuts
+rgp	After Image
+rgp	Envenom
+rgp	Tools of the Trade
+rgp	Wraith Form
+cba	StrikeB
+cbs	DefendB
+cbs	Dualcast
+cbs	Zap
+cba	Ball Lightning
+cba	Barrage
+cba	Beam Cell
+cba	Claw
+cba	Cold Snap
+cba	Compile Driver
+cba	Go for the Eyes
+cba	Rebound
+cba	Streamline
+cba	Sweeping Beam
+uba	Blizzard
+uba	Bullseye
+uba	Doom and Gloom
+uba	FTL
+uba	Melter
+uba	Rip and Tear
+uba	Scrape
+uba	Sunder
+rba	All for One
+rba	Core Surge
+rba	Hyperbeam
+rba	Meteor Strike
+rba	Thunder Strike
+cbs	Charge Battery
+cbs	Coolheaded
+cbs	Hologram
+cbs	Leap
+cbs	Recursion
+cbs	Stack
+cbs	Steam Barrier
+cbs	TURBO
+ubs	Aggregate
+ubs	Auto-Shields
+ubs	Boot Sequence
+ubs	Chaos
+ubs	Chill
+ubs	Consume
+ubs	Darkness
+ubs	Double Energy
+ubs	Equilibrium
+ubs	Force Field
+ubs	Fusion
+ubs	Genetic Algorithm
+ubs	Glacier
+ubs	Overclock
+ubs	Recycle
+ubs	Reinforced Body
+ubs	Reprogram
+ubs	Skim
+ubs	Tempest
+ubs	White Noise
+rbs	Amplify
+rbs	Fission
+rbs	Multi-Cast
+rbs	Rainbow
+rbs	Reboot
+rbs	Seek
+ubp	Capacitor
+ubp	Defragment
+ubp	Heatsinks
+ubp	Hello World
+ubp	Loop
+ubp	Self Repair
+ubp	Static Discharge
+ubp	Storm
+rbp	Biased Cognition
+rbp	Buffer
+rbp	Creative AI
+rbp	Echo Form
+rbp	Electrodynamics
+rbp	Machine Learning
+cpa	StrikeP
+cps	DefendP
+cpa	Eruption
+cps	Vigilance
+cpa	Bowling Bash
+cpa	Consecrate
+cpa	Crush Joints
+cpa	Cut Through Fate
+cpa	Empty Fist
+cpa	Flurry of Blows
+cpa	Flying Sleeves
+cpa	Follow-Up
+cpa	Just Lucky
+cpa	Sash Whip
+upa	Carve Reality
+upa	Conclude
+upa	Fear No Evil
+upa	Reach Heaven
+upa	Sands of Time
+upa	Signature Move
+upa	Talk to the Hand
+upa	Tantrum
+upa	Wallop
+upa	Weave
+upa	Wheel Kick
+upa	Windmill Strike
+rpa	Brilliance
+rpa	Lesson Learned
+rpa	Ragnarok
+cps	Crescendo
+cps	Empty Body
+cps	Evaluate
+cps	Halt
+cps	Pressure Points
+cps	Prostrate
+cps	Protect
+cps	Third Eye
+cps	Tranquility
+ups	Collect
+ups	Deceive Reality
+ups	Empty Mind
+ups	Foreign Influence
+ups	Indignation
+ups	Inner Peace
+ups	Meditate
+ups	Perseverance
+ups	Pray
+ups	Sanctity
+ups	Simmering Fury
+ups	Swivel
+ups	Wave of the Hand
+ups	Worship
+ups	Wreath of Flame
+rps	Alpha
+rps	Blasphemy
+rps	Conjure Blade
+rps	Deus Ex Machina
+rps	Judgment
+rps	Omniscience
+rps	Scrawl
+rps	Spirit Shield
+rps	Vault
+rps	Wish
+upp	Battle Hymn
+upp	Fasting
+upp	Foresight
+upp	Like Water
+upp	Mental Fortress
+upp	Nirvana
+upp	Rushdown
+upp	Study
+rpp	Deva Form
+rpp	Devotion
+rpp	Establishment
+rpp	Master Reality
+uca	Dramatic Entrance
+uca	Flash of Steel
+uca	Mind Blast
+uca	Swift Strike
+rca	Hand of Greed
+cca	Bite
+cca	Expunger
+cca	Ritual Dagger
+cca	Shiv
+cca	Smite
+cca	Through Violence
+ucs	Bandage Up
+ucs	Blind
+ucs	Dark Shackles
+ucs	Deep Breath
+ucs	Discovery
+ucs	Enlightenment
+ucs	Finesse
+ucs	Forethought
+ucs	Good Instincts
+ucs	Impatience
+ucs	Jack of All Trades
+ucs	Madness
+ucs	Panacea
+ucs	Panic Button
+ucs	Purity
+ucs	Trip
+rcs	Apotheosis
+rcs	Chrysalis
+rcs	Master of Strategy
+rcs	Metamorphosis
+rcs	Secret Technique
+rcs	Secret Weapon
+rcs	The Bomb
+rcs	Thinking Ahead
+rcs	Transmutation
+rcs	Violence
+ccs	Apparition
+ccs	Beta
+ccs	Insight
+ccs	J.A.X.
+ccs	Miracle
+ccs	Safety
+rcp	Magnetism
+rcp	Mayhem
+rcp	Panache
+rcp	Sadistic Nature
+ccp	Omega
+s	Burn
+s	Dazed
+s	Slimed
+s	Void
+s	Wound
+c	Ascender's Bane
+c	Clumsy
+c	Curse of the Bell
+c	Decay
+c	Doubt
+c	Injury
+c	Necronomicurse
+c	Normality
+c	Pain
+c	Parasite
+c	Pride
+c	Regret
+c	Shame
+c	Writhe

@@ -17,7 +17,7 @@ class Integer
     def ordinal; "#{self}#{(self % 100) / 10 != 1 && [nil, 'st', 'nd', 'rd'][self % 10] || 'th'}"; end
 end
 
-def cmark s, base
+def cmark s, base=nil
     Open3
         .capture2('cmark --unsafe', :stdin_data=>s)[0]
         .gsub(/^[<>\w]+\\raw\s+(.*?)<\/[<>\/\w]+$/m){$1.rawify}

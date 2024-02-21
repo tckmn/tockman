@@ -20,6 +20,8 @@ class Props
         @desc = nil
         @ksh = false
         @noindex = false
+        @spire = false
+        @squares = false
     end
 
     attr_accessor *Props.new('').instance_variables.map{|x| x[1..-1]}
@@ -48,7 +50,7 @@ OptionParser.new do |opts|
     end
 end.parse!
 
-$template = special File.read('pre/template.html'), {}
+$template = special File.read('pre/template.html'), Props.new('')
 $target = 'tckmn.github.io'
 
 def go path, ext='html', &blk
@@ -68,6 +70,7 @@ def render fname, html, **props
     flags = Props.new fname
     flags.merge! props
     html = special html, flags
+    html = special_post html, flags
 
     puts "WARNING: #{fname} lacks title" unless flags.title || fname.empty?
     puts "WARNING: #{fname} lacks desc" unless flags.desc
@@ -126,6 +129,10 @@ go('pre') do |html, name|
     render name, html
 end
 
+go('pre', 'md') do |md, name|
+    render name, cmark(md)
+end
+
 def blogtag tag
     "<a class='tag' href='/blog/#{tag.sub ' ', ?-}'><span class='tag'>#{tag}</span></a>"
 end
@@ -169,7 +176,7 @@ makerss('blog.xml',
         'Blog - Andy Tockman',
         'https://tck.mn/blog/',
         "Andy Tockman's blog",
-        posts,
+        posts.sort_by{|p| p[:date]}.reverse,
         ->p{[p[:title],
              "https://tck.mn/blog/#{p[:name]}",
              p[:excerpt].gsub(/<[^>]*>/, '').chomp,
@@ -236,52 +243,8 @@ makerss('logic.xml',
              p[:puzs].map{|puz| puz[:link]}*"\n" + "\n\n" + p[:desc].gsub(/<[^>]*>/, ''),
              p[:date]]})
 
-def repl x, from, to
-    to.flat_map{|y| opts x.sub(from, y)}
-end
-def opts x
-    return repl x, '(dir)', ['', 'in', 'out', "(d\0ir)"] if x.include? '(dir)'
-    return repl x, '(fract)', ['', '1/4', '1/2', '3/4'] if x.include? '(fract)'
-    return repl x, /\(([^)]+)\)/, ['', $1] if x =~ /\(([^)]+)\)/
-    [x]
-end
-def snorm x
-    x.sub(/ (CONCEPT|FORMATION)$/, '').downcase.gsub(/[^a-z0-9&]/, '')
-end
-@slist = File.readlines('squares').flat_map{|x|
-    a,b = x.chomp.split "\t"
-    opts(b).map{|y| [snorm(y), a.upcase.sub(/MAINSTREAM|PLUS/, 'plus')]}
-}.each_with_object({}) {|(k,v), h| h[k] = v unless h[k]}
-def trysub x, from, to
-    x =~ from ? getlvl(x.sub(from, to)) : nil
-end
-def atleast x, y
-    'C4 C3B C3A C2 C1 A2 A1 plus'.split.find{|z| z==x || z==y}
-end
-def getlvl x
-    ret = @slist[snorm x]; return ret if ret
-    ret = trysub x, /^central /, ''; return ret if ret
-    ret = trysub x, /^tandem /, ''; return atleast('C2', ret) if ret
-    ret = trysub x, /^beaus /, ''; return atleast('A1', ret) if ret
-    ret = trysub x, /^couples twosome /, ''; return atleast('C3A', ret) if ret
-    ret = trysub x, /^finish /, ''; return atleast('C1', ret) if ret
-    ret = trysub x, / to a wave$/, ''; return atleast('C1', ret) if ret
-    'x'
-end
-def squares html
-    html.gsub(/@([^@]+)@/) {
-        call = $1
-        lvl = getlvl CGI.unescapeHTML call
-        if call.include? ?|
-            lvl, call = call.split ?|
-        end
-        p call if lvl == 'x'
-        "<span class='call #{lvl[0].downcase}'><span class='c1'>#{lvl}</span><span class='c2'>#{call}</span></span>"
-    }
-end
-
 go('pre/squares') do |html, name|
-    render "squares/#{name}", squares(html), style: 'squares'
+    render "squares/#{name}", html, squares: true
 end
 
 go('pre/atomic') do |html, name|
