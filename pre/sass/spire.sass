@@ -5,6 +5,7 @@ span.sts {
     border: 1px solid #fff;
     border-radius: 4px;
     white-space: nowrap;
+    cursor: default;
 
     &.stsrb { border-color: #888; }
     &.stsrc { border-color: #888; }
@@ -24,15 +25,33 @@ span.sts {
     &.stsgp { border-radius: 99px; }
 
     &.stsu { color: #0f0; }
+
+    &.stsrelic { background-color: #284d4d; border-color: #888; }
+    &.stspotion { background-color: #685300; border-color: #888; }
 }
 
 div.stspopup {
-    position: absolute;
-    width: 300px;
-    height: 200px;
-    background-color: #114;
-    pointer-events: none;
     &.stshidden { display: none; }
+    position: absolute;
+    width: 230px;
+    height: 130px;
+    background-color: #37342f;
+    border: 2px solid #6a5737;
+    pointer-events: none;
+    font-size: 11pt;
+    padding: 10px;
+    span.stsu { color: #0f0; }
+    span.stse { display: inline-block; width: 11pt; height: 11pt; vertical-align: middle; }
+    &.stscr span.stse { background: url(/img/sts/energy.png) 0% 0/cover; }
+    &.stscg span.stse { background: url(/img/sts/energy.png) 25% 0/cover; }
+    &.stscb span.stse { background: url(/img/sts/energy.png) 50% 0/cover; }
+    &.stscp span.stse { background: url(/img/sts/energy.png) 75% 0/cover; }
+    &.stscc span.stse { background: url(/img/sts/energy.png) 100% 0/cover; }
+    div.stsptitle {
+        display: flex;
+        justify-content: space-between;
+        div.stsname { font-weight: bold; }
+    }
 }
 
 img.card {

@@ -401,7 +401,7 @@ end
 
 @clist = File.readlines('spire').map{|x|
     a,b,c,d = x.split("\t").map &:strip
-    [a,[b,c+?/+d]]
+    [a, [b, (c == ?- ? d : d+?/+c)]]
 }.to_h
 def getcls x
     @clist[x] || ['x', '']
@@ -410,8 +410,12 @@ def spire html
     html.gsub(/\[\[([^\]+]+)(\+[^\]]*)?\]\]/) {
         card = $1
         upg = $2
-        cls, desc = getcls card
-        cls, card = card.split ?| if card.include? ?|
+        if card.include? ?|
+            cls, card = card.split ?|
+            _, desc = getcls card
+        else
+            cls, desc = getcls card
+        end
         p card if cls == 'x'
         if cls.size == 3
             rar, col, gen = cls.chars
