@@ -80,7 +80,7 @@ def render fname, html, **props
         .sub('<!--*-->', html)
         .gsub('<!--t-->', "#{flags.title}#{flags.title && ' - '}")
         .gsub('<!--t*-->', (flags.title || '').split(' - ')[0] || '')
-        .gsub('<!--s-->', flags.script.sort.map{|x|"<script src='/js/#{x}.js'></script>"}.join + (['global'] + flags.style.sort).map{|x| "<link rel='stylesheet' href='/css/#{$css[x]}.css'>"}.join)
+        .gsub('<!--s-->', flags.script.sort.map{|x|"<script src='/js/#{$js[x]}.js'></script>"}.join + (['global'] + flags.style.sort).map{|x| "<link rel='stylesheet' href='/css/#{$css[x]}.css'>"}.join)
         .gsub('<!--d-->', CGI.escapeHTML((flags.desc || "The #{flags.title} page on Andy Tockman's website.").unhtml.oneline))
         .gsub('<!--u-->', fname)
         .sub('<main>', 'main'.addclass(flags.mainclass))
@@ -123,6 +123,13 @@ FileUtils.remove_dir "#{$target}/css"
 FileUtils.mkdir "#{$target}/css"
 go('pre/sass', 'sass') do |txt, name|
     sass txt, name
+end
+
+$js = {}
+FileUtils.remove_dir "#{$target}/js"
+FileUtils.mkdir "#{$target}/js"
+go('pre/js', 'js') do |txt, name|
+    js txt, name
 end
 
 go('pre') do |html, name|

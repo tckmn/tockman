@@ -322,8 +322,14 @@ def f_comments x, props
 end
 
 def f_style x, props
-    style = x.include?('{') ? sass(x, props.fname.gsub(?/, ?_)) : x
+    style = x.include?(?{) ? sass(x, props.fname.gsub(?/, ?_)) : x
     props.style.add style
+    ''
+end
+
+def f_script x, props
+    script = x.include?(?() ? js(x, props.fname.gsub(?/, ?_)) : x
+    props.script.add script
     ''
 end
 

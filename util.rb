@@ -26,13 +26,21 @@ def cmark s, base=nil
         .gsub(/(<h.)(>[^<]+) #(\w+)(?=<\/h)/, '\1 id="\3"\2')
 end
 
-def sass s, name
-    css = SassC::Engine.new(s, style: :compressed).render
-    $css[name] = name + ?- + crc(css)
-    fname = "#{$target}/css/#{$css[name]}.css"
+def decache s, name, cache, ext
+    puts "WARNING: #{cache[name]}.#{ext} already cached" if cache.include? name
+    cache[name] = name + ?- + crc(s)
+    fname = "#{$target}/#{ext}/#{cache[name]}.#{ext}"
     $rendered.add fname
-    File.write fname, css
+    File.write fname, s
     name
+end
+
+def sass s, name
+    decache SassC::Engine.new(s, style: :compressed).render, name, $css, 'css'
+end
+
+def js s, name
+    decache s, name, $js, 'js'
 end
 
 @tbl = [0]*256
