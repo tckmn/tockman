@@ -110,6 +110,10 @@ def f_heya puz
              "width='#{w*sq+2*p}' height='#{h*sq+2*p}'/>"
     }
 
+    circ = ->x, y, r, fill='black' {
+        s += "<circle fill='#{fill}' cx='#{x*sq}' cy='#{y*sq}' r='#{r*sq}'/>"
+    }
+
     txt = ->t, x, y, fill, sz {
         s += "<text fill='#{fill}' font-size='#{sz}' x='#{x*sq}' y='#{y*sq}' text-anchor='middle' dominant-baseline='central'>#{t}</text>"
     }
@@ -117,12 +121,16 @@ def f_heya puz
     # background
     rect[0, 0, pw, ph, pad, 'white']
 
-    # solution
+    # solution [also nurikabe clues lol]
     isblack = Array.new(ph){[false] * pw}
-    if sol = puz.match(/^[-~#?!][-~#?!\n]*/m)
+    if sol = puz.match(/^[-~#?!0-9][-~#?!0-9.\n]*(?=\n|$)/m)
         sol[0].strip.lines.each.with_index do |row, y|
             row.chomp.chars.each.with_index do |ch, x|
-                if ch != ??
+                if ?0 <= ch && ch <= ?9
+                    txt[ch, x+0.5, y+0.5, '#000', 28]
+                elsif ch == ?.
+                    circ[x+0.5, y+0.5, 0.07]
+                elsif ch != ??
                     rect[x, y, 1, 1, 0, {
                         ?- => '#a0ffa0',
                         ?! => '#ffa0a0',
@@ -157,6 +165,12 @@ def f_heya puz
         rect[x, y, 0, h]
         rect[x+w, y, 0, h]
         txt[n, x+0.5, y+0.5, isblack[y][x] ? '#fff' : '#000', 28] unless n == -1
+    end
+
+    # more nurikabe clues lol
+    puz.scan(/NUM (\d+) (\d+) (\d+)/).each do |num|
+        x, y, n = num.map &:to_i
+        txt[n, x+0.5, y+0.5, isblack[y][x] ? '#fff' : '#000', 28]
     end
 
     # extra borders
