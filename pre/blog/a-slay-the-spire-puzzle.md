@@ -8,7 +8,7 @@ in a game of Slay the Spire.
 What do you do?
 [EXCERPT]
 
-    \raw .spire
+.spire
 
 (This puzzle is probably not particularly accessible
 to readers who haven't played Slay the Spire,

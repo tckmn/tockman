@@ -366,11 +366,12 @@ def onespecial props, a, b, c, d
     end
 end
 
+# TODO eliminate repetition in util#cmark
 def special s, props
-    s.gsub! /^\s*\.(\w+)([ +])(!)?{{(.*?)\s*}}$/m do
+    s.gsub! /^[ \t]*\.(\w+)([ +])(!)?{{(.*?)\s*}}$/m do
         onespecial props, $1, $2, $3, $4
     end
-    s.gsub! /^\s*\.(\w+)(?:([ +])(.*))?/ do
+    s.gsub! /^[ \t]*\.(\w+)(?:([ +])(.*))?/ do
         onespecial props, $1, $2, true, $3
     end
     s

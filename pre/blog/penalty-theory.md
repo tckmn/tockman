@@ -10,10 +10,10 @@ that require thinking in really cool ways,
 seemingly totally unrelated to what the rules literally say.
 [EXCERPT]
 
-    \raw .script+spoiler
-    .style {{
-        span.var { font-style: italic; background-color: #333; padding: 0 2px; white-space: nowrap; }
-    }}
+.script+spoiler
+.style {{
+    span.var { font-style: italic; background-color: #333; padding: 0 2px; white-space: nowrap; }
+}}
 
 One example is commonly called **penalty theory**,
 which has been written about before in e.g.
@@ -27,7 +27,7 @@ still seems to leave some people confused.
 So here's a different description of penalty theory,
 which I personally find to be the most intuitive.
 
-    \raw <div style='padding-top:5px'></div>
+<div style='padding-top:5px'></div>
 
 *Note: This post is long!
 But don't worry:
@@ -58,43 +58,42 @@ which are required to contain that many shaded cells.
 *You can click the first image to try the puzzle,
 or click the second image to see the solution.*
 
-    \rawp .heya {{
-        7x7
-        https://puzz.link/p?heyawake/7/7/8ki94ilag7u003jsc022g3321111g
+.heya {{
+    7x7
+    https://puzz.link/p?heyawake/7/7/8ki94ilag7u003jsc022g3321111g
 
-        0 0 2x2 2
-        2 0 4x1 2
-        2 1 3x3 3
-        5 1 2x6 3
-        0 2 2x3 2
-        2 4 3x1 1
-        0 5 1x2 1
-        1 5 2x1 1
-        3 5 2x2 1
-    }}
+    0 0 2x2 2
+    2 0 4x1 2
+    2 1 3x3 3
+    5 1 2x6 3
+    0 2 2x3 2
+    2 4 3x1 1
+    0 5 1x2 1
+    1 5 2x1 1
+    3 5 2x2 1
+}}
+.heya {{
+    7x7
+    SPOILER
 
-    .heya {{
-        7x7
-        SPOILER
+    #--#-#-
+    -#-----
+    --#-#-#
+    #--#---
+    -#--#-#
+    --#----
+    #---#-#
 
-        #--#-#-
-        -#-----
-        --#-#-#
-        #--#---
-        -#--#-#
-        --#----
-        #---#-#
-
-        0 0 2x2 2
-        2 0 4x1 2
-        2 1 3x3 3
-        5 1 2x6 3
-        0 2 2x3 2
-        2 4 3x1 1
-        0 5 1x2 1
-        1 5 2x1 1
-        3 5 2x2 1
-    }}
+    0 0 2x2 2
+    2 0 4x1 2
+    2 1 3x3 3
+    5 1 2x6 3
+    0 2 2x3 2
+    2 4 3x1 1
+    0 5 1x2 1
+    1 5 2x1 1
+    3 5 2x2 1
+}}
 
 Heyawake also has one more rule,
 which we won't worry about for the purposes of this post.
@@ -120,13 +119,13 @@ so you probably can't solve it by guessing.
 But once you've learned penalty theory,
 it will suddenly go from basically impossible to fairly easy!
 
-    \rawp .heya {{
-        10x10
-        https://puzz.link/p?heyawake/10/10/04080g000000001428000003000000003g00-1d03
-        0 0 10x10 29
-        8 0 2x3 0
-        3 8 3x2 3
-    }}
+.heya {{
+    10x10
+    https://puzz.link/p?heyawake/10/10/04080g000000001428000003000000003g00-1d03
+    0 0 10x10 29
+    8 0 2x3 0
+    3 8 3x2 3
+}}
 
 (This puzzle was created by [@agnomy on Twitter][puztweet].)
 
@@ -138,64 +137,64 @@ I'm going to introduce the concept of a **pool**.
 Consider all of the <strong>gridpoints</strong> in the grid.
 These are all the places the grid lines intersect.
 
-    \rawp .heya {{
-        5x4
+.heya {{
+    5x4
 
-        grid
-        ............
-        ..1o2o3o4o..
-        ..5o6o7o8o..
-        ..9oaoboco..
-        ............
-        end
-    }}
+    grid
+    ............
+    ..1o2o3o4o..
+    ..5o6o7o8o..
+    ..9oaoboco..
+    ............
+    end
+}}
 
 You can think of shaded cells
 as connecting all the gridpoints they touch together.
 In the example below,
 the starred gridpoints are connected.
 
-    \rawp .heya {{
-        6x5
+.heya {{
+    6x5
 
-        ??????
-        ??#???
-        ?#?#??
-        ??????
-        ??????
+    ??????
+    ??#???
+    ?#?#??
+    ??????
+    ??????
 
-        grid
-        ..............
-        ....R*R*......
-        ..R*R*R*R*....
-        ..R*R*R*R*....
-        ..............
-        ..............
-        end
-    }}
+    grid
+    ..............
+    ....R*R*......
+    ..R*R*R*R*....
+    ..R*R*R*R*....
+    ..............
+    ..............
+    end
+}}
 
 Also,
 some shaded cells connect gridpoints to the edge of the grid,
 like the triangular gridpoints in the example below.
 
-    \rawp .heya {{
-        6x5
+.heya {{
+    6x5
 
-        ??????
-        ???#??
-        ????#?
-        ?????#
-        ??????
+    ??????
+    ???#??
+    ????#?
+    ?????#
+    ??????
 
-        grid
-        ..............
-        ......P3P3....
-        ......P3P3P3..
-        ........P3P3..
-        ..........P3..
-        ..............
-        end
-    }}
+    grid
+    ..............
+    ......P3P3....
+    ......P3P3P3..
+    ........P3P3..
+    ..........P3..
+    ..............
+    end
+}}
 
 A "pool" is just a group of connected gridpoints
 which does not connect to the edge.
@@ -203,52 +202,52 @@ In the example below,
 there are 8 pools,
 all marked with their own shape.
 
-    \rawp .heya {{
-        7x6
+.heya {{
+    7x6
 
-        ?#?????
-        ??#??#?
-        ????#??
-        ?#???#?
-        ???#???
-        ?????#?
+    ?#?????
+    ??#??#?
+    ????#??
+    ?#???#?
+    ???#???
+    ?????#?
 
-        grid
-        ................
-        ........A3W6W6..
-        ..G4....W6W6W6..
-        ..O5O5MoW6W6W6..
-        ..O5O5P*P*W6W6..
-        ..YxR+P*P*......
-        ................
-        end
-    }}
+    grid
+    ................
+    ........A3W6W6..
+    ..G4....W6W6W6..
+    ..O5O5MoW6W6W6..
+    ..O5O5P*P*W6W6..
+    ..YxR+P*P*......
+    ................
+    end
+}}
 
 To continue the metaphor,
 you could think of the edge of the grid
 and everything connected to it
 as "the <b>ocean</b>".
 
-    \rawp .heya {{
-        7x6
+.heya {{
+    7x6
 
-        ?#?????
-        ??#??#?
-        ????#??
-        ?#???#?
-        ???#???
-        ?????#?
+    ?#?????
+    ??#??#?
+    ????#??
+    ?#???#?
+    ???#???
+    ?????#?
 
-        grid
-        B~B~B~B~B~B~B~B~
-        B~B~B~B~......B~
-        B~..B~B~......B~
-        B~............B~
-        B~............B~
-        B~........B~B~B~
-        B~B~B~B~B~B~B~B~
-        end
-    }}
+    grid
+    B~B~B~B~B~B~B~B~
+    B~B~B~B~......B~
+    B~..B~B~......B~
+    B~............B~
+    B~............B~
+    B~........B~B~B~
+    B~B~B~B~B~B~B~B~
+    end
+}}
 
 It's easy to count the number of pools
 when there are no shaded cells:
@@ -257,16 +256,16 @@ For example,
 this puzzle is 8 cells wide and 4 cells tall,
 so it starts with 7 × 3 = 21 pools.
 
-    \rawp .heya {{
-        8x4
-        grid
-        ..................
-        ..1o2o3o4o5o6o7o..
-        ..2o..............
-        ..3o..............
-        ..................
-        end
-    }}
+.heya {{
+    8x4
+    grid
+    ..................
+    ..1o2o3o4o5o6o7o..
+    ..2o..............
+    ..3o..............
+    ..................
+    end
+}}
 
 ## consuming pools #consuming
 
@@ -287,93 +286,93 @@ like if you shade a corner:
 <!-- How does the number of pools change -->
 <!-- when you shade a cell in the corner? -->
 
-    \rawp .heya {{
-        3x3 !T !R
-        ???
-        ???
-        ???
-        grid
-        ........
-        ........
-        B~R*....
-        B~B~....
-        end
-    }}
-
-    →
-
-    .heya {{
-        3x3 !T !R
-        ???
-        ???
-        #??
-        grid
-        ........
-        ........
-        B~B~....
-        B~B~....
-        end
-    }}
+<p>
+.heya {{
+    3x3 !T !R
+    ???
+    ???
+    ???
+    grid
+    ........
+    ........
+    B~R*....
+    B~B~....
+    end
+}}
+→
+.heya {{
+    3x3 !T !R
+    ???
+    ???
+    #??
+    grid
+    ........
+    ........
+    B~B~....
+    B~B~....
+    end
+}}
+</p>
 
 Or an edge:
 
-    \rawp .heya {{
-        3x3 !T !R !B
-        ???
-        ???
-        ???
-        grid
-        ........
-        B~R*....
-        B~P3....
-        ........
-        end
-    }}
-
-    →
-
-    .heya {{
-        3x3 !T !R !B
-        ???
-        #??
-        ???
-        grid
-        ........
-        B~B~....
-        B~B~....
-        ........
-        end
-    }}
+<p>
+.heya {{
+    3x3 !T !R !B
+    ???
+    ???
+    ???
+    grid
+    ........
+    B~R*....
+    B~P3....
+    ........
+    end
+}}
+→
+.heya {{
+    3x3 !T !R !B
+    ???
+    #??
+    ???
+    grid
+    ........
+    B~B~....
+    B~B~....
+    ........
+    end
+}}
+</p>
 
 Or they might all be different:
 
-    \rawp .heya {{
-        3x3 !T !R !B !L
-        ???
-        ???
-        ???
-        grid
-        ........
-        ..R*P3..
-        ..G4Mo..
-        ........
-        end
-    }}
-
-    →
-
-    .heya {{
-        3x3 !T !R !B !L
-        ???
-        ?#?
-        ???
-        grid
-        ........
-        ..R*R*..
-        ..R*R*..
-        ........
-        end
-    }}
+<p>
+.heya {{
+    3x3 !T !R !B !L
+    ???
+    ???
+    ???
+    grid
+    ........
+    ..R*P3..
+    ..G4Mo..
+    ........
+    end
+}}
+→
+.heya {{
+    3x3 !T !R !B !L
+    ???
+    ?#?
+    ???
+    grid
+    ........
+    ..R*R*..
+    ..R*R*..
+    ........
+    end
+}}
+</p>
 
 In the corner example,
 whichever pool the starred gridpoint belongs to
@@ -400,85 +399,83 @@ then you could draw a line of shaded cells through whatever connected them.
 This would "rope off" an area of unshaded cells,
 disconnecting it from the rest of the puzzle.
 
-    \rawp .heya {{
-        5x5 !T !R !B !L
-        CURVE 2 3 2 2* 3 2* 3 3
-        -----
-        --#--
-        -#-#-
-        --?--
-        -----
-        grid
-        ............
-        ....R*R*....
-        ..R*R*R*R*..
-        ..R*R*R*R*..
-        ....G4Mo....
-        ............
-        end
-    }}
+<p>
+.heya {{
+    5x5 !T !R !B !L
+    CURVE 2 3 2 2* 3 2* 3 3
+    -----
+    --#--
+    -#-#-
+    --?--
+    -----
+    grid
+    ............
+    ....R*R*....
+    ..R*R*R*R*..
+    ..R*R*R*R*..
+    ....G4Mo....
+    ............
+    end
+}}
+→
+.heya {{
+    5x5 !T !R !B !L
+    -----
+    --#--
+    -#!#-
+    --~--
+    -----
+    grid
+    ............
+    ....R*R*....
+    ..R*R*R*R*..
+    ..R*R*R*R*..
+    ....R*R*....
+    ............
+    end
+}}
+</p>
 
-    →
-
-    .heya {{
-        5x5 !T !R !B !L
-        -----
-        --#--
-        -#!#-
-        --~--
-        -----
-        grid
-        ............
-        ....R*R*....
-        ..R*R*R*R*..
-        ..R*R*R*R*..
-        ....R*R*....
-        ............
-        end
-    }}
-
-<!---->
-
-    \rawp .heya {{
-        4x6 !T !R
-        CURVE 0 2 1 2* 2 3 2 4 2 5*
-        ----
-        #---
-        -#--
-        --#-
-        -#--
-        --?-
-        grid
-        ..........
-        B~B~......
-        B~B~B~....
-        ..B~B~B~..
-        ..B~B~B~..
-        ..B~B~P3..
-        ....B~B~..
-        end
-    }}
-
-    →
-
-    .heya {{
-        4x6 !T !R
-        ----
-        #---
-        !#--
-        !!#-
-        !#--
-        !!~-
-        grid
-        ..........
-        B~B~......
-        B~B~B~....
-        ..B~B~B~..
-        ..B~B~B~..
-        ..B~B~B~..
-        ....B~B~..
-        end
-    }}
+<p>
+.heya {{
+    4x6 !T !R
+    CURVE 0 2 1 2* 2 3 2 4 2 5*
+    ----
+    #---
+    -#--
+    --#-
+    -#--
+    --?-
+    grid
+    ..........
+    B~B~......
+    B~B~B~....
+    ..B~B~B~..
+    ..B~B~B~..
+    ..B~B~P3..
+    ....B~B~..
+    end
+}}
+→
+.heya {{
+    4x6 !T !R
+    ----
+    #---
+    !#--
+    !!#-
+    !#--
+    !!~-
+    grid
+    ..........
+    B~B~......
+    B~B~B~....
+    ..B~B~B~..
+    ..B~B~B~..
+    ..B~B~B~..
+    ....B~B~..
+    end
+}}
+</p>
 
 <!-- If you shaded the gray cell, -->
 <!-- then whichever pool the starred gridpoint belongs to -->
@@ -495,13 +492,13 @@ disconnecting it from the rest of the puzzle.
 <!-- about unshaded cells being connected, -->
 <!-- so we're not allowed to shade it. -->
 
-<!--     \rawp .heya {{ -->
-<!--         6x4 !T !R -->
-<!--         ?????? -->
-<!--         ??#??? -->
-<!--         ?#?#?? -->
-<!--         ~???#? -->
-<!--     }} -->
+<!-- .heya {{ -->
+<!--     6x4 !T !R -->
+<!--     ?????? -->
+<!--     ??#??? -->
+<!--     ?#?#?? -->
+<!--     ~???#? -->
+<!-- }} -->
 
 To summarize,
 
@@ -552,15 +549,15 @@ to avoid running out of pools.
 This is confusing without an example.
 I'll demonstrate the technique on this puzzle (created by me).
 
-    \rawp .heya {{
-        10x8
-        https://puzz.link/p?heyawake/10/8/04081024480k98g000700o0071s00-132222
-        0 0 10x8 19
-        8 0 2x2 2
-        7 2 3x3 2
-        0 4 2x4 2
-        4 6 4x2 2
-    }}
+.heya {{
+    10x8
+    https://puzz.link/p?heyawake/10/8/04081024480k98g000700o0071s00-132222
+    0 0 10x8 19
+    8 0 2x2 2
+    7 2 3x3 2
+    0 4 2x4 2
+    4 6 4x2 2
+}}
 
 (Click the image to open the puzzle in a new tab
 if you want to try it yourself
@@ -618,107 +615,107 @@ Great!
 Concretely,
 I can now start by shading all the corners.
 
-    \rawp .heya {{
-        10x8
-        #-??????-#
-        -????????-
-        ??????????
-        ??????????
-        ??????????
-        ??????????
-        -????????-
-        #-??????-#
-        0 0 10x8 19
-        8 0 2x2 2
-        7 2 3x3 2
-        0 4 2x4 2
-        4 6 4x2 2
-    }}
+.heya {{
+    10x8
+    #-??????-#
+    -????????-
+    ??????????
+    ??????????
+    ??????????
+    ??????????
+    -????????-
+    #-??????-#
+    0 0 10x8 19
+    8 0 2x2 2
+    7 2 3x3 2
+    0 4 2x4 2
+    4 6 4x2 2
+}}
 
 I need to shade 2 cells in the top right room,
 and then some more cells will be unshaded
 because of the dynasty rules.
 
-    \rawp .heya {{
-        10x8
-        #-?????--#
-        -??????-#-
-        ????????--
-        ??????????
-        ??????????
-        ??????????
-        -????????-
-        #-??????-#
-        0 0 10x8 19
-        8 0 2x2 2
-        7 2 3x3 2
-        0 4 2x4 2
-        4 6 4x2 2
-    }}
+.heya {{
+    10x8
+    #-?????--#
+    -??????-#-
+    ????????--
+    ??????????
+    ??????????
+    ??????????
+    -????????-
+    #-??????-#
+    0 0 10x8 19
+    8 0 2x2 2
+    7 2 3x3 2
+    0 4 2x4 2
+    4 6 4x2 2
+}}
 
 Now there's only one way to fit enough shaded cells
 on the top and right edges.
 
-    \rawp .heya {{
-        10x8
-        #-#-#-#--#
-        --------#-
-        ????????--
-        ????????-#
-        ????????--
-        ????????-#
-        -???????--
-        #-??????-#
-        grid
-        ......................
-        ......................
-        ......................
-        ................R*....
-        ................P3....
-        ......................
-        ......................
-        ......................
-        ......................
-        end
-        0 0 10x8 19
-        8 0 2x2 2
-        7 2 3x3 2
-        0 4 2x4 2
-        4 6 4x2 2
-    }}
+.heya {{
+    10x8
+    #-#-#-#--#
+    --------#-
+    ????????--
+    ????????-#
+    ????????--
+    ????????-#
+    -???????--
+    #-??????-#
+    grid
+    ......................
+    ......................
+    ......................
+    ................R*....
+    ................P3....
+    ......................
+    ......................
+    ......................
+    ......................
+    end
+    0 0 10x8 19
+    8 0 2x2 2
+    7 2 3x3 2
+    0 4 2x4 2
+    4 6 4x2 2
+}}
 
 Both the star and the triangle have to connect to the ocean somehow.
 But I can only shade one more cell in the 2 room.
 So it has to be the middle one,
 so that both the star and the triangle can escape.
 
-    \rawp .heya {{
-        10x8
-        #-#-#-#--#
-        --------#-
-        ???????---
-        ??????-#-#
-        ???????---
-        ????????-#
-        -???????--
-        #-??????-#
-        grid
-        ......................
-        ......................
-        ..............O4......
-        ......................
-        ......................
-        ................M5....
-        ......................
-        ......................
-        ......................
-        end
-        0 0 10x8 19
-        8 0 2x2 2
-        7 2 3x3 2
-        0 4 2x4 2
-        4 6 4x2 2
-    }}
+.heya {{
+    10x8
+    #-#-#-#--#
+    --------#-
+    ???????---
+    ??????-#-#
+    ???????---
+    ????????-#
+    -???????--
+    #-??????-#
+    grid
+    ......................
+    ......................
+    ..............O4......
+    ......................
+    ......................
+    ................M5....
+    ......................
+    ......................
+    ......................
+    end
+    0 0 10x8 19
+    8 0 2x2 2
+    7 2 3x3 2
+    0 4 2x4 2
+    4 6 4x2 2
+}}
 
 Now there are some nearly-trapped pools,
 marked above,
@@ -728,33 +725,33 @@ shading the corresponding cell
 will create another nearly-trapped pool next to it,
 resulting in a chain of similar deductions.
 
-    \rawp .heya {{
-        10x8
-        #-#-#-#--#
-        --------#-
-        #-#-#-#---
-        -?-?-?-#-#
-        ???????---
-        ??????-#-#
-        -??????---
-        #-????-#-#
-        grid
-        ......................
-        ......................
-        ......................
-        ......................
-        ......................
-        ......................
-        ......................
-        ......................
-        ......................
-        end
-        0 0 10x8 19
-        8 0 2x2 2
-        7 2 3x3 2
-        0 4 2x4 2
-        4 6 4x2 2
-    }}
+.heya {{
+    10x8
+    #-#-#-#--#
+    --------#-
+    #-#-#-#---
+    -?-?-?-#-#
+    ???????---
+    ??????-#-#
+    -??????---
+    #-????-#-#
+    grid
+    ......................
+    ......................
+    ......................
+    ......................
+    ......................
+    ......................
+    ......................
+    ......................
+    ......................
+    end
+    0 0 10x8 19
+    8 0 2x2 2
+    7 2 3x3 2
+    0 4 2x4 2
+    4 6 4x2 2
+}}
 
 The remaining 2 rooms both already have one shaded cell in them,
 and to fit enough shaded cells on the edges,
@@ -762,95 +759,97 @@ one of them has to go in each of the 2 rooms.
 So I can mark all the non-edge cells in the 2 rooms
 as unshaded.
 
-    \rawp .heya {{
-        10x8
-        #-#-#-#--#
-        --------#-
-        #-#-#-#---
-        -?-?-?-#-#
-        ?-?????---
-        ?-????-#-#
-        --??------
-        #-????-#-#
-        grid
-        ......................
-        ......................
-        ......................
-        ......................
-        ......................
-        ..............O4O4....
-        ..R*........M5O4O4....
-        ............P3........
-        ......................
-        end
-        0 0 10x8 19
-        8 0 2x2 2
-        7 2 3x3 2
-        0 4 2x4 2
-        4 6 4x2 2
-    }}
+.heya {{
+    10x8
+    #-#-#-#--#
+    --------#-
+    #-#-#-#---
+    -?-?-?-#-#
+    ?-?????---
+    ?-????-#-#
+    --??------
+    #-????-#-#
+    grid
+    ......................
+    ......................
+    ......................
+    ......................
+    ......................
+    ..............O4O4....
+    ..R*........M5O4O4....
+    ............P3........
+    ......................
+    end
+    0 0 10x8 19
+    8 0 2x2 2
+    7 2 3x3 2
+    0 4 2x4 2
+    4 6 4x2 2
+}}
 
 Again,
 there are a bunch of marked pools that only have one escape route,
 and again they will lead to more of the same:
 
-    \rawp .heya {{
-        10x8
-        #-#-#-#--#
-        --------#-
-        #-#-#-#---
-        -#-?---#-#
-        --???-#---
-        #-??-#-#-#
-        --??------
-        #-??-#-#-#
-        grid
-        ......................
-        ......................
-        ........R*R*O4O4......
-        ........R*R*O4O4O4....
-        ............O4O4O4....
-        ..........O4O4O4O4....
-        ..........O4O4O4O4....
-        ......................
-        ......................
-        end
-        0 0 10x8 19
-        8 0 2x2 2
-        7 2 3x3 2
-        0 4 2x4 2
-        4 6 4x2 2
-    }}
+<p>
+.heya {{
+    10x8
+    #-#-#-#--#
+    --------#-
+    #-#-#-#---
+    -#-?---#-#
+    --???-#---
+    #-??-#-#-#
+    --??------
+    #-??-#-#-#
+    grid
+    ......................
+    ......................
+    ........R*R*O4O4......
+    ........R*R*O4O4O4....
+    ............O4O4O4....
+    ..........O4O4O4O4....
+    ..........O4O4O4O4....
+    ......................
+    ......................
+    end
+    0 0 10x8 19
+    8 0 2x2 2
+    7 2 3x3 2
+    0 4 2x4 2
+    4 6 4x2 2
+}}
+</p>
 
-<!---->
-
-    \rawp .heya {{
-        10x8
-        #-#-#-#--#
-        --------#-
-        #-#-#-#---
-        -#-#---#-#
-        ----#-#---
-        #-#--#-#-#
-        ---#------
-        #-#--#-#-#
-        grid
-        ......................
-        ......................
-        ......................
-        ......................
-        ......................
-        ......................
-        ......................
-        ......................
-        ......................
-        end
-        0 0 10x8 19
-        8 0 2x2 2
-        7 2 3x3 2
-        0 4 2x4 2
-        4 6 4x2 2
-    }}
+<p>
+.heya {{
+    10x8
+    #-#-#-#--#
+    --------#-
+    #-#-#-#---
+    -#-#---#-#
+    ----#-#---
+    #-#--#-#-#
+    ---#------
+    #-#--#-#-#
+    grid
+    ......................
+    ......................
+    ......................
+    ......................
+    ......................
+    ......................
+    ......................
+    ......................
+    ......................
+    end
+    0 0 10x8 19
+    8 0 2x2 2
+    7 2 3x3 2
+    0 4 2x4 2
+    4 6 4x2 2
+}}
+</p>
 
 Solved!
 
@@ -859,19 +858,19 @@ Solved!
 So that's how to apply penalty theory to the whole puzzle.
 But what if you only want to use it on a certain part?
 
-    \rawp .heya {{
-        10x9
-        https://puzz.link/p?heyawake/10/9/0g1k386h020k280g00600001v006080u0eg3ag1
-        0 0 0x0 14
-        6 0 4x4 -1
-        7 1 2x3 3
-        4 4 6x5 10
-        0 8 4x1 1
-        BORDER 2 6 2
-        BORDER 2 6 -1
-        BORDER 1 7 1
-        BORDER 1 7 -1
-    }}
+.heya {{
+    10x9
+    https://puzz.link/p?heyawake/10/9/0g1k386h020k280g00600001v006080u0eg3ag1
+    0 0 0x0 14
+    6 0 4x4 -1
+    7 1 2x3 3
+    4 4 6x5 10
+    0 8 4x1 1
+    BORDER 2 6 2
+    BORDER 2 6 -1
+    BORDER 1 7 1
+    BORDER 1 7 -1
+}}
 
 This puzzle has a big number in it,
 but if you try to apply penalty theory to the whole thing,
@@ -882,30 +881,30 @@ It turns out it is!
 Consider just the 14 room,
 and pretend the rest of the puzzle doesn't exist.
 
-    \rawp .heya {{
-        10x9
-        0 0 0x0 14
-        6 0 4x4 -1
-        7 1 2x3 3
-        4 4 6x5 10
-        0 8 4x1 1
-        BORDER 2 6 2
-        BORDER 2 6 -1
-        BORDER 1 7 1
-        BORDER 1 7 -1
-        grid
-        B~B~B~B~B~B~B~........
-        B~1o2o3o4o5o6o........
-        B~7o8o9oaoboco........
-        B~doeofogohoio........
-        B~jokolomonooo........
-        B~poqoroso............
-        B~touovowo............
-        B~xoyo................
-        B~zo..................
-        ......................
-        end
-    }}
+.heya {{
+    10x9
+    0 0 0x0 14
+    6 0 4x4 -1
+    7 1 2x3 3
+    4 4 6x5 10
+    0 8 4x1 1
+    BORDER 2 6 2
+    BORDER 2 6 -1
+    BORDER 1 7 1
+    BORDER 1 7 -1
+    grid
+    B~B~B~B~B~B~B~........
+    B~1o2o3o4o5o6o........
+    B~7o8o9oaoboco........
+    B~doeofogohoio........
+    B~jokolomonooo........
+    B~poqoroso............
+    B~touovowo............
+    B~xoyo................
+    B~zo..................
+    ......................
+    end
+}}
 
 Let's count:
 
@@ -932,117 +931,117 @@ Some pools
 are already almost trapped,
 so I'll start by placing the shaded cells that let them escape.
 
-    \rawp .heya {{
-        10x9
-        0 0 0x0 14
-        6 0 4x4 -1
-        7 1 2x3 3
-        4 4 6x5 10
-        0 8 4x1 1
-        BORDER 2 6 2
-        BORDER 2 6 -1
-        BORDER 1 7 1
-        BORDER 1 7 -1
-        grid
-        ......................
-        ......................
-        ............co........
-        ..........hoho........
-        ........mohoho........
-        ......roro............
-        ......roro............
-        ......................
-        ......................
-        ......................
-        end
-        ??????????
-        ??????????
-        ?????-????
-        ????-#-???
-        ???-?-????
-        ---#-?????
-        -#--??????
-        #-????????
-        --????????
-    }}
+.heya {{
+    10x9
+    0 0 0x0 14
+    6 0 4x4 -1
+    7 1 2x3 3
+    4 4 6x5 10
+    0 8 4x1 1
+    BORDER 2 6 2
+    BORDER 2 6 -1
+    BORDER 1 7 1
+    BORDER 1 7 -1
+    grid
+    ......................
+    ......................
+    ............co........
+    ..........hoho........
+    ........mohoho........
+    ......roro............
+    ......roro............
+    ......................
+    ......................
+    ......................
+    end
+    ??????????
+    ??????????
+    ?????-????
+    ????-#-???
+    ???-?-????
+    ---#-?????
+    -#--??????
+    #-????????
+    --????????
+}}
 
 Now some more pools
 (marked on the grid)
 are almost trapped,
 and I can also fill in the left edge.
 
-    \rawp .heya {{
-        10x9
-        0 0 0x0 14
-        6 0 4x4 -1
-        7 1 2x3 3
-        4 4 6x5 10
-        0 8 4x1 1
-        BORDER 2 6 2
-        BORDER 2 6 -1
-        BORDER 1 7 1
-        BORDER 1 7 -1
-        grid
-        ......................
-        ......................
-        ......................
-        ......................
-        ......................
-        ......................
-        ......................
-        ......................
-        ......................
-        ......................
-        end
-        #-???-????
-        --??-#-???
-        #-?-#--???
-        ---#-#-???
-        #-#---????
-        ---#-?????
-        -#--??????
-        #-????????
-        --????????
-    }}
+.heya {{
+    10x9
+    0 0 0x0 14
+    6 0 4x4 -1
+    7 1 2x3 3
+    4 4 6x5 10
+    0 8 4x1 1
+    BORDER 2 6 2
+    BORDER 2 6 -1
+    BORDER 1 7 1
+    BORDER 1 7 -1
+    grid
+    ......................
+    ......................
+    ......................
+    ......................
+    ......................
+    ......................
+    ......................
+    ......................
+    ......................
+    ......................
+    end
+    #-???-????
+    --??-#-???
+    #-?-#--???
+    ---#-#-???
+    #-#---????
+    ---#-?????
+    -#--??????
+    #-????????
+    --????????
+}}
 
 The rest is straightforward.
 
 Now it's time to look at the 10.
 Notice that some of its gridpoints are already part of the ocean.
 
-    \rawp .heya {{
-        10x9
-        0 0 0x0 14
-        6 0 4x4 -1
-        7 1 2x3 3
-        4 4 6x5 10
-        0 8 4x1 1
-        BORDER 2 6 2
-        BORDER 2 6 -1
-        BORDER 1 7 1
-        BORDER 1 7 -1
-        grid
-        ......................
-        ......................
-        ......................
-        ......................
-        ........B~B~B~1o2o3oB~
-        ........B~4o5o6o7o8oB~
-        ........B~9oaobocodoB~
-        ........eofogohoiojoB~
-        ........kolomonooopoB~
-        ........B~B~B~B~B~B~B~
-        end
-        #-#-#--???
-        -----#-???
-        #-#-#--???
-        ---#-#-???
-        #-#---????
-        ---#-?????
-        -#--??????
-        #-????????
-        --????????
-    }}
+.heya {{
+    10x9
+    0 0 0x0 14
+    6 0 4x4 -1
+    7 1 2x3 3
+    4 4 6x5 10
+    0 8 4x1 1
+    BORDER 2 6 2
+    BORDER 2 6 -1
+    BORDER 1 7 1
+    BORDER 1 7 -1
+    grid
+    ......................
+    ......................
+    ......................
+    ......................
+    ........B~B~B~1o2o3oB~
+    ........B~4o5o6o7o8oB~
+    ........B~9oaobocodoB~
+    ........eofogohoiojoB~
+    ........kolomonooopoB~
+    ........B~B~B~B~B~B~B~
+    end
+    #-#-#--???
+    -----#-???
+    #-#-#--???
+    ---#-#-???
+    #-#---????
+    ---#-?????
+    -#--??????
+    #-????????
+    --????????
+}}
 
 Counting again:
 
@@ -1095,39 +1094,39 @@ Now all the pools are accounted for,
 so I know that all pools must connect to the ocean *or the remaining pool*,
 and corners and edges are maximal.
 
-    \rawp .heya {{
-        10x9
-        0 0 0x0 14
-        6 0 4x4 -1
-        7 1 2x3 3
-        4 4 6x5 10
-        0 8 4x1 1
-        BORDER 2 6 2
-        BORDER 2 6 -1
-        BORDER 1 7 1
-        BORDER 1 7 -1
-        #-#-#--???
-        -----#-???
-        #-#-#--???
-        ---#-#-??-
-        #-#---??-#
-        ---#-#-?--
-        -#--?-??-#
-        #-??????--
-        --??????-#
-        grid
-        ......................
-        ......................
-        ......................
-        ......................
-        ......................
-        ................A*....
-        ......................
-        ........A*..A*..A*....
-        ......................
-        ..........A*..A*......
-        end
-    }}
+.heya {{
+    10x9
+    0 0 0x0 14
+    6 0 4x4 -1
+    7 1 2x3 3
+    4 4 6x5 10
+    0 8 4x1 1
+    BORDER 2 6 2
+    BORDER 2 6 -1
+    BORDER 1 7 1
+    BORDER 1 7 -1
+    #-#-#--???
+    -----#-???
+    #-#-#--???
+    ---#-#-??-
+    #-#---??-#
+    ---#-#-?--
+    -#--?-??-#
+    #-??????--
+    --??????-#
+    grid
+    ......................
+    ......................
+    ......................
+    ......................
+    ......................
+    ................A*....
+    ......................
+    ........A*..A*..A*....
+    ......................
+    ..........A*..A*......
+    end
+}}
 
 <!-- At this point, -->
 <!-- unfortunately I can't find an elegant argument for the next step, -->
@@ -1144,53 +1143,53 @@ all of the starred gridpoints have to touch a shaded cell within the 10 room
 which accounts for all 6 remaining shaded cells in the 10 room.
 So the 7th cell in the 5th row must be unshaded.
 
-    \rawp .heya {{
-        10x9
-        0 0 0x0 14
-        6 0 4x4 -1
-        7 1 2x3 3
-        4 4 6x5 10
-        0 8 4x1 1
-        BORDER 2 6 2
-        BORDER 2 6 -1
-        BORDER 1 7 1
-        BORDER 1 7 -1
-        #-#-#--???
-        -----#-???
-        #-#-#--???
-        ---#-#-??-
-        #-#----~-#
-        ---#-#-?--
-        -#--?-??-#
-        #-??????--
-        --??????-#
-    }}
+.heya {{
+    10x9
+    0 0 0x0 14
+    6 0 4x4 -1
+    7 1 2x3 3
+    4 4 6x5 10
+    0 8 4x1 1
+    BORDER 2 6 2
+    BORDER 2 6 -1
+    BORDER 1 7 1
+    BORDER 1 7 -1
+    #-#-#--???
+    -----#-???
+    #-#-#--???
+    ---#-#-??-
+    #-#----~-#
+    ---#-#-?--
+    -#--?-??-#
+    #-??????--
+    --??????-#
+}}
 
 Now the cell marked in gray must be shaded
 to avoid trapping too many pools,
 and you should be able to solve the puzzle from there!
 
-    \rawp .heya {{
-        10x9
-        0 0 0x0 14
-        6 0 4x4 -1
-        7 1 2x3 3
-        4 4 6x5 10
-        0 8 4x1 1
-        BORDER 2 6 2
-        BORDER 2 6 -1
-        BORDER 1 7 1
-        BORDER 1 7 -1
-        #-#-#-----
-        -----#--#-
-        #-#-#--#--
-        ---#-#--#-
-        #-#----#-#
-        ---#-#----
-        -#--#--#-#
-        #-----#---
-        --#-#--#-#
-    }}
+.heya {{
+    10x9
+    0 0 0x0 14
+    6 0 4x4 -1
+    7 1 2x3 3
+    4 4 6x5 10
+    0 8 4x1 1
+    BORDER 2 6 2
+    BORDER 2 6 -1
+    BORDER 1 7 1
+    BORDER 1 7 -1
+    #-#-#-----
+    -----#--#-
+    #-#-#--#--
+    ---#-#--#-
+    #-#----#-#
+    ---#-#----
+    -#--#--#-#
+    #-----#---
+    --#-#--#-#
+}}
 
 As promised,
 the original pool 2 does not connect to the ocean
@@ -1198,36 +1197,36 @@ through the 10 region,
 showing where the inefficiency of 1 pool comes from.
 
 <!--
-    \rawp .heya {{
-        8x7
-        https://puzz.link/p?heyawake/8/7/cg413830g4vg0104g200g1g3c11
-        2 0 1x1 1
-        3 3 1x1 1
-        6 4 1x1 1
-        6 0 2x7 3
-        0 1 6x6 12
-    }}
+.heya {{
+    8x7
+    https://puzz.link/p?heyawake/8/7/cg413830g4vg0104g200g1g3c11
+    2 0 1x1 1
+    3 3 1x1 1
+    6 4 1x1 1
+    6 0 2x7 3
+    0 1 6x6 12
+}}
 
 x
 
-    \rawp .heya {{
-        8x7
-        grid
-        ..................
-        B~1o2o3o4o5o6o....
-        B~7o8o9oaoboco....
-        B~doeofogohoio....
-        B~jokolomonooo....
-        B~poqorosotouo....
-        B~vowoxoyozo0o....
-        B~B~B~B~B~B~B~....
-        end
-        2 0 1x1 1
-        3 3 1x1 1
-        6 4 1x1 1
-        6 0 2x7 3
-        0 1 6x6 12
-    }}
+.heya {{
+    8x7
+    grid
+    ..................
+    B~1o2o3o4o5o6o....
+    B~7o8o9oaoboco....
+    B~doeofogohoio....
+    B~jokolomonooo....
+    B~poqorosotouo....
+    B~vowoxoyozo0o....
+    B~B~B~B~B~B~B~....
+    end
+    2 0 1x1 1
+    3 3 1x1 1
+    6 4 1x1 1
+    6 0 2x7 3
+    0 1 6x6 12
+}}
 -->
 
 ## appendix: an alternative counting method #counting2
@@ -1316,51 +1315,51 @@ used the **graph of unshaded cells** instead of gridpoints.
 This is just the thing you get if you draw a line
 between every touching pair of unshaded cells.
 
-    \rawp .heya {{
-        5x5
-        LOOPS #f00
-        ???#?
-        ?#???
-        ???#?
-        ??#??
-        ?????
-    }}
+.heya {{
+    5x5
+    LOOPS #f00
+    ???#?
+    ?#???
+    ???#?
+    ??#??
+    ?????
+}}
 
 Then,
 instead of pools,
 it talked about "fundamental loops".
 There are five of them in this example.
 
-    \rawp .heya {{
-        5x5
-        LOOPS #aaa
-        CLOOP #0ff 0 0 3 3
-        CLOOP #00f 1 2 3 3 2 1 3 3
-        CLOOP #f0f 0 2 2 2
-        CLOOP #0f0 0 3 2 2
-        CLOOP #80f 3 3 2 2
-        ???#?
-        ?#???
-        ???#?
-        ??#??
-        ?????
-    }}
+.heya {{
+    5x5
+    LOOPS #aaa
+    CLOOP #0ff 0 0 3 3
+    CLOOP #00f 1 2 3 3 2 1 3 3
+    CLOOP #f0f 0 2 2 2
+    CLOOP #0f0 0 3 2 2
+    CLOOP #80f 3 3 2 2
+    ???#?
+    ?#???
+    ???#?
+    ??#??
+    ?????
+}}
 
 A loop is a path you can draw along these lines
 that starts and ends at the same place.
 
 But why doesn't this one count?
 
-    \rawp .heya {{
-        5x5
-        LOOPS #aaa
-        CLOOP #f00 0 2 2 3 F 0 3 1 3
-        ???#?
-        ?#???
-        ???#?
-        ??#??
-        ?????
-    }}
+.heya {{
+    5x5
+    LOOPS #aaa
+    CLOOP #f00 0 2 2 3 F 0 3 1 3
+    ???#?
+    ?#???
+    ???#?
+    ??#??
+    ?????
+}}
 
 That's what "fundamental" means:
 the red loop is just a combination of the pink loop and the green loop.
@@ -1402,24 +1401,23 @@ For all of these,
 
 ### puzzle 1
 
-    \rawp .heya {{
-        5x5
-        https://puzz.link/p?heyawake/5/5/16cge00e05
-        0 0 5x5 0
-        1 1 3x3 5
-    }}
-
-    .heya {{
-        5x5
-        SPOILER
-        -----
-        -#-#-
-        --#--
-        -#-#-
-        -----
-        0 0 5x5 0
-        1 1 3x3 5
-    }}
+.heya {{
+    5x5
+    https://puzz.link/p?heyawake/5/5/16cge00e05
+    0 0 5x5 0
+    1 1 3x3 5
+}}
+.heya {{
+    5x5
+    SPOILER
+    -----
+    -#-#-
+    --#--
+    -#-#-
+    -----
+    0 0 5x5 0
+    1 1 3x3 5
+}}
 
 *Region to apply penalty to*: <span class='spoiler'>the 5 room</span>
 
@@ -1429,31 +1427,30 @@ For all of these,
 
 ### puzzle 2
 
-    \rawp .heya {{
-        6x6
-        https://puzz.link/p?heyawake/6/6/1157110e7k8071211
-        0 0 5x6 7
-        5 0 1x3 1
-        0 2 3x1 2
-        3 3 1x1 1
-        5 3 1x3 1
-    }}
-
-    .heya {{
-        6x6
-        SPOILER
-        #-#--#
-        ----#-
-        #-#---
-        -#-#-#
-        ------
-        #-#-#-
-        0 0 5x6 7
-        5 0 1x3 1
-        0 2 3x1 2
-        3 3 1x1 1
-        5 3 1x3 1
-    }}
+.heya {{
+    6x6
+    https://puzz.link/p?heyawake/6/6/1157110e7k8071211
+    0 0 5x6 7
+    5 0 1x3 1
+    0 2 3x1 2
+    3 3 1x1 1
+    5 3 1x3 1
+}}
+.heya {{
+    6x6
+    SPOILER
+    #-#--#
+    ----#-
+    #-#---
+    -#-#-#
+    ------
+    #-#-#-
+    0 0 5x6 7
+    5 0 1x3 1
+    0 2 3x1 2
+    3 3 1x1 1
+    5 3 1x3 1
+}}
 
 *Region to apply penalty to*: <span class='spoiler'>the whole puzzle</span>
 

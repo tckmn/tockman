@@ -9,19 +9,28 @@ class String
     def oneline!; self.strip!.gsub! "\n", ' '; self; end
     def dedent; self.sub(/^\n*/, '').gsub /^#{self.lines.filter{|x|x.size>1}.map{|x|x[/^\s*/]}.min}/, ''; end
     def dedent!; self.sub!(/^\n*/, '').gsub! /^#{self.lines.filter{|x|x.size>1}.map{|x|x[/^\s*/]}.min}/, ''; self; end
-    def rawify; self.gsub('&lt;', ?<).gsub('&gt;', ?>).gsub('&amp;', ?&); end
-    def rawify!; self.gsub!('&lt;', ?<).gsub!('&gt;', ?>).gsub!('&amp;', ?&); self; end
 end
 
 class Integer
     def ordinal; "#{self}#{(self % 100) / 10 != 1 && [nil, 'st', 'nd', 'rd'][self % 10] || 'th'}"; end
 end
 
+# TODO eliminate repetition in special#special
 def cmark s, base=nil
+    specstr = 'ldskjvwe'
+    specid = -1
+    speclist = []
+    s.gsub! /^[ \t]*\.(\w+)([ +])(!)?{{(.*?)\s*}}$/m do
+        speclist.push $&
+        "<!--#{specstr}#{specid+=1}-->"
+    end
+    s.gsub! /^[ \t]*\.(\w+)(?:([ +])(.*))?/ do
+        speclist.push $&
+        "<!--#{specstr}#{specid+=1}-->"
+    end
     Open3
         .capture2('cmark --unsafe', :stdin_data=>s)[0]
-        .gsub(/^[<>\w]+\\raw\s+(.*?)<\/[<>\/\w]+$/m){$1.rawify}
-        .gsub(/^[<>\w]+\\rawp\s+(.*?)<\/[<>\/\w]+$/m){"<p>\n#{$1.rawify}\n</p>"}
+        .gsub(/<!--#{specstr}(\d+)-->/){ speclist[$1.to_i] }
         .gsub('<img src="=', "<img src=\"#{base}/")
         .gsub(/(<h.)(>[^<]+) #(\w+)(?=<\/h)/, '\1 id="\3"\2')
 end

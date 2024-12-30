@@ -1,7 +1,7 @@
-    \raw .title Mechanics - a Slay the Spire puzzle
-    .desc hi
-    .subpage
-    .spire
+.title Mechanics - a Slay the Spire puzzle
+.desc hi
+.subpage
+.spire
 
 Here's the screenshots again:
 
