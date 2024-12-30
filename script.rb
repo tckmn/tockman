@@ -141,7 +141,7 @@ go('pre', 'md') do |md, name|
 end
 
 def blogtag tag
-    "<a class='tag' href='/blog/#{tag.sub ' ', ?-}'><span class='tag'>#{tag}</span></a>"
+    "<a class='tag' href='/blog/#{tag.gsub ' ', ?-}'><span class='tag'>#{tag}</span></a>"
 end
 def bloghtml post, full=true
     sub = "<div class='hsub'>#{post[:date]} #{post[:tags].map{|x|blogtag x}*''}</div>"
@@ -175,7 +175,7 @@ hint = "<p style='margin-bottom:-10px'>Click a tag to filter by posts with that 
 render 'blog', hint+blogshtml(posts), title: 'Blog', desc: 'A blog containing various ramblings on various topics.', style: 'blogindex'
 by_tag.each do |k,v|
     head = "<h1>posts tagged #{blogtag k}<span class='all'><a href='/blog'>view all »</a></span></h1><hr class='c'>"
-    render "blog/#{k.sub ' ', ?-}", head+blogshtml(v), title: "Posts tagged #{k}", desc: "All blog posts with the #{k} tag.", style: 'blogindex'
+    render "blog/#{k.gsub ' ', ?-}", head+blogshtml(v), title: "Posts tagged #{k}", desc: "All blog posts with the #{k} tag.", style: 'blogindex'
 end
 
 # rss
