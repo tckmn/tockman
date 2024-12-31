@@ -558,8 +558,8 @@ x.gsub(/[RUBYX*]/){"<span class='marble m#{$&.tr 'RUBYX*', 'rubyx'}'>#$&</span>"
 6.|build t3 file → 3 random|UUUU|
 7.|file t3 +4 capacity||****
 8.|build t3 +4 capacity|BBBB|U*
-9.|file t3 file → vp||U*****
-10.|build t3 file → vp|BBBB|UU**
+9.|file t3 file → VP||U*****
+10.|build t3 file → VP|BBBB|UU**
 11.|build t3 capacity|UUUU|
 }}
 </div>
