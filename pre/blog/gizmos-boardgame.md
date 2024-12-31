@@ -5,10 +5,10 @@
 [Gizmos](https://boardgamegeek.com/boardgame/246192/gizmos)
 is a nifty engine building game
 themed around collecting a bunch of little gadgets that work together.
-I would guess that about 0.2% of the people reading this
-are wondering about questions such as
-"what is the maximum theoretically possible score?"
-or "what is the fastest theoretically possible game?"
+I would guess about 0.2% of the people reading this
+wonder about questions like
+"what's the maximum theoretically possible score?"
+or "what's the fastest theoretically possible game?"
 To those 0.2% of people...
 I'm so glad you asked!
 [EXCERPT]
