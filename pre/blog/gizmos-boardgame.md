@@ -425,9 +425,9 @@ effectively tripling the VP number.
 So the grand total score
 is 35 + 96×3 = **323 points**!
 
-<!-- I'm almost completely confident that this is in fact the maximum achievable score, -->
-As for whether you can do better,
-most of the cards in the game are just worth a fixed number of points
+<!-- As for whether you can do better, -->
+I'm almost completely confident that this is in fact the maximum achievable score,
+since most of the cards in the game are just worth a fixed number of points
 and don't do anything funky with regards to scoring.
 There are a few other tier 3s that involve VP tokens,
 but they're all very clearly less efficient than the ones used here.
@@ -437,16 +437,41 @@ are the other two rainbow tier 3s,
 which give score equal to the number of marbles you have at the end of the game.
 But the maximum marble capacity you can achieve
 is tiny compared to the numbers we're getting here.
-So 323 is probably maybe surely the best you can do.
 
-## ... probably maybe surely?
+The one possible hitch is breaking the limit of four tier 3s with these cards:
 
-A few minutes after I originally posted this blog post,
-Della had an insight about how you can actually do better.
-I was taking it for granted that you can only ever have four tier 3s,
-because if you have four at the end of your turn the game ends.
-But...
-[more coming soon]
+<img src='t3research.jpg' width='122px'>
+
+They say,
+"whenever you build a card of this color,
+perform a research action".
+A research action allows you to build the card that you choose,
+so if the fourth tier 3 you build triggers this card,
+you can build a fifth tier 3 off of the research trigger!
+These cards are themselves tier 3s, though,
+so you still only get to build four *other* tier 3s.
+In particular,
+instead of building the two rainbows at the end,
+you can build...
+
+!small
+- the blue one as your third tier 3
+- the red one as your fourth tier 3, triggering the blue one so you can build...
+- the first rainbow as your fifth tier 3, triggering the red one so you can build...
+- the second rainbow as your sixth tier 3.
+
+Unfortunately,
+thanks to the rule that you can only trigger each gizmo once per turn,
+the bonus builds aren't worth VP,
+making them much worse.
+Also,
+this requires building a total of 21 marbles' worth of cards
+in one turn,
+so you have to sacrifice some VP cards in exchange for upgrades.
+I tried it,
+and it comes out to 313 points with one bonus build,
+or 311 points with two bonus builds,
+both worse than our 323.
 
 ## what's the fastest possible game?
 
@@ -644,11 +669,10 @@ starting with slight modifications to the questions in this post:
   I think the best is 15 turns for steps 3-4 with several ways to achieve it,
   such as:
 
-  <ol class='small'>
-  <li>build from file → pick pick</li>
-  <li>duplicator</li>
-  <li>duplicator</li>
-  </ol>
+  !small
+  1. build from file → pick pick
+  2. duplicator
+  3. duplicator
 
   (Another way that works is two build-from-files and a capacity upgrade.)
   If I did the counting right,

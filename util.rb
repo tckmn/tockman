@@ -33,6 +33,7 @@ def cmark s, base=nil
         .gsub(/<!--#{specstr}(\d+)-->/){ speclist[$1.to_i] }
         .gsub('<img src="=', "<img src=\"#{base}/")
         .gsub(/(<h.)(>[^<]+) #(\w+)(?=<\/h)/, '\1 id="\3"\2')
+        .gsub(/<p>!small<\/p>\s*<([uo])l>/, '<\1l class="small">')
 end
 
 def decache s, name, cache, ext
