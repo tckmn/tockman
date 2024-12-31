@@ -1,3 +1,4 @@
+require 'csv'
 require_relative 'util'
 
 def f_subpage x
@@ -49,6 +50,20 @@ def f_chess x, props
     "<div class='ctrl'><span>«</span><span><span>flip</span></span><span>»</span></div>" +
     "<div class='moves'>#{moves}</div>" +
     "</div></div><div style='clear:both'></div>"
+end
+
+def f_tbl data
+    meta, cells = data.split(/^-\n/, 2)
+    meta, cells = '', cells unless cells
+    props = {}
+    0 while meta.sub!(/^\.(\w+) (.*)\n/) { props[$1] = $2; '' }
+    "<table#{props['class'] ? " class=#{props['class']}" : ''}>
+        #{CSV.parse(cells, col_sep: ?|, nil_value: '').map{|row|
+            "<tr>#{row.map{|x|
+                "<td>#{meta.empty? ? x : eval(meta)}</td>"
+            }.join}</tr>"
+        }.join}
+    </table>"
 end
 
 def f_logictbl
