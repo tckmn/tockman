@@ -260,7 +260,8 @@ So that triples the value of each VP token.
 These four cards alone are worth 58 + 5 + 5 + 58 + 58 = 184 points!
 
 The other game-end condition is when anyone builds their sixteenth card,
-so we have twelve tier 1 and 2 cards to work with.
+so we have eleven tier 1 and 2 cards to work with
+(you start with a tier 0).
 Eight of them say VP on them:
 
 <img src='t1points.jpg' style='width:118px;vertical-align:middle'> <img src='t2points.jpg' style='width:112px;vertical-align:middle'>
@@ -372,13 +373,13 @@ this parenthetical contains both the words [NP](https://en.wikipedia.org/wiki/No
 but isn't about linguistics!)
 
 Anyway,
-that accounts for twelve of the sixteen allowed cards.
-What about the remaining four?
+that accounts for eleven of the sixteen allowed cards.
+What about the remaining three?
 Well,
 none of the other tier 1s or tier 2s have any interactions with score at all
 other than how much the card itself is worth,
 and the most expensive tier 2s are worth 3 points.
-So we just build any four of those.
+So we just build any three of those.
 At least one of them has to be a marble capacity upgrade,
 so that we can afford the 7-cost rainbow cards,
 but there are 3-point capacity upgrades,
@@ -403,12 +404,12 @@ Let's count:
   So we now have a total of **26 points** and **51 VP tokens**.
 
 * Then,
-  build any four 3-cost cards.
-  That's 12 total card points,
+  build any three 3-cost cards.
+  That's 9 total card points,
   and each build also gains 7 VP tokens --
   4 from the cards from the first step,
   and 3 from the cards from the second step.
-  We now have **38 points** and **79 VP tokens**.
+  We now have **35 points** and **72 VP tokens**.
 
 * Finally,
   build the two rainbow cards.
@@ -417,15 +418,16 @@ Let's count:
   yielding a total of **103 VP tokens**.
 
 When all is said and done,
-we have a total of 38 points from non-rainbow cards,
-and 103 VP tokens.
+we have a total of 35 points from non-rainbow cards,
+and 96 VP tokens.
 Each rainbow card is worth in points the number of VP tokens we have,
 effectively tripling the VP number.
 So the grand total score
-is 38 + 103×3 = **347 points**!
+is 35 + 96×3 = **323 points**!
 
-I'm almost completely confident that this is in fact the maximum achievable score,
-since most of the cards in the game are just worth a fixed number of points
+<!-- I'm almost completely confident that this is in fact the maximum achievable score, -->
+As for whether you can do better,
+most of the cards in the game are just worth a fixed number of points
 and don't do anything funky with regards to scoring.
 There are a few other tier 3s that involve VP tokens,
 but they're all very clearly less efficient than the ones used here.
@@ -435,6 +437,16 @@ are the other two rainbow tier 3s,
 which give score equal to the number of marbles you have at the end of the game.
 But the maximum marble capacity you can achieve
 is tiny compared to the numbers we're getting here.
+So 323 is probably maybe surely the best you can do.
+
+## ... probably maybe surely?
+
+A few minutes after I originally posted this blog post,
+Della had an insight about how you can actually do better.
+I was taking it for granted that you can only ever have four tier 3s,
+because if you have four at the end of your turn the game ends.
+But...
+[more coming soon]
 
 ## what's the fastest possible game?
 
@@ -584,18 +596,16 @@ starting with slight modifications to the questions in this post:
 
 * What's the maximum possible score
   without the "four tier 3s" end condition?
-  This is likely not actually that interesting,
-  since you probably just replace the four random tier 2s
-  with the four other tier 3s that have VP on them
+  The natural strategy is to replace the three random tier 2s
+  with other tier 3s that have VP on them
   (though then you run into marble capacity issues).
 
 * What's the fastest possible game
   without the "four tier 3s" end condition?
-  This one might be more interesting;
   I don't actually have a good guess
-  as to whether you go for the build-acceleration cards
+  as to whether you go for the build-acceleration cards,
   or if you just live in the tier 1s and 2s
-  and get to 1 build per turn super fast.
+  and race to 1 build per turn super fast.
 
   A similar question you could ask is:
   What's the fastest possible game using only tier 1 cards?
@@ -603,7 +613,7 @@ starting with slight modifications to the questions in this post:
 * What is the fastest max score game,
   and what is the max score fastest game?
   In other words,
-  restricted to having to achieve 347 points,
+  restricted to having to achieve 323 points,
   how fast can you go;
   and restricted to having to win in 11 turns,
   how high can you score?
@@ -626,26 +636,23 @@ starting with slight modifications to the questions in this post:
   it's impossible to do anything faster in the first two steps,
   since the cards you need to build are forced
   and none of them allow you to speed up.
-  So the optimization entirely hinges on which four cards you pick in step 3,
+  So the optimization entirely hinges on which three cards you pick in step 3,
   keeping in mind that you need some way to afford a 7-cost with the default 5 capacity.
   This can be either a capacity upgrade or two duplicators,
   and after trying all the reasonable permutations
   (keeping in mind that you *must* build every card from file),
-  I think the best is 16 turns for steps 3-4 with many ways to achieve it,
+  I think the best is 15 turns for steps 3-4 with several ways to achieve it,
   such as:
 
   <ol class='small'>
   <li>build from file → pick pick</li>
   <li>duplicator</li>
-  <li>build from file → pick pick (of same color as duplicator)</li>
   <li>duplicator</li>
   </ol>
 
-  (Other ways that work are build-from-file/build-from-file/duplicator/capacity,
-  or swapping the order of the middle two.)
-
+  (Another way that works is two build-from-files and a capacity upgrade.)
   If I did the counting right,
-  I believe that gets 347 points in **52 turns**.
+  I believe that gets 323 points in **51 turns**.
 
 * What's the smallest number of turns it takes to build the entire deck
   (assuming the game never ends)?
