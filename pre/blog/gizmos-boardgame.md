@@ -415,7 +415,7 @@ Let's count:
   build the two rainbow cards.
   Since a rainbow build counts as a build trigger of every color,
   each one gains 12 VP tokens,
-  yielding a total of **103 VP tokens**.
+  yielding a total of **96 VP tokens**.
 
 When all is said and done,
 we have a total of 35 points from non-rainbow cards,
