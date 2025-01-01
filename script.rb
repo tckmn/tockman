@@ -143,22 +143,27 @@ end
 def blogtag tag
     "<a class='tag' href='/blog/#{tag.gsub ' ', ?-}'><span class='tag'>#{tag}</span></a>"
 end
-def bloghtml post, full=true
-    sub = "<div class='hsub'>#{post[:date]} #{post[:tags].map{|x|blogtag x}*''}</div>"
-    full ? "<h2><a href='/blog/#{post[:name]}'>#{post[:title]}</a></h2>#{sub}#{post[:excerpt]}" : sub
+def bloghtml post, full
+    before = if full
+                 "<h2><a href='/blog/#{post[:name]}'>#{post[:title]}</a></h2>"
+             else
+                 "<h1>#{post[:title]}</h1>"
+             end
+    "#{before}<div class='hsub'>#{post[:date]} #{post[:tags].map{|x|blogtag x}*''}</div>#{post[:excerpt] if full}"
 end
 def blogshtml pa
-    pa.sort_by{|x|x[:date]}.reverse.map{|x|bloghtml x}.join
+    pa.sort_by{|x|x[:date]}.reverse.map{|x|bloghtml x, true}.join
 end
 
 posts = []
 by_tag = Hash.new{|h,k| h[k]=[]}
 go('pre/blog', 'md') do |html, name|
-    content = cmark html.lines.drop(2).join.sub('[EXCERPT]', ''), "/blog/#{name}"
+    real = html.lines.drop(4).join
     date, tags = html.lines.first.chomp.split ' // '
     tags = tags.split ', '
     title = html.lines[2][2..-1].chomp
-    excerpt = cmark html.lines.drop(4).join.sub(/\[EXCERPT\].*/m, ''), "/blog/#{name}"
+    excerpt = cmark real.sub(/\[EXCERPT\].*/m, ''), "/blog/#{name}"
+    content = cmark real.sub('[EXCERPT]', ''), "/blog/#{name}"
 
     post = { name: name, date: date, tags: tags, title: title, excerpt: excerpt }
 
@@ -167,7 +172,7 @@ go('pre/blog', 'md') do |html, name|
         tags.each do |tag| by_tag[tag].push post; end
     end
 
-    render "blog/#{name}", content.sub('</h1>', "\\0#{bloghtml post, false}") + "\n.comments #{name}", title: title, desc: excerpt.unhtml.oneline
+    render "blog/#{name}", "#{bloghtml post, false}\n#{content}\n.comments #{name}", title: title, desc: excerpt.unhtml.oneline
 end
 
 # index pages
