@@ -149,7 +149,14 @@ def bloghtml post, full
              else
                  "<h1>#{post[:title]}</h1>"
              end
-    "#{before}<div class='hsub'>#{post[:date]} #{post[:tags].map{|x|blogtag x}*''}</div>#{post[:excerpt] if full}"
+    lendesc = case post[:words]
+              when 3000.. then 'very long'
+              when 2000.. then 'long'
+              when 1000.. then 'medium'
+              when 400.. then 'short'
+              else 'very short'
+              end
+    "<div class='hsup'>#{before}<span>#{post[:date].split[0]}</span></div><div class='hsub'><span class='len len#{lendesc.split.join}'><span>#{lendesc}</span> (#{post[:words]/10*10} words)</span> #{post[:tags].map{|x|blogtag x}*''}</div>#{post[:excerpt] if full}"
 end
 def blogshtml pa
     pa.sort_by{|x|x[:date]}.reverse.map{|x|bloghtml x, true}.join
@@ -159,13 +166,15 @@ posts = []
 by_tag = Hash.new{|h,k| h[k]=[]}
 go('pre/blog', 'md') do |html, name|
     real = html.lines.drop(4).join
+
     date, tags = html.lines.first.chomp.split ' // '
     tags = tags.split ', '
     title = html.lines[2][2..-1].chomp
     excerpt = cmark real.sub(/\[EXCERPT\].*/m, ''), "/blog/#{name}"
     content = cmark real.sub('[EXCERPT]', ''), "/blog/#{name}"
+    words = content.unhtml.split.size
 
-    post = { name: name, date: date, tags: tags, title: title, excerpt: excerpt }
+    post = { name:, date:, tags:, title:, excerpt:, content:, words: }
 
     unless tags.include? 'draft'
         posts.push post

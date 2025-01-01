@@ -101,10 +101,26 @@ span.tag {
 a.tag, a.tag:visited {
     color: #d8d8d8;
     text-decoration: none;
+    display: inline-block;
+}
+div.hsup {
+    width: 100%;
+    display: flex;
+    gap: 1rem;
+    > h1, > h2 { flex: 1; margin: 0; }
+    > span { font-size: 16px; line-height: 2; }
 }
 div.hsub {
     font-size: 16px;
     margin-bottom: 50px;
+    > .len {
+        > span { font-weight: bold; }
+        &.lenverylong  { color: #df5353; }
+        &.lenlong      { color: #c86700; }
+        &.lenmedium    { color: #bfaa00; }
+        &.lenshort     { color: #3ba400; }
+        &.lenveryshort { color: #4ace3f; }
+    }
 }
 
 /* special.rb */
