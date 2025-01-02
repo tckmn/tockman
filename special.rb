@@ -1,4 +1,5 @@
 require 'csv'
+require 'digest'
 require_relative 'util'
 
 def f_subpage x
@@ -313,6 +314,21 @@ def f_heya puz
     s += "</a>" if link
     s += "</svg>"
     s
+end
+
+def f_ly x
+    outname = "/img/ly/#{Digest::MD5.hexdigest x}.svg"
+    unless File.exists? $target+outname
+        tmpdir = `mktemp -d`.chomp
+        File.write "#{tmpdir}/tmp.ly", '\version "2.24.3"'+?\n+x
+        %x{
+        lilypond --svg -dcrop -o #{tmpdir} #{tmpdir}/tmp.ly
+        mv #{tmpdir}/tmp.cropped.svg #{$target+outname}
+        rm #{tmpdir}/tmp.ly #{tmpdir}/tmp.svg
+        rmdir #{tmpdir}
+        }
+    end
+    "<img src=#{outname} style='background-color:white;padding:5px'>"
 end
 
 @comments = eval File.read('comments')
