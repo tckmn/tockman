@@ -20,13 +20,13 @@ def cmark s, base=nil
     specstr = 'ldskjvwe'
     specid = -1
     speclist = []
-    s.gsub! /^[ \t]*\.(\w+)([ +])(!)?{{(.*?)\s*}}$/m do
+    s.gsub! /(^[ \t]*)\.(\w+)([ +])(!)?{{(.*?)\s*}}$/m do
         speclist.push $&
-        "<!--#{specstr}#{specid+=1}-->"
+        "#$1<!--#{specstr}#{specid+=1}-->"
     end
-    s.gsub! /^[ \t]*\.(\w+)(?:([ +])(.*))?/ do
+    s.gsub! /(^[ \t]*)\.(\w+)(?:([ +])(.*))?/ do
         speclist.push $&
-        "<!--#{specstr}#{specid+=1}-->"
+        "#$1<!--#{specstr}#{specid+=1}-->"
     end
     Open3
         .capture2('cmark --unsafe', :stdin_data=>s)[0]
