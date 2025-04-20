@@ -63,6 +63,10 @@ you may be interested in
 <!-- or <a href='#script' id='scriptret'>appendix B: what would the script be</a>, -->
 <!-- or <a href='#townroles' id='townrolesret'>appendix C: what if town had roles</a>.) -->
 
+We'll assume that demons can secretly communicate at any time,
+so they can perfectly coordinate any strategy
+and won't accidentally target the same townsfolk.
+
 Anyway,
 what's a sensible guess for what might be fair?
 I dunno, how about, say, 2 demons, 8 town.
@@ -772,16 +776,20 @@ I'm sure anyone who's played a lot of Clocktower
 can think of several ways,
 but here's all the ways I can think of
 (I'm sure there's more),
-all of which (except Legion)
+all of which (except Legion/Riot)
 would require extremely questionable player, storyteller, and/or script choices:
 
-* [Legion](https://wiki.bloodontheclocktower.com/Legion) (but these demons don't kill, obviously)
+* [Legion](https://wiki.bloodontheclocktower.com/Legion)/[Riot](https://wiki.bloodontheclocktower.com/Riot) (but these demons don't kill, obviously)
 * [Pit-Hag](https://wiki.bloodontheclocktower.com/Pit-Hag) creating a demon and the ST inexplicably not killing the old one
-* [Pit-Hag](https://wiki.bloodontheclocktower.com/Pit-Hag) or [Plague Doctor](https://wiki.bloodontheclocktower.com/Plague_Doctor) or [Engineer](https://wiki.bloodontheclocktower.com/Engineer) or [Hatter](https://wiki.bloodontheclocktower.com/Hatter) creating a [Summoner](https://wiki.bloodontheclocktower.com/Summoner)
+* [Pit-Hag](https://wiki.bloodontheclocktower.com/Pit-Hag) or [Plague Doctor](https://wiki.bloodontheclocktower.com/Plague_Doctor) or [Engineer](https://wiki.bloodontheclocktower.com/Engineer) or [Hatter](https://wiki.bloodontheclocktower.com/Hatter) or [Apprentice](https://wiki.bloodontheclocktower.com/Apprentice) creating a [Summoner](https://wiki.bloodontheclocktower.com/Summoner)
+* [Barista](https://wiki.bloodontheclocktower.com/Barista) duplicating [Summoner](https://wiki.bloodontheclocktower.com/Summoner)
 * [Pit-Hag](https://wiki.bloodontheclocktower.com/Pit-Hag) or [Philosopher](https://wiki.bloodontheclocktower.com/Philosopher) or [Cannibal](https://wiki.bloodontheclocktower.com/Cannibal) or [Pixie](https://wiki.bloodontheclocktower.com/Pixie) creating an [Alchemist](https://wiki.bloodontheclocktower.com/Alchemist)-[Summoner](https://wiki.bloodontheclocktower.com/Summoner)
+* [Recluse](https://wiki.bloodontheclocktower.com/Recluse) swapped by [Barber](https://wiki.bloodontheclocktower.com/Barber) into [Summoner](https://wiki.bloodontheclocktower.com/Summoner) (or a demon directly, depending on rules interpretations)
 * [Recluse](https://wiki.bloodontheclocktower.com/Recluse) picked by [Snake Charmer](https://wiki.bloodontheclocktower.com/Snake_Charmer)
-* [Recluse](https://wiki.bloodontheclocktower.com/Recluse) death caught by [Scarlet Woman](https://wiki.bloodontheclocktower.com/Scarlet_Woman)
 * [Recluse](https://wiki.bloodontheclocktower.com/Recluse) becoming a (good) demon after [Hatter](https://wiki.bloodontheclocktower.com/Hatter) death
+* [Recluse](https://wiki.bloodontheclocktower.com/Recluse) death caught by [Scarlet Woman](https://wiki.bloodontheclocktower.com/Scarlet_Woman)
+* [Al-Hadikhia](https://wiki.bloodontheclocktower.com/Al-Hadikhia) or [Shabaloth](https://wiki.bloodontheclocktower.com/Shabaloth) death caught by [Scarlet Woman](https://wiki.bloodontheclocktower.com/Scarlet_Woman) who then picks them
+* [Professor](https://wiki.bloodontheclocktower.com/Professor) resurrecting a [Boffin](https://wiki.bloodontheclocktower.com/Boffin)-[Alchemist](https://wiki.bloodontheclocktower.com/Alchemist)-[Spy](https://wiki.bloodontheclocktower.com/Spy) dead demon (via [Scarlet Woman](https://wiki.bloodontheclocktower.com/Scarlet_Woman) or [Fang Gu](https://wiki.bloodontheclocktower.com/Fang_Gu) or [Imp](https://wiki.bloodontheclocktower.com/Imp))
 * [insert arbitrary [Amnesiac](https://wiki.bloodontheclocktower.com/Amnesiac) nonsense]
 * [insert arbitrary [Wizard](https://wiki.bloodontheclocktower.com/Wizard) nonsense]
 
