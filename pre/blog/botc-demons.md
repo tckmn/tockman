@@ -788,8 +788,10 @@ would require extremely questionable player, storyteller, and/or script choices:
 * [Recluse](https://wiki.bloodontheclocktower.com/Recluse) picked by [Snake Charmer](https://wiki.bloodontheclocktower.com/Snake_Charmer)
 * [Recluse](https://wiki.bloodontheclocktower.com/Recluse) becoming a (good) demon after [Hatter](https://wiki.bloodontheclocktower.com/Hatter) death
 * [Recluse](https://wiki.bloodontheclocktower.com/Recluse) death caught by [Scarlet Woman](https://wiki.bloodontheclocktower.com/Scarlet_Woman)
+* [Zombuul](https://wiki.bloodontheclocktower.com/Zombuul) death caught by [Scarlet Woman](https://wiki.bloodontheclocktower.com/Scarlet_Woman) (but then one registers as dead)
 * [Al-Hadikhia](https://wiki.bloodontheclocktower.com/Al-Hadikhia) or [Shabaloth](https://wiki.bloodontheclocktower.com/Shabaloth) death caught by [Scarlet Woman](https://wiki.bloodontheclocktower.com/Scarlet_Woman) who then picks them
 * [Professor](https://wiki.bloodontheclocktower.com/Professor) resurrecting a [Boffin](https://wiki.bloodontheclocktower.com/Boffin)-[Alchemist](https://wiki.bloodontheclocktower.com/Alchemist)-[Spy](https://wiki.bloodontheclocktower.com/Spy) dead demon (via [Scarlet Woman](https://wiki.bloodontheclocktower.com/Scarlet_Woman) or [Fang Gu](https://wiki.bloodontheclocktower.com/Fang_Gu) or [Imp](https://wiki.bloodontheclocktower.com/Imp))
+* [Alchemist](https://wiki.bloodontheclocktower.com/Alchemist) or [Plague Doctor](https://wiki.bloodontheclocktower.com/Plague_Doctor) or [Apprentice](https://wiki.bloodontheclocktower.com/Apprentice) creating a second [Scarlet Woman](https://wiki.bloodontheclocktower.com/Scarlet_Woman) with one already in play
 * [insert arbitrary [Amnesiac](https://wiki.bloodontheclocktower.com/Amnesiac) nonsense]
 * [insert arbitrary [Wizard](https://wiki.bloodontheclocktower.com/Wizard) nonsense]
 
