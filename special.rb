@@ -331,6 +331,14 @@ def f_ly x
     "<img src=#{outname} style='background-color:white;padding:5px'>"
 end
 
+def f_botc x, props
+    props.style.add 'botc'
+    abilities = File.readlines('botc').map(&:chomp).each_slice(2).to_h
+    "<table class='botc'>" + x.split.map{|char|
+        "<tr><td><a href='https://wiki.bloodontheclocktower.com/#{char}'><img src='/img/botc/Icon_#{char.downcase.gsub /[^a-z]/, ''}.png'></a></td><td>#{char.gsub ?_, ?\s}</td><td>#{abilities[char]}</td></tr>"
+    }.join + "</table>"
+end
+
 @comments = eval File.read('comments')
 
 def f_comments x, props
