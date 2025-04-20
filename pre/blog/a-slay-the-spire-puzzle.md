@@ -9,6 +9,11 @@ What do you do?
 [EXCERPT]
 
 .spire
+.script+collapsible
+.style {{
+    main li { margin: 0; span.desc { color: #888; font-size: 12pt; } }
+    main .collapsible ul { margin: 0; }
+}}
 
 (This puzzle is probably not particularly accessible
 to readers who haven't played Slay the Spire,
@@ -398,11 +403,7 @@ these probabilities are extremely obnoxious to compute.
 I've hidden the details for your sake,
 but you can still see them if you really want to.
 
-<div id='obnexpand'>
-show/hide details
-</div>
-
-<div id='obnoxious' class='obhidden'>
+<div class='collapsible'><div>show/hide details</div><div>
 
 Alright,
 so let's count how many ways there are to draw something good
@@ -494,7 +495,7 @@ Which gives the output:
     57536615629709323/31223557615332361125
     0.0018427309385608227
 
-</div>
+</div></div>
 
 When all is said and done,
 it turns out the probability that you don't get an immediate infinite,
@@ -512,19 +513,3 @@ but still just above half!
 ## but why?
 
 idk math is fun
-
-<style>
-main li { margin: 0; }
-main li span.desc { color: #888; font-size: 12pt; }
-main #obnexpand { user-select: none; cursor: pointer; background-color: #383838; padding: 5px 20px; }
-main #obnoxious { background-color: #282828; padding: 10px 20px; }
-main #obnoxious ul { margin: 0; }
-main #obnoxious.obhidden { display: none; }
-</style>
-<script>
-window.addEventListener('load', () => {
-    const oe = document.getElementById('obnexpand');
-    const ob = document.getElementById('obnoxious');
-    oe.addEventListener('click', e => ob.classList.toggle('obhidden'));
-});
-</script>
