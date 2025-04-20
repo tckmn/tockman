@@ -488,8 +488,16 @@ def spire html
     }
 end
 
+def html2katex html
+    # TODO what a terrible hack
+    html.gsub(/([id])<code>(.+?)<\/code>/) {
+        katex $2, ($1 == ?d)
+    }
+end
+
 def special_post s, props
     [(s = squares s), props.style.add('squares')] if props.squares
     [(s = spire s), props.style.add('spire'), props.script.add('spire')] if props.spire
+    [(s = html2katex s), props.style.add('katex')] if props.katex
     s
 end

@@ -36,10 +36,14 @@ def cmark s, base=nil
         .gsub(/<p>!small<\/p>\s*<([uo])l>/, '<\1l class="small">')
 end
 
+def katex s, display=false
+    Open3.capture2('npx katex -T' + (display ? ' -d' : ''), :stdin_data=>s)[0]
+end
+
 def decache s, name, cache, ext
     puts "WARNING: #{cache[name]}.#{ext} already cached" if cache.include? name
-    cache[name] = name + ?- + crc(s)
-    fname = "#{$target}/#{ext}/#{cache[name]}.#{ext}"
+    cache[name] = ext + ?/ + name + ?- + crc(s)
+    fname = "#{$target}/#{cache[name]}.#{ext}"
     $rendered.add fname
     File.write fname, s
     name

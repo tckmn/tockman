@@ -22,6 +22,7 @@ class Props
         @noindex = false
         @spire = false
         @squares = false
+        @katex = false
     end
 
     attr_accessor *Props.new('').instance_variables.map{|x| x[1..-1]}
@@ -80,7 +81,7 @@ def render fname, html, **props
         .sub('<!--*-->', html)
         .gsub('<!--t-->', "#{flags.title}#{flags.title && ' - '}")
         .gsub('<!--t*-->', (flags.title || '').split(' - ')[0] || '')
-        .gsub('<!--s-->', flags.script.sort.map{|x|"<script src='/js/#{$js[x]}.js'></script>"}.join + (['global'] + flags.style.sort).map{|x| "<link rel='stylesheet' href='/css/#{$css[x]}.css'>"}.join)
+        .gsub('<!--s-->', flags.script.sort.map{|x|"<script src='/#{$js[x]}.js'></script>"}.join + (['global'] + flags.style.sort).map{|x| "<link rel='stylesheet' href='/#{$css[x]}.css'>"}.join)
         .gsub('<!--d-->', CGI.escapeHTML((flags.desc || "The #{flags.title} page on Andy Tockman's website.").unhtml.oneline))
         .gsub('<!--u-->', fname)
         .sub('<main>', 'main'.addclass(flags.mainclass))
@@ -118,7 +119,7 @@ def makerss fname, title, link, desc, items, ifunc
     end
 end
 
-$css = {}
+$css = {'katex' => 'lib/katex/katex.min'}
 FileUtils.remove_dir "#{$target}/css"
 FileUtils.mkdir "#{$target}/css"
 go('pre/sass', 'sass') do |txt, name|
