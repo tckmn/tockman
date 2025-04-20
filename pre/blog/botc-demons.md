@@ -311,6 +311,7 @@ here are the numbers resulting in a fair game for each demon count:
 <tr><td>12</td> <td>5,044,564</td></tr>
 <tr><td>13</td> <td>14,909,790</td></tr>
 <tr><td>14</td> <td>43,794,249</td></tr>
+<tr><td>15</td> <td>127,947,288</td></tr>
 </table>
 
 These are the numbers that give town a slightly higher than 50% winrate,
@@ -701,7 +702,7 @@ But I would still be interested to see how the scale changes.
 In particular,
 we've seen many different growth rates
 for the appropriate number of town so far:
-approximately *3<sup>d</sup>* Undertakers for a fair game,
+approximately *d\*e<sup>d</sup>* Undertakers for a fair game,
 approximately *d³* 1-Jugglers for a guaranteed win,
 and approximately *d²* Village Idiots for a guaranteed win.
 What do these look like?
