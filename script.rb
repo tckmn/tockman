@@ -18,6 +18,7 @@ class Props
         @mainclass = nil
         @title = nil
         @desc = nil
+        @image = nil
         @ksh = false
         @noindex = false
         @spire = false
@@ -75,6 +76,9 @@ def render fname, html, **props
 
     puts "WARNING: #{fname} lacks title" unless flags.title || fname.empty?
     puts "WARNING: #{fname} lacks desc" unless flags.desc
+    if flags.image && flags.image[0] != ?/
+        puts "WARNING: #{fname} has non-absolute image, repairing to #{flags.image = ?/+fname+?/+flags.image}"
+    end
 
     html = $template
         .sub(/(href='\/#{flags.section}')(?: class='([^']*)')?/, '\1 class=\'active \2\'')
@@ -83,6 +87,7 @@ def render fname, html, **props
         .gsub('<!--t*-->', (flags.title || '').split(' - ')[0] || '')
         .gsub('<!--s-->', flags.script.sort.map{|x|"<script src='/#{$js[x]}.js'></script>"}.join + (['global'] + flags.style.sort).map{|x| "<link rel='stylesheet' href='/#{$css[x]}.css'>"}.join)
         .gsub('<!--d-->', CGI.escapeHTML((flags.desc || "The #{flags.title} page on Andy Tockman's website.").unhtml.oneline))
+        .gsub('<!--i-->', flags.image || '/img/dp.png')
         .gsub('<!--u-->', fname)
         .sub('<main>', 'main'.addclass(flags.mainclass))
         .sub(/<div id='subheader'>.*?<\/div>/m, flags.ksh ? '' : '\0')
@@ -182,7 +187,7 @@ go('pre/blog', 'md') do |html, name|
         tags.each do |tag| by_tag[tag].push post; end
     end
 
-    render "blog/#{name}", "#{bloghtml post, false}\n#{content}\n.comments #{name}", title: title, desc: excerpt.unhtml.oneline
+    render "blog/#{name}", "#{bloghtml post, false}\n#{content}\n.comments #{name}", title: title, desc: excerpt.unhtml.oneline, image: (content.match(/<img\b[^>]*\bsrc=(['"])(.*?)\1/)||[])[2]
 end
 
 # index pages
