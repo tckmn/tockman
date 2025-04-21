@@ -339,6 +339,10 @@ def f_botc x, props
     }.join + "</table>"
 end
 
+def f_blog x
+    bloghtml $blog[x], true
+end
+
 @comments = eval File.read('comments')
 
 def f_comments x, props

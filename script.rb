@@ -138,36 +138,7 @@ go('pre/js', 'js') do |txt, name|
     js txt, name
 end
 
-go('pre') do |html, name|
-    render name, html
-end
-
-go('pre', 'md') do |md, name|
-    render name, cmark(md)
-end
-
-def blogtag tag
-    "<a class='tag' href='/blog/#{tag.gsub ' ', ?-}'><span class='tag'>#{tag}</span></a>"
-end
-def bloghtml post, full
-    before = if full
-                 "<h2><a href='/blog/#{post[:name]}'>#{post[:title]}</a></h2>"
-             else
-                 "<h1>#{post[:title]}</h1>"
-             end
-    lendesc = case post[:words]
-              when 3000.. then 'very long'
-              when 2000.. then 'long'
-              when 1000.. then 'medium'
-              when 400.. then 'short'
-              else 'very short'
-              end
-    "<div class='hsup'>#{before}<span>#{post[:date].split[0]}</span></div><div class='hsub'><span class='len len#{lendesc.split.join}'><span>#{lendesc}</span> (#{post[:words]/10*10} words)</span> #{post[:tags].map{|x|blogtag x}*''}</div>#{post[:excerpt] if full}"
-end
-def blogshtml pa
-    pa.sort_by{|x|x[:date]}.reverse.map{|x|bloghtml x, true}.join
-end
-
+$blog = {}
 posts = []
 by_tag = Hash.new{|h,k| h[k]=[]}
 go('pre/blog', 'md') do |html, name|
@@ -182,6 +153,7 @@ go('pre/blog', 'md') do |html, name|
 
     post = { name:, date:, tags:, title:, excerpt:, content:, words: }
 
+    $blog[name] = post
     unless tags.include? 'draft'
         posts.push post
         tags.each do |tag| by_tag[tag].push post; end
@@ -208,6 +180,15 @@ makerss('blog.xml',
              "https://tck.mn/blog/#{p[:name]}",
              p[:excerpt].gsub(/<[^>]*>/, '').chomp,
              p[:date]]})
+
+# main content (after blog so it can backref)
+go('pre') do |html, name|
+    render name, html
+end
+
+go('pre', 'md') do |md, name|
+    render name, cmark(md)
+end
 
 # puzzles
 def listtypes types

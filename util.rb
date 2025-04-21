@@ -76,3 +76,26 @@ def crc s
     end
     (~ret & 0xffffffff).to_s(16).rjust(8, ?0)
 end
+
+def blogtag tag
+    "<a class='tag' href='/blog/#{tag.gsub ' ', ?-}'><span class='tag'>#{tag}</span></a>"
+end
+def bloghtml post, full
+    before = if full
+                 "<h2><a href='/blog/#{post[:name]}'>#{post[:title]}</a></h2>"
+             else
+                 "<h1>#{post[:title]}</h1>"
+             end
+    lendesc = case post[:words]
+              when 3000.. then 'very long'
+              when 2000.. then 'long'
+              when 1000.. then 'medium'
+              when 400.. then 'short'
+              else 'very short'
+              end
+    cls = full ? ' excerpt' : ''
+    "<div class='hsup#{cls}'>#{before}<span>#{post[:date].split[0]}</span></div><div class='hsub#{cls}'><span class='len len#{lendesc.split.join}'><span>#{lendesc}</span> (#{post[:words]/10*10} words)</span> #{post[:tags].map{|x|blogtag x}*''}</div>#{post[:excerpt] if full}"
+end
+def blogshtml pa
+    pa.sort_by{|x|x[:date]}.reverse.map{|x|bloghtml x, true}.join
+end
