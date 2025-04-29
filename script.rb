@@ -149,7 +149,7 @@ go('pre/blog', 'md') do |html, name|
     title = html.lines[2][2..-1].chomp
     excerpt = cmark real.sub(/\[EXCERPT\].*/m, ''), "/blog/#{name}"
     content = cmark real.sub('[EXCERPT]', ''), "/blog/#{name}"
-    words = content.unhtml.split.size
+    words = content.gsub(/<!--nowd-->.*/m, '').unhtml.split.size  # this is such an ugly hack
 
     post = { name:, date:, tags:, title:, excerpt:, content:, words: }
 
