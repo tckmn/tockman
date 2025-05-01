@@ -128,3 +128,34 @@ that do a cool musical thing.
 
 Can you think of any other songs that do this?
 I would be interested to know!
+
+<!--nowd-->
+<!-- .ly {{
+  \version "2.24.3"
+  \score {
+    \new Staff \relative {
+      \key f \major
+      \numericTimeSignature
+      \time 4/4
+      | r2 f'8 g a4 |
+      \time 2/4
+      | <<
+        { \voiceOne \hideNotes a4 \unHideNotes
+          \tweak color #grey
+          \tweak Stem.color #grey
+          c4
+        }
+        \new Voice { \voiceTwo
+          \tweak color #grey
+          \tweak Stem.color #grey
+          c2
+        }
+      >> \oneVoice |
+      \time 4/4
+      | c2. f,4 | e4 r d'4. d8( | c2) r |
+    }
+    \addlyrics {
+      Yu -- me de (ta) (ta) ta -- ka -- ku ton -- da __
+    }
+  }
+}} -->
