@@ -164,6 +164,41 @@ window.addEventListener('load', () => {
         };
     });
 
+    anim(document.getElementById('home_food'), 600, elt => {
+        const gs = elt.getElementsByTagName('g'), gout = gs[2], gin = gs[3];
+        const ps = elt.getElementsByTagName('path'), pb1 = ps[0], pb2 = ps[1];
+        const randomize = obj => {
+            obj.x = Math.random()-0.5;
+            obj.y = 0.4;
+            obj.vx = Math.random()-0.5;
+            obj.vy = Math.random()-2;
+            obj.e.setAttribute('r', Math.random()*0.06+0.04);
+            obj.e.setAttribute('opacity', 0);
+            return obj;
+        };
+        const cs = [0,0,0].map(_ => {
+            const e = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+            e.setAttribute('class', 'secfill');
+            e.setAttribute('stroke', 'none');
+            e.setAttribute('mask', 'url(#foodmask)');
+            gs[1].appendChild(e);
+            return randomize({e: e});
+        });
+        return ts => {
+            const tt = ts*4*Math.PI;
+            gout.setAttribute('transform', `translate(${0.2*Math.cos(tt)-0.1} ${0.2*Math.sin(tt)})`);
+            gin.setAttribute('transform', `translate(1 1) rotate(${tw(30, 40, Math.sin(Math.PI/6+tt))}) translate(-1 -1)`);
+            const bowl = `translate(1 1) rotate(${tw(-3, 3, Math.sin(Math.PI/6+tt/2))}) translate(-1 -1)`;
+            pb1.setAttribute('transform', bowl);
+            pb2.setAttribute('transform', bowl);
+            if (ts === 1) cs.forEach(randomize);
+            else for (const c of cs) {
+                c.e.setAttribute('opacity', 1-ts);
+                c.e.setAttribute('transform', `translate(${1+c.x+ts*c.vx} ${1+c.y+ts*c.vy+ts*ts})`);
+            }
+        };
+    });
+
 });
 
 function anim(elt, dur, fn) {
