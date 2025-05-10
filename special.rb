@@ -339,6 +339,50 @@ def f_botc x, props
     }.join + "</table>"
 end
 
+def f_bundt x, props
+    props.style.add 'bundt'
+    props.script.add 'bundt'
+    imglist = Dir['tckmn.github.io/food/bundt/pics/IMG_*.jpg']
+    smalls = imglist.map{|i| i.split(?/)[-1].sub 'IMG', 'small' }
+    allimgs = []
+    ret = File.readlines('/home/tckmn/db/fdb/food').slice_before(/BUNDT/).drop(1).map{|x|
+        date = x[0].split[1]
+        comments, *rest = *x.drop(1).slice_after("\n")
+        imgs = []
+        comments = comments[0...comments.size-1].join.gsub(/IMG_\d+_\d+\.jpg/) {
+            allimgs.push $&
+            imgs.push $&
+            ''
+        }
+        name, url = rest[0][0].split(/ (?=http)/)
+        "<div class='bundt'>
+            <div class='btitle'><a href='#{url}'>#{name.split(' // ')[0]}</a><span>#{date}</span></div>
+            <div class='bimg' data-gallery='#{(thisimgs = smalls.dup - smalls.reject!{|i|
+                y1, m1, d1 = i.match(/small_(\d\d\d\d)(\d\d)(\d\d)/).to_a.drop(1).map &:to_i
+                y2, m2, d2 = date.split(?-).map &:to_i
+                y1 < y2 || y1 <= y2 && (m1 < m2 || m1 <= m2 && d1 <= d2)
+            }).join ' '}'>#{imgs.map{|i| "<img src='pics/#{i.sub 'IMG', 'icon'}'>" }.join} <a href='#'>more (#{thisimgs.size}) »</a></div>
+            <div class='bcomm'>#{comments}</div>
+        </div>"
+    }
+    imglist.each do |x|
+        small = x.sub 'IMG', 'small'
+        unless File.exists? small
+            puts "making #{small}"
+            `magick #{x} -resize 30% -quality 50% #{small}`
+        end
+        if allimgs.include? x.split(?/)[-1]
+            icon = x.sub 'IMG', 'icon'
+            unless File.exists? icon
+                puts "making #{icon}"
+                `magick #{x} -resize 12.5% -quality 50% #{icon}`
+            end
+        end
+    end
+    $bundtcount = ret.size
+    ret.join + "<div id='bundtgallery'><span>close <span>×</span></span><div><div>◀</div><img><div>▶</div></div></div>"
+end
+
 def f_blog x
     bloghtml $blog[x], true
 end

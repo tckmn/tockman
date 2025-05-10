@@ -86,9 +86,10 @@ def render fname, html, **props
         .gsub('<!--t-->', "#{flags.title}#{flags.title && ' - '}")
         .gsub('<!--t*-->', (flags.title || '').split(' - ')[0] || '')
         .gsub('<!--s-->', flags.script.sort.map{|x|"<script src='/#{$js[x]}.js'></script>"}.join + (['global'] + flags.style.sort).map{|x| "<link rel='stylesheet' href='/#{$css[x]}.css'>"}.join)
-        .gsub('<!--d-->', CGI.escapeHTML((flags.desc || "The #{flags.title} page on Andy Tockman's website.").unhtml.oneline))
+        .gsub('<!--d-->', CGI.escapeHTML((flags.desc || "The #{flags.title} page on Andy Tockman's website.").gsub('<!--b-->', $bundtcount.to_s).unhtml.oneline))
         .gsub('<!--i-->', flags.image || '/img/dp.png')
         .gsub('<!--u-->', fname)
+        .gsub('<!--b-->', $bundtcount.to_s)
         .sub('<main>', 'main'.addclass(flags.mainclass))
         .sub(/<div id='subheader'>.*?<\/div>/m, flags.ksh ? '' : '\0')
 
@@ -261,6 +262,10 @@ end
 
 go('pre/puzzle') do |html, name|
     render "puzzle/#{name}", html
+end
+
+go('pre/food') do |html, name|
+    render "food/#{name}", html
 end
 
 if nil
