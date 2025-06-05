@@ -357,11 +357,11 @@ def f_bundt x, props
         name, url = rest[0][0].split(/ (?=http)/)
         "<div class='bundt'>
             <div class='btitle'><a href='#{url}'>#{name.split(' // ')[0]}</a><span>#{date}</span></div>
-            <div class='bimg' data-gallery='#{(thisimgs = smalls.dup - smalls.reject!{|i|
+            <div class='bimg' data-gallery='#{(thisimgs = smalls.dup - (smalls.reject!{|i|
                 y1, m1, d1 = i.match(/small_(\d\d\d\d)(\d\d)(\d\d)/).to_a.drop(1).map &:to_i
                 y2, m2, d2 = date.split(?-).map &:to_i
                 y1 < y2 || y1 <= y2 && (m1 < m2 || m1 <= m2 && d1 <= d2)
-            }).join ' '}'>#{imgs.map{|i| "<img src='pics/#{i.sub 'IMG', 'icon'}'>" }.join} <a href='#'>more (#{thisimgs.size}) »</a></div>
+            } || [])).join ' '}'>#{imgs.map{|i| "<img src='pics/#{i.sub 'IMG', 'icon'}'>" }.join} <a href='#'>more (#{thisimgs.size}) »</a></div>
             <div class='bcomm'>#{comments}</div>
         </div>"
     }
