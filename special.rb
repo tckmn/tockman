@@ -318,7 +318,7 @@ end
 
 def f_ly x
     outname = "/img/ly/#{Digest::MD5.hexdigest x}.svg"
-    unless File.exists? $target+outname
+    unless File.exist? $target+outname
         tmpdir = `mktemp -d`.chomp
         File.write "#{tmpdir}/tmp.ly", '\version "2.24.3"'+?\n+x
         %x{
@@ -367,13 +367,13 @@ def f_bundt x, props
     }
     imglist.each do |x|
         small = x.sub /.*IMG/, 'tckmn.github.io/food/bundt/pics/small'
-        unless File.exists? small
+        unless File.exist? small
             puts "making #{small}"
             `magick #{x} -resize 30% -quality 50% #{small}`
         end
         if allimgs.include? x.split(?/)[-1]
             icon = x.sub /.*IMG/, 'tckmn.github.io/food/bundt/pics/icon'
-            unless File.exists? icon
+            unless File.exist? icon
                 puts "making #{icon}"
                 `magick #{x} -resize 12.5% -quality 50% #{icon}`
             end

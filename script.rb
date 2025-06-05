@@ -226,7 +226,7 @@ $logic.each do |p|
             | grep -o '<svg.*</svg>' \
             | convert - "#{$target+imgurl}"
         echo "wrote output at #{$target+imgurl}"
-        } if puzzlink && !File.exists?($target+imgurl)
+        } if puzzlink && !File.exist?($target+imgurl)
 
         <<~y
         <div class='lpuz'>
