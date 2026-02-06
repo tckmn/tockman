@@ -347,6 +347,12 @@ def f_bundt x, props
     allimgs = []
     ret = File.readlines('/home/tckmn/db/fdb/food').slice_before(/BUNDT/).drop(1).map{|x|
         date = x[0].split[1]
+        tags = x[0].scan(/(\w+):([\w+]+)/).map{|k,v| "#{{
+            'b' => 'baked by',
+            'w' => 'baked with',
+            's' => 'suggested by',
+            'i' => 'inspired by'
+        }[k]}: #{v.gsub '+', ', '}" }.join(', ')
         comments, *rest = *x.drop(1).slice_after("\n")
         imgs = []
         comments = comments[0...comments.size-1].join.gsub(/IMG_\d+_\d+\.jpg/) {
@@ -356,12 +362,12 @@ def f_bundt x, props
         }
         name, url = rest[0][0].split(/ (?=http)/)
         "<div class='bundt'>
-            <div class='btitle'><a href='#{url}'>#{name.split(' // ')[0]}</a><span>#{date}</span></div>
+            <div class='btitle'><div>#{"<a href='#{url}'>" if url}#{name.split(' // ')[0]}#{"</a>" if url}</div><div>#{date}#{'<br>' if tags}#{tags}</div></div>
             <div class='bimg' data-gallery='#{(thisimgs = smalls.dup - (smalls.reject!{|i|
                 y1, m1, d1 = i.match(/small_(\d\d\d\d)(\d\d)(\d\d)/).to_a.drop(1).map &:to_i
                 y2, m2, d2 = date.split(?-).map &:to_i
                 y1 < y2 || y1 <= y2 && (m1 < m2 || m1 <= m2 && d1 <= d2)
-            } || [])).join ' '}'>#{imgs.map{|i| "<img src='pics/#{i.sub 'IMG', 'icon'}'>" }.join} <a href='#'>more (#{thisimgs.size}) »</a></div>
+            } || smalls)).join ' '}'>#{imgs.map{|i| "<img src='pics/#{i.sub 'IMG', 'icon'}'>" }.join} <a href='#'>more (#{thisimgs.size}) »</a></div>
             <div class='bcomm'>#{comments}</div>
         </div>"
     }
