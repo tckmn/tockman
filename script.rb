@@ -85,7 +85,9 @@ def render fname, html, **props
         .sub('<!--*-->', html)
         .gsub('<!--t-->', "#{flags.title}#{flags.title && ' - '}")
         .gsub('<!--t*-->', (flags.title || '').split(' - ')[0] || '')
-        .gsub('<!--s-->', flags.script.sort.map{|x|"<script src='#{x.start_with?('./') ? x[2..-1] : "/#{$js[x]}"}.js'></script>"}.join + (['global'] + flags.style.sort).map{|x| "<link rel='stylesheet' href='/#{$css[x]}.css'>"}.join)
+        .gsub('<!--s-->',
+              flags.script.sort.map{|x|"<script src='#{x.start_with?('./') ? x[2..-1] : "/#{$js[x]}"}.js'></script>"}.join +
+              (['global'] + flags.style.sort).map{|x| "<link rel='stylesheet' href='#{x.start_with?('./') ? x[2..-1] : "/#{$css[x]}"}.css'>"}.join)
         .gsub('<!--d-->', CGI.escapeHTML((flags.desc || "The #{flags.title} page on Andy Tockman's website.").gsub('<!--b-->', $bundtcount.to_s).unhtml.oneline))
         .gsub('<!--i-->', flags.image || '/img/dp.png')
         .gsub('<!--u-->', fname)
