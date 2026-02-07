@@ -29,7 +29,7 @@
 <p>for reference for future readers, the video doesn't even talk about the exact same thing -- it more generally talks about songs that do something "unexpected" into the chorus. one of the two other songs cited is Despacito:</p>
 <p><audio controls><source src='despacito.ogg' type='audio/ogg'><source src='despacito.mp3' type='audio/mpeg'></audio></p>
 <p>this one lands neatly on beat 1, but the tempo slows way down for the two beats right before the chorus. (i'm sure many people reading already know this, but "despacito" is the diminutive of the Spanish word for "slowly", making this an example of <a href='https://en.wikipedia.org/wiki/Word_painting'>word painting</a>)</p>
-<p>the other song the video cites the opening to Sword Art Online, called Crossing Field by LiSA. here's the first chorus (the normal, expected one):</p>
+<p>the other song the video cites is the opening to Sword Art Online, called Crossing Field by LiSA. here's the first chorus (the normal, expected one):</p>
 <p><audio controls><source src='crossing1.ogg' type='audio/ogg'><source src='crossing1.mp3' type='audio/mpeg'></audio></p>
 <p>and the last chorus (the unexpected one):</p>
 <p><audio controls><source src='crossing2.ogg' type='audio/ogg'><source src='crossing2.mp3' type='audio/mpeg'></audio></p>
@@ -38,5 +38,23 @@
 <p>(sidenote: it's very funny to me that the video makes the joke of "shounen" in Japanese being cognate with "joven" in Spanish, as someone not exposed to much cross-linguistic Japanese-Spanish humor in my daily life)</p>
 
 |, 'post': 'sudden-phrase-initial-beat-long-cutoffs'},
+
+{date: '2025-08-08 13:22:24.441862', name: 'i_like_violin', comm: '<p>how dare you</p>', post: 'tier-lists'},
+
+{date: '2025-08-12 17:03:40.405626', name: 'Matthew G', comm: '<p>Found another one: <a href="https://youtu.be/M-l3mNWB7W8">https://youtu.be/M-l3mNWB7W8</a></p><p>The apothecary diaries intro, live, at 3:33, totally cuts out for the first beat of the chorus. The intro that made it onto the actual anime, <a href="https://youtu.be/EQ-DKvLQlyQ">https://youtu.be/EQ-DKvLQlyQ</a> at around 1:00, does not do this!</p>', post: 'sudden-phrase-initial-beat-long-cutoffs'},
+
+{date: '2025-09-16 12:06:xx', name: 'tckmn', comm: %q|
+
+<p>that one is also cool :o here is the normal chorus followed by the modified chorus (which also has an extra 2 bars of leadin):</p>
+<p><audio controls><source src='hana1.ogg' type='audio/ogg'><source src='hana1.mp3' type='audio/mpeg'></audio></p>
+<p><audio controls><source src='hana2.ogg' type='audio/ogg'><source src='hana2.mp3' type='audio/mpeg'></audio></p>
+<p>when i was listening to this one, i decided to just listen to the whole song in the background instead of jumping to the timestamp, and during the buildup my brain went "oh they're definitely about to do the thing" lol</p>
+<p>this song also does a bunch of other neat things btw, i really like how at 4:07 the piano plays a riff and then the erhu repeats it and it's slightly out of tune which makes it sound much cooler than the digital piano. there's also this thing they do in the chorus (2:06, 3:44, 3:54) and one of the verses (2:19), where the vocals are grouped in 3 eighths over the 4/4 instrumental, which is kind of reminiscent of the tresillo thing that's the most common rhythm in all of western pop music (left) or the extended one that's the second most common rhythm in all of western pop music (right):</p>
+<p><img src='/img/ly/d7f6bf06d7f2d20f68dda750820395bf.svg' style='background-color:white;padding:5px'></p>
+<p>...except the one in the chorus starts on the 3 (which makes it land on beat 1 a measure and a half later), and in that one verse at 2:19 it just <em>keeps going</em>, making the song briefly feel almost polymetric</p>
+<p>anyway, i think the reason the anime intro version doesn't have the thing is just that it's shortened and only includes the first chorus</p>
+
+|, 'post': 'sudden-phrase-initial-beat-long-cutoffs'},
+
 
 ]

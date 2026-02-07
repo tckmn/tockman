@@ -100,6 +100,8 @@ Poppy_Grower
 Minions &amp; Demons do not know each other. If you die, they learn who each other are that night.
 Preacher
 Each night, choose a player: a Minion, if chosen, learns this. All chosen Minions have no ability.
+Princess
+On your 1st day, if you nominated & executed a player, the Demon doesn’t kill tonight.
 Professor
 Once per game, at night*, choose a dead player: if they are a Townsfolk, they are resurrected.
 Ravenkeeper
@@ -150,6 +152,8 @@ Hatter
 If you died today or tonight, the Minion &amp; Demon players may choose new Minion &amp; Demon characters to be.
 Heretic
 Whoever wins, loses &amp; whoever loses, wins, even if you are dead.
+Hermit
+You have all Outsider abilities. [-0 or -1 Outsider]
 Klutz
 When you learn that you died, publicly choose 1 alive player: if they are evil, your team loses.
 Lunatic
@@ -228,6 +232,8 @@ Witch
 Each night, choose a player: if they nominate tomorrow, they die. If just 3 players live, you lose this ability.
 Wizard
 Once per game, choose to make a wish. If granted, it might have a price &amp; leave a clue as to its nature.
+Wraith
+You may choose to open your eyes at night. You wake when other evil players do.
 Xaan
 On night X, all Townsfolk are poisoned until dusk. [X Outsiders]
 Al-Hadikhia

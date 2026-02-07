@@ -7,9 +7,9 @@ but here's a short list of a bunch of songs
 that do a cool musical thing.
 [EXCERPT]
 
-.style {{ main ul li { margin: 2em 0; } }}
+.style {{ main ul li { margin: 2em 0; } audio { vertical-align: middle; } video { max-width: 100%; max-height: 50vh; } }}
 
-- **A Cruel Angel's Thesis** (theme song of *Neon Genesis Evangelion*)
+- **[A Cruel Angel's Thesis](https://youtu.be/o6wtDPVkKqI)** (theme song of *Neon Genesis Evangelion*)
 
   First listen to this pre-chorus bit
   (this is *not* the cool musical thing),
@@ -63,7 +63,7 @@ that do a cool musical thing.
   because it sort of leaves out the "cutoff" part of the title of this post.
   So the next example is the most dramatic one in that regard.
 
-- **Flowers** (unreasonably catchy song by Miley Cyrus)
+- **[Flowers](https://youtu.be/G7KNmW9a75Y)** (unreasonably catchy song by Miley Cyrus)
 
   This song does the thing into each chorus,
   and it sounds a little different each time:
@@ -89,7 +89,7 @@ that do a cool musical thing.
   but the second and third are completely silent,
   and the third changes up the rhythm of the drums leading into it.
 
-- **The Middle** (the only song by Jimmy Eat World that anyone's ever heard)
+- **[The Middle](https://youtu.be/oKsxPW6i3pM)** (the only song by Jimmy Eat World that anyone's ever heard)
 
   This song has a cool variation
   where instead of *everything* cutting out,
@@ -107,7 +107,7 @@ that do a cool musical thing.
   with a cymbal crash
   (and the same sixteenths on the drums leading up to the preceding 1).
 
-- **Believer** (by Imagine Dragons, of *Murder on the Orient Express*-movie-trailer fame)
+- **[Believer](https://youtu.be/7wtfhZwyrcc)** (by Imagine Dragons, of *Murder on the Orient Express*-movie-trailer fame)
 
   This one is quite in-your-face about it.
 
@@ -125,6 +125,83 @@ that do a cool musical thing.
   I dunno,
   you could count this song in 4 or 2 or 12,
   but it's the same idea.
+
+- **[Mor Ardain - Roaming the Wastes](https://youtu.be/Tx3AbguQZHU)** (from the Xenoblade Chronicles 2 OST)
+
+  The first time this particular melody appears,
+  followed by the one where it does the thing:
+
+  <p><audio controls>
+    <source src='xenoblade1.ogg' type='audio/ogg'>
+    <source src='xenoblade1.mp3' type='audio/mpeg'>
+  </audio></p>
+
+  <p><audio controls>
+    <source src='xenoblade2.ogg' type='audio/ogg'>
+    <source src='xenoblade2.mp3' type='audio/mpeg'>
+  </audio></p>
+
+  While some of these examples have had all but one part doing the cutoff (The Middle, Believer)
+  and some of these have had only one part doing the cutoff (Evangelion),
+  this one is kind of in the middle --
+  half of the band is playing the pickups and continues into the melody as normal,
+  and the other half comes crashing in on beat 2 echoing the main melody's beat 1.
+  There's also a nice piano gliss on the 1 of that measure to accentuate the whole effect.
+
+  I've edited this example in 9 months after the original post
+  because it actually came up "in the wild" --
+  in the <a href='https://www.youtube.com/@mitvgo'>MIT Video Game Orchestra</a> we're playing an arrangement of this piece,
+  and one of our conductors (who made the arrangement)
+  specifically stopped to point this out
+  (to which I was mentally screaming "yes!!! it's the thing!!").
+
+And here is a list of a bunch more that I will progressively add to
+as I discover them:
+
+- **[Cupid](https://youtu.be/Qc7_zRjH808)** (FIFTY FIFTY), contributed by Cameron
+
+  <p><audio controls>
+    <source src='cupid.ogg' type='audio/ogg'>
+    <source src='cupid.mp3' type='audio/mpeg'>
+  </audio></p>
+
+- **[Is There Really No Happiness?](https://youtu.be/PoTu269qSnw)** (Porter Robinson), contributed by Cameron
+
+  <p>Normal chorus: <audio controls>
+    <source src='happiness1.ogg' type='audio/ogg'>
+    <source src='happiness1.mp3' type='audio/mpeg'>
+  </audio></p>
+
+  <p>Modified chorus: <audio controls>
+    <source src='happiness2.ogg' type='audio/ogg'>
+    <source src='happiness2.mp3' type='audio/mpeg'>
+  </audio></p>
+
+- **[フォニイ](https://youtu.be/9QLT1Aw_45s)** (Tsumiki)
+
+  <p>Normal chorus: <audio controls>
+    <source src='phony1.ogg' type='audio/ogg'>
+    <source src='phony1.mp3' type='audio/mpeg'>
+  </audio></p>
+
+  <p>Modified chorus: <audio controls>
+    <source src='phony2.ogg' type='audio/ogg'>
+    <source src='phony2.mp3' type='audio/mpeg'>
+  </audio></p>
+
+  <p>Clip of the Sound Voltex chart emphasizing this moment (played by DDX):</p>
+
+  <p><video controls>
+    <source src='phony.webm' type='video/webm'>
+    <source src='phony.mp4' type='video/mp4'>
+  </video></p>
+
+- **[Blazing Heart](https://youtu.be/ITKYSZcddVk)** (Genshin Impact)
+
+  <p><audio controls>
+    <source src='blazing.ogg' type='audio/ogg'>
+    <source src='blazing.mp3' type='audio/mpeg'>
+  </audio></p>
 
 Can you think of any other songs that do this?
 I would be interested to know!
@@ -156,6 +233,18 @@ I would be interested to know!
     }
     \addlyrics {
       Yu -- me de (ta) (ta) ta -- ka -- ku ton -- da __
+    }
+  }
+}} -->
+<!-- .ly {{
+  \version "2.24.3"
+  \score {
+    \new Staff \with { \omit Clef } \relative {
+      \numericTimeSignature
+      \time 4/4
+      \override NoteHead.style = #'cross
+      | b'4. b b4 | b4. b b4 | \section
+      | b4. b b4~ | b8 b4. b4 b |
     }
   }
 }} -->
