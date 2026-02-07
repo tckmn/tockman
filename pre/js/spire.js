@@ -32,7 +32,7 @@ function dcol(d) {
     if (d.indexOf('[W]') !== -1) return 'stscp';
 }
 function col(el) {
-    return Array.from(el.classList).find(x => x.slice(0,4) === 'stsc');
+    return Array.from(el.classList).find(x => x.slice(0,4) === 'stsc' || x === 'stsrelic' || x === 'stspotion');
 }
 
 window.addEventListener('load', () => {

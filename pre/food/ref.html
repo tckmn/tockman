@@ -1,0 +1,50 @@
+.title Baking reference - Food
+.desc volume/mass conversions, simple substitutions, etc.
+.style {{
+div#top { display: flex; justify-content: space-between; margin-bottom: 0.7rem; }
+div#sel > div { display: inline-block; background-color: #282828; font-size: 12pt; padding: 0 8px; cursor: pointer; }
+div#sel > div.sel { background-color: #224; color: #ccf; }
+div#sel > div:hover { background-color: #383838; }
+div#sel > div.sel:hover { background-color: #335; }
+div#sel > div:first-child { display: inline-block; border-radius: 5px 0 0 5px; }
+div#sel > div:last-child { display: inline-block; border-radius: 0 5px 5px 0; }
+div#upts { display: flex; align-items: start; flex-wrap: wrap; gap: 2rem; margin-bottom: -0.5rem; } /* this 0.5 same as .spc */
+div.upt { display: grid; width: 300px; grid-template-columns: 1fr min-content; column-gap: 1rem; }
+div.upt .spc { height: 0.5rem; }
+div.upt .col { color: #ccf; }
+p.h { margin-top: 1.5rem; margin-bottom: 0.5rem; }
+div#subs { display: grid; max-width: 500px; grid-template-columns: auto 1fr; column-gap: 1rem; }
+footer { font-size: 10pt; color: #b8b8b8; margin-top: 1.5rem; border-top: 1px dotted #b8b8b8; padding-top: 1.5rem; }
+footer p, footer ul, footer li { margin: 0; }
+}}
+.script ./ref
+
+<div id='top'>
+    <div><input id='ipt' type='number' min=0 value=1 size=3> cup of...</div>
+    <div id='sel'>
+        <div data-idx=0>dip+sweep</div><div data-idx=1 class='sel'>spoon</div><div data-idx=2>sifted</div>
+    </div>
+</div>
+
+<div id='upts'>
+<div class='upt' id='upt1'></div>
+<div class='upt' id='upt2'></div>
+</div>
+
+<p>1 egg = 50g, in case you care. if you're brave: 1 tsp baking powder / baking soda / salt = 5g</p>
+
+<p class='h'>simple substitutions:</p>
+
+<div id='subs'>
+    <div>buttermilk</div><div>2 tbsp lemon juice / vinegar + 1 cup milk</div>
+    <div>cake flour</div><div>2 tbsp cornstarch : 1 cup cake flour</div>
+    <div>1 unit butter</div><div>0.8 units oil, 0.2 units liquid</div>
+</div>
+
+<footer>
+<p>data sources:</p>
+<ul>
+    <li>weights collated/averaged from <a href='https://studylib.net/doc/8923639/common-baking-ingredient-weights'>1</a>, <a href='https://sallysbakingaddiction.com/wp-content/uploads/2020/04/Sallys-Baking-Addiction-Common-Weight-Conversions.pdf'>2</a>, <a href='https://www.aqua-calc.com/calculate/food-volume-to-weight'>3</a>, <a href='https://www.weekendbakery.com/cooking-conversions/'>4</a>, <a href='https://annaolson.ca/baking-conversions/'>5</a>, <a href='https://www.kingarthurbaking.com/learn/ingredient-weight-chart'>6</a>, <a href='https://www.bakewithzing.com/sites/default/files/uploads/baking%20conversions.pdf'>7</a>, and more</li>
+    <li><a href='https://thefirstyearblog.com/how-to-make-buttermilk/'>buttermilk</a> (different from standard folklore)</li>
+</ul>
+</footer>
