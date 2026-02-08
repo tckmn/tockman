@@ -435,7 +435,7 @@ so I'll just throw two more tables at you.
 They're big,
 so click below if you want to look at them:
 
-<div class='collapsible'><div>show/hide strategy for 4 demons</div><div>
+<details><summary>show/hide strategy for 4 demons</summary><div>
 <table class='lnums'>
 <tr><td>0  </td><td>                   </td><td>  kill 1 on 1121100</td><td>                        </td></tr>
 <tr><td>5  </td><td>                   </td><td>  kill 2 on 1121085</td><td>   [town nokill 1320025]</td></tr>
@@ -458,9 +458,9 @@ so click below if you want to look at them:
 <tr><td>14 </td><td>                   </td><td>                   </td><td>                        </td></tr>
 <tr><td>19 </td><td>                   </td><td>                   </td><td>                        </td></tr>
 </table>
-</div></div>
+</div></details>
 
-<div class='collapsible'><div>show/hide strategy for 5 demons</div><div>
+<details><summary>show/hide strategy for 5 demons</summary><div>
 <table class='lnums'>
 <tr><td>0 </td><td>                      </td><td>3 on 1099320</td><td>                   </td><td>                 </td></tr>
 <tr><td>6 </td><td>                      </td><td>3 on 1099326</td><td>                   </td><td> 4 on 573193746  </td></tr>
@@ -493,7 +493,7 @@ so click below if you want to look at them:
 <tr><td>23</td><td>  4 on 17423          </td><td>            </td><td>                   </td><td>                 </td></tr>
 <tr><td>29</td><td>  4 on 17429-109919   </td><td>            </td><td>    2 on 48846059  </td><td> 5 on 573193739  </td></tr>
 </table>
-</div></div>
+</div></details>
 
 These are also only checked up to 2 billion town;
 the 5 demon case almost certainly has further changes at higher numbers,
@@ -867,7 +867,6 @@ as a "real-life application"
 is not lost on me,
 but oh well.)
 
-.script+collapsible
 .style {{
 table.nums {
 td { text-align: right; }

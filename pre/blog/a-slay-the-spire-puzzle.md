@@ -9,10 +9,9 @@ What do you do?
 [EXCERPT]
 
 .spire
-.script+collapsible
 .style {{
     main li { margin: 0; span.desc { color: #888; font-size: 12pt; } }
-    main .collapsible ul { margin: 0; }
+    main details ul { margin: 0; }
 }}
 
 (This puzzle is probably not particularly accessible
@@ -403,7 +402,7 @@ these probabilities are extremely obnoxious to compute.
 I've hidden the details for your sake,
 but you can still see them if you really want to.
 
-<div class='collapsible'><div>show/hide details</div><div>
+<details><summary>show/hide details</summary><div>
 
 Alright,
 so let's count how many ways there are to draw something good
@@ -495,7 +494,7 @@ Which gives the output:
     57536615629709323/31223557615332361125
     0.0018427309385608227
 
-</div></div>
+</div></details>
 
 When all is said and done,
 it turns out the probability that you don't get an immediate infinite,
