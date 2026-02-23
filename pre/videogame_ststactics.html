@@ -1,0 +1,59 @@
+.title Slay the Spire tactics puzzles
+.desc a collection of tactics puzzles in Slay the Spire
+.style {{
+    main { max-width: none; }
+    div.narrow { max-width: 800px; margin: 0 auto; }
+    img.full { width: 100%; }
+    img.clean { display: none; }
+    div.clean img.dirty { display: none; }
+    div.clean img.clean { display: inline; }
+}}
+.script {{
+    window.addEventListener('load', () => {
+        for (const el of document.getElementsByClassName('click')) {
+            el.addEventListener('click', () => el.parentNode.classList.toggle('clean'));
+        }
+    });
+}}
+.script+spoiler
+
+<div class='narrow'>
+    <p>This is a collection of tactics puzzles in Slay the Spire. The goal of each puzzle is just "find the best line" rather than anything more specific -- what this means is for you to discover.</p>
+    <p>In general, these puzzles are very "weird", in that they are extremely unlikely (but possible) to come up in a real game.</p>
+    <p>Anything covered with a black rectangle is promised not to matter.</p>
+    <p>You can click on each image to toggle a "helper view", which shows the full text of each card and also displays tooltips describing some of the relics and status effects.</p>
+</div>
+
+<h2>puzzle #1</h2>
+
+<p>This puzzle has two parts. When you have solved the puzzle as given, click here for part 2: <span class='spoiler'>remove Tingsha, and reduce the Hexaghost's hp by 1</span>.</p>
+<p>Parts of the puzzle were inspired by a Discord conversation.</p>
+
+<div class='clean'>
+    <img class='click clean full' src='t1.1-clean.png'>
+    <img class='click dirty full' src='t1.1.png'>
+    <p>Draw pile:</p>
+    <img src='t1.2-small.png'>
+</div>
+
+<h2>puzzle #2</h2>
+
+<p>This puzzle is based on an actual streamed run by JapaneseExport. (apparently the line was so complicated that XecnaR had to type out the exact order of cards to play in chat in order to explain it)</p>
+
+<div class='clean'>
+    <img class='click clean full' src='t2.1-clean.png'>
+    <img class='click dirty full' src='t2.1.png'>
+    <p>Discard pile:</p>
+    <img src='t2.2-small.png'>
+</div>
+
+<h2>puzzle #3</h2>
+
+<p>You just drank Skill Potion, and are currently choosing between the three given cards. The Barrage+ is known to be at the bottom of your deck because you played Foresight on it.</p>
+
+<div class='clean'>
+    <img class='click clean full' src='t3.1-clean.png'>
+    <img class='click dirty full' src='t3.1.png'>
+    <p>Draw pile:</p>
+    <img src='t3.2-small.png'>
+</div>
