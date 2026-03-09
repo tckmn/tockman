@@ -1,4 +1,4 @@
-2026-03-09 12:00 -0400 // math, video games, slay the spire
+2026-03-09 13:23 -0400 // math, video games, slay the spire
 
 # The Hellraiser "infinite" in Slay the Spire 2
 
