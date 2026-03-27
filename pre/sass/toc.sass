@@ -1,0 +1,20 @@
+div.toc {
+    font-family: head;
+    position: fixed;
+    display: none;
+    top: 0;
+    right: 0;
+    width: 300px;
+    height: 200px;
+    background-color: rgba(0,0,0,0.5);
+    overflow-y: scroll;
+    scrollbar-width: none;
+
+    > div {
+        padding: 0 5px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        &.tocsub { padding-left: 20px; }
+    }
+}

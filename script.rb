@@ -24,6 +24,7 @@ class Props
         @spire = false
         @squares = false
         @katex = false
+        @toc = false
     end
 
     attr_accessor *Props.new('').instance_variables.map{|x| x[1..-1]}

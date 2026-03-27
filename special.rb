@@ -650,6 +650,7 @@ def html2katex html
 end
 
 def special_post s, props
+    [props.style.add('toc'), props.script.add('toc')] if props.toc
     [(s = squares s), props.style.add('squares')] if props.squares
     [(s = spire s), props.style.add('spire'), props.script.add('spire')] if props.spire
     [(s = html2katex s), props.style.add('katex')] if props.katex
