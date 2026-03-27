@@ -12,11 +12,6 @@ def f_svg x
     "<svg viewBox='#{x[0] == ?* ? '-2 -2 4 4' : '-1 -1 2 2'}'>#{File.read "pre/svgs/#{x.sub ?*, ''}.svg"}</svg>"
 end
 
-def f_sts x, props
-    props.sts = true
-    ''
-end
-
 def f_chess x, props
     props.style.add 'chess'
 
@@ -616,7 +611,17 @@ def getcls x
     @clist[x] || ['x', '']
 end
 def spire html
-    html.gsub(/\[\[([^\]+]+)(\+[^\]]*)?\]\]/) {
+    html.gsub(/\[\[\[([^\]]+)\]\]\]/) {
+        card = $1
+        cardfile = card.gsub(/[ ']/, '') + '.png'
+        cls, desc = getcls card
+        desc = desc.include?(?') ? "\"#{desc}\"" : "'#{desc}'"
+        case cls
+        when 'relic' then "<img class='sts stsrelic stsicon' data-title=\"#{card}\" data-desc=#{desc} src='/img/sts/relic/#{cardfile}'>"
+        when 'potion' then "<img class='sts stspotion stsicon' data-title=\"#{card}\" data-desc=#{desc} src='/img/sts/potion/#{cardfile}'>"
+        else "<img class='stscard' src='/img/sts/#{cardfile}'>"
+        end
+    }.gsub(/\[\[([^\]+]+)(\+[^\]]*)?\]\]/) {
         card = $1
         upg = $2
         if card.include? ?|
